@@ -6,9 +6,41 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "deploy": "now"
+    "lint-staged": "lint-staged",
+    "deploy": "eslint . && now"
   },
   "dependencies": {
-    "next": "^1.0.0"
-  }
+    "lint-staged": "^3.2.0",
+    "next": "^1.0.0",
+    "pre-commit": "^1.1.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
+    "lint-staged": "^3.2.0"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "globals": {
+      "document": true,
+      "window": true,
+      "process": true
+    },
+    "rules": {
+      "import/extensions": 0,
+      "import/no-extraneous-dependencies": 0,
+      "import/no-unresolved": 0,
+      "react/jsx-filename-extension": 0,
+      "linebreak-style": 0
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "pre-commit": "lint-staged"
 }
