@@ -1,0 +1,14 @@
+{
+  "name": "next-poc",
+  "author": "Sébastien Dubois",
+  "license": "GPL-3.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "now"
+  },
+  "dependencies": {
+    "next": "^1.0.0"
+  }
+}
