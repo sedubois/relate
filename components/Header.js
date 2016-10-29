@@ -14,6 +14,7 @@ const Header = ({ pathname }) => (
     })}
   >
     <HeaderLink pathname={pathname} href="/">Home</HeaderLink>
+    <HeaderLink pathname={pathname} href="/discover">Discover</HeaderLink>
   </div>
 );
 Header.propTypes = {
