@@ -1,6 +1,5 @@
 import React from 'react';
 import css from 'next/css';
-import Provider from './Provider';
 import HtmlHead from './HtmlHead';
 import Header from './Header';
 import Footer from './Footer';
@@ -27,12 +26,10 @@ const style = css({
 
 const Page = ({ pathname, children }) => (
   <div className={style}>
-    <Provider>
-      <HtmlHead />
-      <Header pathname={pathname} />
-      {children}
-      <Footer />
-    </Provider>
+    <HtmlHead />
+    <Header pathname={pathname} />
+    {children}
+    <Footer />
   </div>
 );
 Page.propTypes = {

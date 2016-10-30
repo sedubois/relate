@@ -38,6 +38,7 @@
       "import/extensions": 0,
       "import/no-extraneous-dependencies": 0,
       "import/no-unresolved": 0,
+      "react/forbid-prop-types": 0,
       "react/jsx-filename-extension": 0,
       "linebreak-style": 0
     }
