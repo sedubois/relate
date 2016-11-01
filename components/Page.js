@@ -6,6 +6,7 @@ import Footer from './Footer';
 
 css.insertRule(`
   a {
+    color: #A78100;
     text-decoration: none;
   }
   

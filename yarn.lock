@@ -1873,6 +1873,12 @@ graphql-anywhere@^0.2.4:
     lodash.merge "^4.6.0"
     lodash.pick "^4.2.0"
 
+graphql-fragments:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/graphql-fragments/-/graphql-fragments-0.1.0.tgz#21e04a3913f7cc8cfbc42c3e1d8b323a5847655e"
+  dependencies:
+    graphql-anywhere "^0.2.4"
+
 graphql-tag, graphql-tag@^0.1.13:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-0.1.15.tgz#a6b25cb5c6a57b56fcbda252083a39a4c9a34234"

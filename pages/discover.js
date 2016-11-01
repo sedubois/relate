@@ -1,16 +1,17 @@
 import React from 'react';
-import Discover from '../containers/Discover';
+import Users from '../containers/Users';
 import Page from '../components/Page';
 
-const DiscoverPage = props => (
+const Discover = props => (
   <Page pathname={props.url.pathname}>
-    <Discover />
+    <Users />
   </Page>
 );
-DiscoverPage.propTypes = {
+
+Discover.propTypes = {
   url: React.PropTypes.shape({
     pathname: React.PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default DiscoverPage;
+export default Discover;

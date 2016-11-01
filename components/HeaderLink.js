@@ -1,6 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
-import css from 'next/css';
+import NavLink from './NavLink';
 
 const highlightStyle = {
   color: '#FFFBF5',
@@ -22,22 +21,16 @@ const baseStyle = {
   ':hover': highlightStyle,
 };
 
-const HeaderLink = ({ pathname, href, children }) => {
-  const style = {};
-  Object.assign(style, baseStyle);
-  if (pathname === href) {
-    Object.assign(style, highlightStyle);
-  }
-  return (
-    <Link href={href}>
-      <a
-        className={css(style)}
-      >
-        {children}
-      </a>
-    </Link>
-  );
-};
+const HeaderLink = ({ pathname, href, children }) => (
+  <NavLink
+    className={baseStyle}
+    activeClassName={highlightStyle}
+    pathname={pathname}
+    href={href}
+  >
+    {children}
+  </NavLink>
+);
 HeaderLink.propTypes = {
   pathname: React.PropTypes.string.isRequired,
   children: React.PropTypes.node.isRequired,

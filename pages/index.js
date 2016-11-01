@@ -6,6 +6,7 @@ const Index = props => (
       Welcome!
   </Page>
 );
+
 Index.propTypes = {
   url: React.PropTypes.shape({
     pathname: React.PropTypes.string.isRequired,
