@@ -1,5 +1,3 @@
-import { PropTypes } from 'react';
-
 export default {
   wrapper: {
     width: '13em',
@@ -16,8 +14,4 @@ export default {
     width: '90%',
     display: 'inline-block',
   },
-  propType: PropTypes.shape({
-    wrapper: PropTypes.object.isRequired,
-    p: PropTypes.object.isRequired,
-  }),
 };

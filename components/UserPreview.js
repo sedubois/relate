@@ -6,15 +6,22 @@ import NavLink from './NavLink';
 import UserBadge from './UserBadge';
 import defaultStyle from '../styles/PreviewCard';
 
-function UserPreview({ style = defaultStyle, user }) {
+const Div = ({ className, children }) => <div className={css(className)}>{children}</div>;
+Div.propTypes = {
+  className: React.PropTypes.object.isRequired,
+  children: React.PropTypes.node.isRequired,
+};
+
+function UserPreview({ style = defaultStyle, user, link = true }) {
+  const Wrapper = link ? NavLink : Div;
   return (
-    <NavLink
+    <Wrapper
       className={style.wrapper}
       href={`/profile?slug=${user.slug}`}
     >
       <UserBadge user={user} />
       <p className={css(style.p)}>{`${user.givenName} ${user.familyName}`}</p>
-    </NavLink>
+    </Wrapper>
   );
 }
 
@@ -30,8 +37,12 @@ UserPreview.fragments = {
 };
 
 UserPreview.propTypes = {
-  style: defaultStyle.propType,
+  style: React.PropTypes.shape({
+    wrapper: React.PropTypes.object.isRequired,
+    p: React.PropTypes.object.isRequired,
+  }),
   user: UserPreview.fragments.user.propType,
+  link: React.PropTypes.bool,
 };
 
 export default UserPreview;
