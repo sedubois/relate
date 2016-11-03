@@ -2,6 +2,9 @@ import React from 'react';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { getDataFromTree } from 'react-apollo/server';
 import { graphql, ApolloProvider } from 'react-apollo';
+// polyfill fetch server-side to get Apollo working:
+// https://github.com/zeit/next.js/issues/106#issuecomment-258156495
+import 'isomorphic-fetch';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import DataError from '../components/DataError';
 import DataLoading from '../components/DataLoading';
@@ -21,7 +24,10 @@ function getClient(headers) {
 }
 
 function initClientAndStore(initialState, isServer, headers) {
-  if (isServer || typeof window === 'undefined') {
+  // on first page load, the JSON props will be created server-side, with isServer = true,
+  // but then sent to the browser where it will be evaluated. Therefore, need to also check
+  // `typeof window === 'undefined'` to make sure not to re-create the store on browser side.
+  if (isServer && typeof window === 'undefined') {
     const client = getClient(headers);
     const middleware = applyMiddleware(client.middleware());
     return {
@@ -44,7 +50,7 @@ function initClientAndStore(initialState, isServer, headers) {
 function getRootComponent({ client, store }, Component) {
   return (
     <ApolloProvider client={client} store={store}>
-      <Component prop={'test'} />
+      <Component />
     </ApolloProvider>
   );
 }
@@ -61,18 +67,22 @@ function wrapWithApollo(ComposedComponent) {
       headers: React.PropTypes.object,
     };
 
-    static async getInitialProps({ req }) {
+    static async getInitialProps(ctx) {
+      const req = ctx.req;
       const isServer = !!req;
       const headers = req ? req.headers : {};
       const clientAndStore = initClientAndStore({}, isServer, headers);
-
-      await getDataFromTree(getRootComponent(clientAndStore, ComposedComponent));
-
+      if (isServer) {
+        await getDataFromTree(getRootComponent(clientAndStore, ComposedComponent));
+      }
       return { initialState: clientAndStore.store.getState(), isServer, headers };
     }
 
     constructor(props) {
       super(props);
+      if (Object.keys(props).length === 0) {
+        throw new Error('apollo.js: Props not defined! Make sure to call getInitialProps.');
+      }
       this.clientAndStore = initClientAndStore(props.initialState, props.isServer, props.headers);
     }
 

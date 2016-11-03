@@ -25,17 +25,41 @@ const style = css({
   flexDirection: 'column',
 });
 
-const Page = ({ pathname, children }) => (
-  <div className={style}>
-    <HtmlHead />
-    <Header pathname={pathname} />
-    {children}
-    <Footer />
-  </div>
-);
-Page.propTypes = {
-  pathname: React.PropTypes.string.isRequired,
-  children: React.PropTypes.node.isRequired,
-};
+export default function page(WrappedComponent) {
+  class Page extends React.Component {
+    static propTypes = {
+      url: React.PropTypes.shape({
+        pathname: React.PropTypes.string.isRequired,
+      }).isRequired,
+    };
 
-export default Page;
+    static async getInitialProps(ctx) {
+      const props = {};
+      if (WrappedComponent.getInitialProps) {
+        const subProps = await WrappedComponent.getInitialProps(ctx);
+        Object.assign(props, subProps);
+      }
+      return props;
+    }
+
+    constructor(props) {
+      super(props);
+      if (Object.keys(props).length === 0) {
+        throw new Error('page.js: Props not defined! Make sure to call getInitialProps.');
+      }
+    }
+
+    render() {
+      return (
+        <div className={style}>
+          <HtmlHead />
+          <Header pathname={this.props.url.pathname} />
+          <WrappedComponent {...this.props} />
+          <Footer />
+        </div>
+      );
+    }
+  }
+
+  return Page;
+}
