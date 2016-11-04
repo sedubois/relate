@@ -1,8 +1,8 @@
 import React from 'react';
 import css from 'next/css';
-import HtmlHead from './HtmlHead';
-import Header from './Header';
-import Footer from './Footer';
+import HtmlHead from '../components/HtmlHead';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 css.insertRule(`
   a {

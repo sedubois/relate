@@ -1,4 +1,4 @@
 import Users from '../containers/Users';
-import page from '../components/Page';
+import page from '../containers/Page';
 
 export default page(Users);
