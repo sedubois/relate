@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint-staged": "lint-staged",
-    "deploy": "eslint . && now"
+    "deploy": "eslint . && now && now alias"
   },
   "dependencies": {
     "apollo-client": "^0.5.0",
@@ -48,6 +48,9 @@
   },
   "lint-staged": {
     "*.js": "eslint"
+  },
+  "now": {
+    "alias": "realate"
   },
   "pre-commit": "lint-staged"
 }
