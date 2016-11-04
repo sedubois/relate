@@ -11,7 +11,9 @@ const Footer = () => (
       borderTop: '1px solid #3B2400',
     })}
   >
-    <section />
+    <section>
+      <a href="https://github.com/sedubois/realate" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </section>
     <section>
       Made with ღ by&nbsp;
       <a href="https://twitter.com/semdubois" target="_blank" rel="noopener noreferrer">Sébastien Dubois</a>
