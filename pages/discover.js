@@ -1,4 +1,4 @@
 import Users from '../containers/Users';
-import page from '../containers/Page';
+import page from '../hocs/page';
 
 export default page(Users);
