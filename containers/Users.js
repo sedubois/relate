@@ -27,7 +27,7 @@ Users.propTypes = {
 const query = gql`{
   allUsers {
     id
-    ...UserPreviewUser
+    ...UserPreview
     _tracksMeta {
       count
     }

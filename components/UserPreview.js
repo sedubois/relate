@@ -27,11 +27,11 @@ function UserPreview({ style = defaultStyle, user, link = true }) {
 
 UserPreview.fragments = {
   user: new Fragment(gql`    
-    fragment UserPreviewUser on User {
+    fragment UserPreview on User {
       slug
       givenName
       familyName
-      ...UserBadgeUser
+      ...UserBadge
     }
   `, UserBadge.fragments.user),
 };

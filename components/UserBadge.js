@@ -22,7 +22,7 @@ function UserBadge({ user: { picture } }) {
 
 UserBadge.fragments = {
   user: new Fragment(gql`
-    fragment UserBadgeUser on User {
+    fragment UserBadge on User {
       picture
     }
   `),
