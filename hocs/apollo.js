@@ -47,10 +47,10 @@ function initClientAndStore(initialState, isServer, headers) {
   return window.clientAndStore;
 }
 
-function getRootComponent({ client, store }, Component) {
+function getRootComponent({ client, store }, Component, query) {
   return (
     <ApolloProvider client={client} store={store}>
-      <Component />
+      <Component {...query} />
     </ApolloProvider>
   );
 }
@@ -65,17 +65,19 @@ function wrapWithApollo(ComposedComponent) {
       initialState: React.PropTypes.object,
       isServer: React.PropTypes.bool,
       headers: React.PropTypes.object,
+      query: React.PropTypes.object,
     };
 
     static async getInitialProps(ctx) {
       const req = ctx.req;
       const isServer = !!req;
       const headers = req ? req.headers : {};
+      const query = ctx.query;
       const clientAndStore = initClientAndStore({}, isServer, headers);
       if (isServer) {
-        await getDataFromTree(getRootComponent(clientAndStore, ComposedComponent));
+        await getDataFromTree(getRootComponent(clientAndStore, ComposedComponent, query));
       }
-      return { initialState: clientAndStore.store.getState(), isServer, headers };
+      return { initialState: clientAndStore.store.getState(), isServer, headers, query };
     }
 
     constructor(props) {
@@ -87,7 +89,7 @@ function wrapWithApollo(ComposedComponent) {
     }
 
     render() {
-      return getRootComponent(this.clientAndStore, ComposedComponent);
+      return getRootComponent(this.clientAndStore, ComposedComponent, this.props.query);
     }
   }
 

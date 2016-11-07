@@ -28,12 +28,21 @@ TrackPlayer.propTypes = {
   }).isRequired,
 };
 
-// TODO get track ID from URL
-const query = gql`{
-  Track(id: "citr9zth1051m0124u62fcrfz") {
-    title
-    url
+const query = gql`
+  query TrackQuery($id: ID!) {
+    Track(id: $id) {
+      title
+      url
+    }
   }
-}`;
+`;
 
-export default apollo(query)(TrackPlayer);
+const withData = apollo(query, {
+  options({ id }) {
+    return {
+      variables: { id },
+    };
+  },
+});
+
+export default withData(TrackPlayer);

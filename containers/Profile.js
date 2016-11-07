@@ -51,22 +51,26 @@ Profile.propTypes = {
   }).isRequired,
 };
 
-// TODO get slug from URL parameters
-const query = gql`{
-  User(slug: "clang") {
-    ...UserPreview
-    tracks {
-      ...TrackList
+const query = gql`
+  query Profile($slug: String!) {
+    User(slug: $slug) {
+      ...UserPreview
+      tracks {
+        ...TrackList
+      }
     }
   }
-}`;
+`;
 
 const withData = apollo(query, {
-  options: {
-    fragments: [
-      ...UserPreview.fragments.user.fragments(),
-      ...TrackList.fragments.track.fragments(),
-    ],
+  options({ slug }) {
+    return {
+      fragments: [
+        ...UserPreview.fragments.user.fragments(),
+        ...TrackList.fragments.track.fragments(),
+      ],
+      variables: { slug },
+    };
   },
 });
 
