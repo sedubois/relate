@@ -9,7 +9,7 @@ const Header = ({ pathname }) => (
       padding: '0.7em',
       minHeight: '5.1em',
       borderRadius: '5px',
-      backgroundImage: 'url(static/banner.png)',
+      backgroundImage: 'url(/static/banner.png)',
       backgroundSize: 'cover',
     })}
   >

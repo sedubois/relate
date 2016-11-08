@@ -13,6 +13,10 @@ css.insertRule(`
   body {
     margin: 0;
   }
+  
+  .auth0-lock-header {
+    display: none;
+  }
 `);
 
 const style = css({
