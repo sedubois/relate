@@ -58,10 +58,10 @@ function wrapWithApollo(ComposedComponent) {
 
 function withErrorAndLoading(Component) {
   function WithErrorAndLoading(props) {
-    if (props.data.error) {
+    if (props.data && props.data.error) {
       return <DataError message={props.data.error.message} />;
     }
-    if (props.data.loading) {
+    if (props.data && props.data.loading) {
       return <DataLoading />;
     }
     return <Component {...props} />;
@@ -70,7 +70,7 @@ function withErrorAndLoading(Component) {
     data: React.PropTypes.shape({
       error: React.PropTypes.object,
       loading: React.PropTypes.bool.isRequired,
-    }).isRequired,
+    }),
   };
   return WithErrorAndLoading;
 }
@@ -80,8 +80,4 @@ export default function apollo(query, options) {
     const compWithErrorAndLoading = withErrorAndLoading(Component);
     return wrapWithApollo(graphql(query, options)(compWithErrorAndLoading));
   };
-}
-
-export function apolloMutation(query, options) {
-  return Component => wrapWithApollo(graphql(query, options)(Component));
 }

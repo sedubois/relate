@@ -2,7 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import config from '../../config';
 import { popSecret } from '../../util/auth';
-import { apolloMutation } from '../../hocs/apollo';
+import apollo from '../../hocs/apollo';
 import page from '../../hocs/page';
 
 function onAuthenticated(lock) {
@@ -130,8 +130,8 @@ const createUserMutation = gql`
 //   }
 // `;
 
-const WithCreateUser = apolloMutation(createUserMutation, { name: 'createUser' })(LoginCallback);
-// const WithMutations = apolloMutation(signInUserMutation, { name: 'signInUser' })(WithCreateUser);
+const WithCreateUser = apollo(createUserMutation, { name: 'createUser' })(LoginCallback);
+// const WithMutations = apollo(signInUserMutation, { name: 'signInUser' })(WithCreateUser);
 
 // export default page(WithMutations);
 export default page(WithCreateUser);
