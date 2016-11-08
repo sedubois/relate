@@ -5,7 +5,7 @@ import { graphql, ApolloProvider } from 'react-apollo';
 // https://github.com/zeit/next.js/issues/106#issuecomment-258156495
 import 'isomorphic-fetch';
 import { IS_SERVER } from '../util/website';
-import initClientAndStore from '../data/clientAndStore';
+import getClientAndStore from '../data/clientAndStore';
 import DataError from '../components/DataError';
 import DataLoading from '../components/DataLoading';
 
@@ -33,7 +33,7 @@ function wrapWithApollo(ComposedComponent) {
       const req = ctx.req;
       const headers = req ? req.headers : {};
       const query = ctx.query;
-      const clientAndStore = initClientAndStore({}, headers);
+      const clientAndStore = getClientAndStore({}, headers);
       if (IS_SERVER) {
         await getDataFromTree(getRootComponent(clientAndStore, ComposedComponent, query));
       }
@@ -45,7 +45,7 @@ function wrapWithApollo(ComposedComponent) {
       if (Object.keys(props).length === 0) {
         throw new Error('apollo.js: Props not defined! Make sure to call getInitialProps.');
       }
-      this.clientAndStore = initClientAndStore(props.initialState, props.headers);
+      this.clientAndStore = getClientAndStore(props.initialState, props.headers);
     }
 
     render() {
