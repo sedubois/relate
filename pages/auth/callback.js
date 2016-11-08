@@ -1,7 +1,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import config from '../../config';
-import { popSecret } from '../../lib/auth';
+import { popSecret } from '../../util/auth';
 import { apolloMutation } from '../../hocs/apollo';
 import page from '../../hocs/page';
 

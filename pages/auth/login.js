@@ -1,8 +1,8 @@
 import React from 'react';
 import css from 'next/css';
 import config from '../../config';
-import getWebsiteUrl from '../../lib/websiteUrl';
-import { storeSecret, clearStorage } from '../../lib/auth.js';
+import { BASE_URL } from '../../util/website';
+import { storeSecret, clearStorage } from '../../util/auth.js';
 import page from '../../hocs/page';
 
 const LOCK_CONTAINER_ID = 'lock-container';
@@ -28,7 +28,7 @@ function createLock(nextPathname) {
   const Auth0Lock = require('auth0-lock').default; // eslint-disable-line global-require
   return new Auth0Lock(config.AUTH0_CLIENT_ID, config.AUTH0_DOMAIN, {
     auth: {
-      redirectUrl: `${getWebsiteUrl()}/auth/callback`,
+      redirectUrl: `${BASE_URL}/auth/callback`,
       responseType: 'token',
       params: {
         state: JSON.stringify({

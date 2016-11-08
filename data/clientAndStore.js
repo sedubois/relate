@@ -1,15 +1,15 @@
 import getClient from './client';
 import createStore from './store';
+import { IS_SERVER } from '../util/website';
 
 export default function initClientAndStore(initialState, headers) {
-  const isServer = typeof window === 'undefined';
-  if (isServer || !window.clientAndStore) {
+  if (IS_SERVER || !window.clientAndStore) {
     const client = getClient(headers);
     const clientAndStore = {
       client,
-      store: createStore(isServer, client, initialState),
+      store: createStore(IS_SERVER, client, initialState),
     };
-    if (isServer) {
+    if (IS_SERVER) {
       return clientAndStore;
     }
     window.clientAndStore = clientAndStore;

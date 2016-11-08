@@ -4,6 +4,7 @@ import { graphql, ApolloProvider } from 'react-apollo';
 // polyfill fetch server-side to get Apollo working:
 // https://github.com/zeit/next.js/issues/106#issuecomment-258156495
 import 'isomorphic-fetch';
+import { IS_SERVER } from '../util/website';
 import initClientAndStore from '../data/clientAndStore';
 import DataError from '../components/DataError';
 import DataLoading from '../components/DataLoading';
@@ -33,7 +34,7 @@ function wrapWithApollo(ComposedComponent) {
       const headers = req ? req.headers : {};
       const query = ctx.query;
       const clientAndStore = initClientAndStore({}, headers);
-      if (typeof window !== 'undefined') {
+      if (IS_SERVER) {
         await getDataFromTree(getRootComponent(clientAndStore, ComposedComponent, query));
       }
       return { initialState: clientAndStore.store.getState(), headers, query };
