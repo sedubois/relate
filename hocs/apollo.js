@@ -5,20 +5,19 @@ import { graphql, ApolloProvider } from 'react-apollo';
 // https://github.com/zeit/next.js/issues/106#issuecomment-258156495
 import 'isomorphic-fetch';
 import { IS_SERVER } from '../util/website';
-import getClientAndStore from '../data/clientAndStore';
 import DataError from '../components/DataError';
 import DataLoading from '../components/DataLoading';
 
-function getRootComponent({ client, store }, Component, query) {
+function getRootComponent({ apolloClient, reduxStore }, Component, query) {
   return (
-    <ApolloProvider client={client} store={store}>
+    <ApolloProvider client={apolloClient} store={reduxStore}>
       <Component {...query} />
     </ApolloProvider>
   );
 }
 getRootComponent.propTypes = {
-  client: React.PropTypes.object.isRequired,
-  store: React.PropTypes.object.isRequired,
+  apolloClient: React.PropTypes.object.isRequired,
+  reduxStore: React.PropTypes.object.isRequired,
 };
 
 function wrapWithApollo(ComposedComponent) {
@@ -30,26 +29,14 @@ function wrapWithApollo(ComposedComponent) {
     };
 
     static async getInitialProps(ctx) {
-      const req = ctx.req;
-      const headers = req ? req.headers : {};
-      const query = ctx.query;
-      const clientAndStore = getClientAndStore({}, headers);
       if (IS_SERVER) {
-        await getDataFromTree(getRootComponent(clientAndStore, ComposedComponent, query));
+        await getDataFromTree(getRootComponent(ctx, ComposedComponent, ctx.query));
       }
-      return { initialState: clientAndStore.store.getState(), headers, query };
-    }
-
-    constructor(props) {
-      super(props);
-      if (Object.keys(props).length === 0) {
-        throw new Error('apollo.js: Props not defined! Make sure to call getInitialProps.');
-      }
-      this.clientAndStore = getClientAndStore(props.initialState, props.headers);
+      return {};
     }
 
     render() {
-      return getRootComponent(this.clientAndStore, ComposedComponent, this.props.query);
+      return <ComposedComponent {...this.props.query} />;
     }
   }
 

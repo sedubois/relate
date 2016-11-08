@@ -1,5 +1,7 @@
 import React from 'react';
 import css from 'next/css';
+import { ApolloProvider } from 'react-apollo';
+import getClientAndStore from '../data/clientAndStore';
 import HtmlHead from '../components/HtmlHead';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -35,12 +37,18 @@ export default function page(WrappedComponent) {
       url: React.PropTypes.shape({
         pathname: React.PropTypes.string.isRequired,
       }).isRequired,
+      initialState: React.PropTypes.object.isRequired,
+      headers: React.PropTypes.object,
     };
 
     static async getInitialProps(ctx) {
-      const props = {};
+      const headers = ctx.req ? ctx.req.headers : {};
+      const query = ctx.query;
+      const clientAndStore = getClientAndStore({}, headers);
+      const props = { initialState: clientAndStore.reduxStore.getState(), headers, query };
       if (WrappedComponent.getInitialProps) {
-        const subProps = await WrappedComponent.getInitialProps(ctx);
+        const extendedCtx = Object.assign({}, ctx, clientAndStore);
+        const subProps = await WrappedComponent.getInitialProps(extendedCtx);
         Object.assign(props, subProps);
       }
       return props;
@@ -51,16 +59,21 @@ export default function page(WrappedComponent) {
       if (Object.keys(props).length === 0) {
         throw new Error('page.js: Props not defined! Make sure to call getInitialProps.');
       }
+      const clientAndStore = getClientAndStore(props.initialState, props.headers);
+      this.apolloClient = clientAndStore.apolloClient;
+      this.reduxStore = clientAndStore.reduxStore;
     }
 
     render() {
       return (
-        <div className={style}>
-          <HtmlHead />
-          <Header pathname={this.props.url.pathname} />
-          <WrappedComponent {...this.props} />
-          <Footer />
-        </div>
+        <ApolloProvider client={this.apolloClient} store={this.reduxStore}>
+          <div className={style}>
+            <HtmlHead />
+            <Header pathname={this.props.url.pathname} />
+            <WrappedComponent {...this.props} />
+            <Footer />
+          </div>
+        </ApolloProvider>
       );
     }
   }
