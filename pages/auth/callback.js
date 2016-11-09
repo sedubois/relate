@@ -2,8 +2,8 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { compose } from 'react-apollo';
 import config from '../../config';
-import { popSecret } from '../../util/auth';
-import { apolloMutation } from '../../hocs/apollo';
+import { popSecret, storeToken } from '../../util/auth';
+import apollo from '../../hocs/apollo';
 import page from '../../hocs/page';
 
 function onAuthenticated(lock) {
@@ -55,8 +55,11 @@ class LoginCallback extends React.Component {
   async componentDidMount() {
     const { lock, authToken /* , nextPathname */ } = await loginCallback();
     const profile = await getProfile(lock, authToken);
-    /* const userToken = */ await this.createUserIfNeededAndSignIn(authToken, profile);
-    // TODO
+    const userToken = await this.createUserIfNeededAndSignIn(authToken, profile);
+    storeToken(userToken);
+    console.log('stored token!', userToken);
+    // TODO updateNetworkLayer(userToken);
+    // TODO redirect to nextPathname
   }
 
   async createUserIfNeeded(authToken, profile) {
@@ -82,8 +85,7 @@ class LoginCallback extends React.Component {
         authToken,
       },
     });
-    console.log('signInUser response!', signInUserResponse);
-    return signInUserResponse.signinUser.token;
+    return signInUserResponse.data.signinUser.token;
   }
 
   async createUserIfNeededAndSignIn(authToken, profile) {
@@ -133,8 +135,8 @@ const signInUserMutation = gql`
 `;
 
 const WithMutations = compose(
-  apolloMutation(signInUserMutation, { name: 'signInUser' }),
-  apolloMutation(createUserMutation, { name: 'createUser' }),
+  apollo(signInUserMutation, { name: 'signInUser', ssr: false }),
+  apollo(createUserMutation, { name: 'createUser', ssr: false }),
 )(LoginCallback);
 
 export default page(WithMutations);

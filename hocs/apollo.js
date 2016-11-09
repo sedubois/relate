@@ -64,11 +64,7 @@ function withErrorAndLoading(Component) {
 
 export default function apollo(query, options) {
   return (Component) => {
-    const compWithErrorAndLoading = withErrorAndLoading(Component);
-    return wrapWithApollo(graphql(query, options)(compWithErrorAndLoading));
+    const graphqlComp = graphql(query, options)(withErrorAndLoading(Component));
+    return options.ssr === false ? graphqlComp : wrapWithApollo(graphqlComp);
   };
-}
-
-export function apolloMutation(query, options) {
-  return Component => wrapWithApollo(graphql(query, options)(Component));
 }
