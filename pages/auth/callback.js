@@ -2,7 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import config from '../../config';
 import { popSecret } from '../../util/auth';
-import apollo from '../../hocs/apollo';
+import { apolloMutation } from '../../hocs/apollo';
 import page from '../../hocs/page';
 
 function onAuthenticated(lock) {
@@ -30,6 +30,7 @@ const loginCallback = async () => {
   return { lock, authToken, nextPathname };
 };
 
+// TODO create slug server-side to ensure it is available
 function createSlug({ givenName, familyName }) {
   return `${givenName.substring(0, 1)}${familyName}`.substring(0, 8).toLowerCase();
 }
@@ -47,7 +48,7 @@ function createUserDataFromProfile(profile) {
 class LoginCallback extends React.Component {
   static propTypes = {
     createUser: React.PropTypes.func.isRequired,
-    // signInUser: React.PropTypes.func.isRequired,
+    signInUser: React.PropTypes.func.isRequired,
   };
 
   async componentDidMount() {
@@ -74,19 +75,19 @@ class LoginCallback extends React.Component {
     }
   }
 
-  // async signInUser(authToken) {
-  //   const signInUserResponse = await this.props.signInUser({
-  //     variables: {
-  //       authToken,
-  //     },
-  //   });
-  //   console.log('signInUser response!', signInUserResponse);
-  //   return signInUserResponse.signinUser.token;
-  // }
+  async signInUser(authToken) {
+    const signInUserResponse = await this.props.signInUser({
+      variables: {
+        authToken,
+      },
+    });
+    console.log('signInUser response!', signInUserResponse);
+    return signInUserResponse.signinUser.token;
+  }
 
   async createUserIfNeededAndSignIn(authToken, profile) {
     await this.createUserIfNeeded(authToken, profile);
-    // return await this.signInUser(authToken);
+    return await this.signInUser(authToken);
   }
 
   render() {
@@ -118,20 +119,20 @@ const createUserMutation = gql`
   }
 `;
 
-// const signInUserMutation = gql`
-//   mutation signInUser($authToken: String!) {
-//     signinUser(
-//       auth0: {
-//         idToken: $authToken
-//       }
-//     ) {
-//       token
-//     }
-//   }
-// `;
+const signInUserMutation = gql`
+  mutation signInUser($authToken: String!) {
+    signinUser(
+      auth0: {
+        idToken: $authToken
+      }
+    ) {
+      token
+    }
+  }
+`;
 
-const WithCreateUser = apollo(createUserMutation, { name: 'createUser' })(LoginCallback);
-// const WithMutations = apollo(signInUserMutation, { name: 'signInUser' })(WithCreateUser);
+const WithMutations = apolloMutation(signInUserMutation, { name: 'signInUser' })(
+  apolloMutation(createUserMutation, { name: 'createUser' })(LoginCallback)
+);
 
-// export default page(WithMutations);
-export default page(WithCreateUser);
+export default page(WithMutations);

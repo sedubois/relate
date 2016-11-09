@@ -68,3 +68,7 @@ export default function apollo(query, options) {
     return wrapWithApollo(graphql(query, options)(compWithErrorAndLoading));
   };
 }
+
+export function apolloMutation(query, options) {
+  return Component => wrapWithApollo(graphql(query, options)(Component));
+}
