@@ -1,5 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
+import { compose } from 'react-apollo';
 import config from '../../config';
 import { popSecret } from '../../util/auth';
 import { apolloMutation } from '../../hocs/apollo';
@@ -131,8 +132,9 @@ const signInUserMutation = gql`
   }
 `;
 
-const WithMutations = apolloMutation(signInUserMutation, { name: 'signInUser' })(
-  apolloMutation(createUserMutation, { name: 'createUser' })(LoginCallback)
-);
+const WithMutations = compose(
+  apolloMutation(signInUserMutation, { name: 'signInUser' }),
+  apolloMutation(createUserMutation, { name: 'createUser' }),
+)(LoginCallback);
 
 export default page(WithMutations);
