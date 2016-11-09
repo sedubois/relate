@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { compose } from 'react-apollo';
 import config from '../../config';
 import { popSecret, storeToken } from '../../util/auth';
+import { resetStore } from '../../data/client';
 import apollo from '../../hocs/apollo';
 import page from '../../hocs/page';
 
@@ -50,16 +51,18 @@ class LoginCallback extends React.Component {
   static propTypes = {
     createUser: React.PropTypes.func.isRequired,
     signInUser: React.PropTypes.func.isRequired,
+    url: React.PropTypes.shape({
+      replaceTo: React.PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   async componentDidMount() {
-    const { lock, authToken /* , nextPathname */ } = await loginCallback();
+    const { lock, authToken, nextPathname } = await loginCallback();
     const profile = await getProfile(lock, authToken);
     const userToken = await this.createUserIfNeededAndSignIn(authToken, profile);
     storeToken(userToken);
-    console.log('stored token!', userToken);
-    // TODO updateNetworkLayer(userToken);
-    // TODO redirect to nextPathname
+    resetStore();
+    this.props.url.replaceTo(nextPathname);
   }
 
   async createUserIfNeeded(authToken, profile) {

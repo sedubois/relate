@@ -1,5 +1,5 @@
 const AUTH_SECRET = 'auth-secret';
-const VIEWER_TOKEN = 'viewer-token';
+const USER_TOKEN = 'user-token';
 
 export function storeSecret(secret) {
   window.sessionStorage.setItem(AUTH_SECRET, secret);
@@ -16,14 +16,14 @@ export function popSecret() {
 }
 
 export function storeToken(token) {
-  window.localStorage.setItem(VIEWER_TOKEN, token);
+  window.localStorage.setItem(USER_TOKEN, token);
 }
 
 export function getToken() {
-  return window.localStorage.getItem(VIEWER_TOKEN);
+  return window.localStorage.getItem(USER_TOKEN);
 }
 
-// TODO check in backend that token is valid (e.g user may have been deleted)
+// TODO check in backend that token is still valid (e.g user may have been deleted)
 export function loggedIn() {
   return !!getToken();
 }
