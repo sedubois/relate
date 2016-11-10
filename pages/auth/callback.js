@@ -138,8 +138,8 @@ const signInUserMutation = gql`
 `;
 
 const WithMutations = compose(
-  apollo(signInUserMutation, { name: 'signInUser', ssr: false }),
-  apollo(createUserMutation, { name: 'createUser', ssr: false }),
+  apollo(signInUserMutation, { name: 'signInUser' }, { ssr: false }),
+  apollo(createUserMutation, { name: 'createUser' }, { ssr: false }),
 )(LoginCallback);
 
 export default page(WithMutations);

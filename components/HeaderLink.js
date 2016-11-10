@@ -6,7 +6,7 @@ const highlightStyle = {
   backgroundColor: '#FFC165',
   paddingBottom: '1.2em',
 };
-const baseStyle = {
+export const baseStyle = {
   margin: '0 0.4em',
   padding: '0.4em 0.8em',
   display: 'inline-flex',

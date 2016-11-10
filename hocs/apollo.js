@@ -43,28 +43,35 @@ function wrapWithApollo(ComposedComponent) {
   return WrapWithApollo;
 }
 
-function withErrorAndLoading(Component) {
+function withErrorAndLoading(Component, Error, Loading) {
   function WithErrorAndLoading(props) {
-    if (props.data && props.data.error) {
-      return <DataError message={props.data.error.message} />;
+    const error = props.data && props.data.error;
+    if (error) {
+      console.error(error.message); // eslint-disable-line no-console
+      return <Error message={error.message} />;
     }
     if (props.data && props.data.loading) {
-      return <DataLoading />;
+      return <Loading />;
     }
     return <Component {...props} />;
   }
   WithErrorAndLoading.propTypes = {
     data: React.PropTypes.shape({
       error: React.PropTypes.object,
-      loading: React.PropTypes.bool.isRequired,
+      loading: React.PropTypes.bool,
     }),
   };
   return WithErrorAndLoading;
 }
 
-export default function apollo(query, options) {
+export default function apollo(query, apolloOptions, {
+  Error = DataError,
+  Loading = DataLoading,
+  ssr = true,
+} = {}) {
   return (Component) => {
-    const graphqlComp = graphql(query, options)(withErrorAndLoading(Component));
-    return options.ssr === false ? graphqlComp : wrapWithApollo(graphqlComp);
+    const comp = withErrorAndLoading(Component, Error, Loading);
+    const graphqlComp = graphql(query, apolloOptions)(comp);
+    return ssr ? wrapWithApollo(graphqlComp) : graphqlComp;
   };
 }

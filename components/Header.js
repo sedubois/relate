@@ -1,6 +1,7 @@
 import React from 'react';
 import css from 'next/css';
 import HeaderLink from './HeaderLink';
+import ViewerHeader from './ViewerHeader';
 
 const Header = ({ pathname }) => (
   <div
@@ -16,6 +17,7 @@ const Header = ({ pathname }) => (
     <HeaderLink pathname={pathname} href="/">Home</HeaderLink>
     <HeaderLink pathname={pathname} href="/discover">Discover</HeaderLink>
     <HeaderLink pathname={pathname} href="/about">About</HeaderLink>
+    {pathname !== '/auth/login' && <ViewerHeader />}
   </div>
 );
 

@@ -9,9 +9,13 @@ function getSecret() {
   return window.sessionStorage.getItem(AUTH_SECRET);
 }
 
+export function removeSecret() {
+  window.sessionStorage.removeItem(AUTH_SECRET);
+}
+
 export function popSecret() {
   const secret = getSecret();
-  window.sessionStorage.removeItem(AUTH_SECRET);
+  removeSecret();
   return secret;
 }
 
@@ -30,9 +34,4 @@ export function loggedIn() {
 
 export function loggedOut() {
   return !getSecret() && !loggedIn();
-}
-
-export function clearStorage() {
-  window.localStorage.clear();
-  window.sessionStorage.clear();
 }

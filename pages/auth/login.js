@@ -3,7 +3,7 @@ import css from 'next/css';
 import uuid from 'uuid';
 import config from '../../config';
 import { BASE_URL } from '../../util/website';
-import { storeSecret, clearStorage } from '../../util/auth.js';
+import { getToken, storeSecret, removeSecret } from '../../util/auth.js';
 import page from '../../hocs/page';
 
 const LOCK_CONTAINER_ID = 'lock-container';
@@ -35,14 +35,21 @@ function createAndShow(nextPathname) {
 
 export class Login extends React.Component {
   static propTypes = {
+    url: React.PropTypes.shape({
+      replaceTo: React.PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   componentDidMount() {
-    createAndShow('/');
+    if (getToken()) {
+      this.props.url.replaceTo('/');
+    } else {
+      createAndShow('/');
+    }
   }
 
   componentWillUnmount() {
-    clearStorage();
+    removeSecret();
   }
 
   render() {

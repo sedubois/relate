@@ -12,7 +12,8 @@ function createClient(headers) {
       if (!req.options.headers) {
         req.options.headers = {};
       }
-      req.options.headers.authorization = getToken() || null;
+      const token = getToken();
+      req.options.headers.authorization = token ? `Bearer ${token}` : null;
       /* eslint-enable no-param-reassign */
       next();
     },
