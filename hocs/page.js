@@ -45,12 +45,13 @@ export default function page(WrappedComponent) {
       const headers = ctx.req ? ctx.req.headers : {};
       const query = ctx.query;
       const clientAndStore = getClientAndStore({}, headers);
-      const props = { initialState: clientAndStore.reduxStore.getState(), headers, query };
+      let subProps;
       if (WrappedComponent.getInitialProps) {
         const extendedCtx = Object.assign({}, ctx, clientAndStore);
-        const subProps = await WrappedComponent.getInitialProps(extendedCtx);
-        Object.assign(props, subProps);
+        subProps = await WrappedComponent.getInitialProps(extendedCtx);
       }
+      const props = { initialState: clientAndStore.reduxStore.getState(), headers, query };
+      Object.assign(props, subProps);
       return props;
     }
 
