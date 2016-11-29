@@ -1,5 +1,5 @@
 {
-  "name": "realate",
+  "name": "relate",
   "author": "Sébastien Dubois",
   "license": "GPL-3.0",
   "scripts": {
@@ -52,7 +52,7 @@
     "*.js": "eslint"
   },
   "now": {
-    "alias": "realate"
+    "alias": "relate"
   },
   "pre-commit": "lint-staged"
 }

@@ -12,7 +12,7 @@ const Footer = () => (
     })}
   >
     <section>
-      <a href="https://github.com/sedubois/realate" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://github.com/relatemindfulness/relate" target="_blank" rel="noopener noreferrer">GitHub</a>
     </section>
     <section>
       Made with ღ by&nbsp;

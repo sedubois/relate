@@ -29,7 +29,7 @@ export default () => (
         }`}
     </style>
     <a
-      href="https://github.com/sedubois/realate"
+      href="https://github.com/relatemindfulness/relate"
       target="_blank"
       rel="noopener noreferrer"
       className="github-corner"

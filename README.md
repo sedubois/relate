@@ -2,8 +2,8 @@
 
 <br />
 
-<div align="center"><h1>Realate</h1></div>
-<div align="center"><strong>Prototype mindfulness app</strong></div>
+<div align="center"><h1>Relate Mindfulness</h1></div>
+<div align="center"><strong>Exploring mindfulness communities</strong></div>
 
 <br />
 
@@ -13,10 +13,10 @@
 
 ## Stack
 
-React, Redux, GraphQL, Apollo, Graph.cool, Zeit Next.js, Zeit Now, Auth0-lock.
+React, Redux, GraphQL, Apollo, Graph.cool, Next.js, Now, Auth0.
 
 ## Credit
 
 See the [LICENSE](LICENSE) file for license rights and limitations (GPLv3).
 
-Copyright (c) 2016 Sebastien Dubois <https://twitter.com/semdubois/>.
+Copyright (c) 2016 Sébastien Dubois <https://twitter.com/semdubois/>.
