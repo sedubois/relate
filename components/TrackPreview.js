@@ -1,7 +1,6 @@
-import { PropTypes } from 'react';
 import css from 'next/css';
+import { propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
-import Fragment from 'graphql-fragments';
 import NavLink from './NavLink';
 import previewCardStyle from '../styles/PreviewCard';
 
@@ -25,20 +24,16 @@ function TrackPreview({ track }) {
 }
 
 TrackPreview.fragments = {
-  track: new Fragment(gql`
+  track: gql`
     fragment TrackPreview on Track {
       id
       title
     }
-  `),
+  `,
 };
 
-// TODO use fragment proptypes
 TrackPreview.propTypes = {
-  track: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
+  track: propType(TrackPreview.fragments.track).isRequired,
 };
 
 export default TrackPreview;

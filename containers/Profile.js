@@ -1,5 +1,5 @@
-import { PropTypes } from 'react';
 import css from 'next/css';
+import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
 import NotFound from '../components/NotFound';
@@ -35,21 +35,13 @@ function Profile({ data: { User } }) {
       {/* TODO find cleaner way to pass the style */}
       <UserPreview
         style={userPreviewStyle}
-        user={UserPreview.fragments.user.filter(User)}
+        user={filter(UserPreview.fragments.user, User)}
         link={false}
       />
       <TrackList tracks={User.tracks} />
     </div>
   );
 }
-
-Profile.propTypes = {
-  data: PropTypes.shape({
-    // TODO get finer proptypes from fragments
-    // https://github.com/apollostack/react-apollo/issues/302
-    User: PropTypes.object,
-  }).isRequired,
-};
 
 const query = gql`
   query Profile($slug: String!) {
@@ -60,15 +52,17 @@ const query = gql`
       }
     }
   }
+  ${UserPreview.fragments.user}
+  ${TrackList.fragments.track}
 `;
+
+Profile.propTypes = {
+  data: propType(query).isRequired,
+};
 
 const withData = apollo(query, {
   options({ slug }) {
     return {
-      fragments: [
-        ...UserPreview.fragments.user.fragments(),
-        ...TrackList.fragments.track.fragments(),
-      ],
       variables: { slug },
     };
   },

@@ -1,6 +1,6 @@
 import css from 'next/css';
+import { propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
-import Fragment from 'graphql-fragments';
 
 function UserBadge({ user: { picture } }) {
   return (
@@ -20,15 +20,15 @@ function UserBadge({ user: { picture } }) {
 }
 
 UserBadge.fragments = {
-  user: new Fragment(gql`
+  user: gql`
     fragment UserBadge on User {
       picture
     }
-  `),
+  `,
 };
 
 UserBadge.propTypes = {
-  user: UserBadge.fragments.user.propType,
+  user: propType(UserBadge.fragments.user).isRequired,
 };
 
 export default UserBadge;

@@ -1,5 +1,5 @@
 import { Component, PropTypes } from 'react';
-import { getDataFromTree } from 'react-apollo/server';
+import { getDataFromTree } from 'react-apollo/lib/server';
 import { graphql, ApolloProvider } from 'react-apollo';
 // polyfill fetch server-side to get Apollo working:
 // https://github.com/zeit/next.js/issues/106#issuecomment-258156495

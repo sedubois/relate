@@ -1,5 +1,5 @@
-import { PropTypes } from 'react';
 import css from 'next/css';
+import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
 import UserPreview from '../components/UserPreview';
@@ -14,30 +14,25 @@ const Users = props => (
     {props.data.allUsers
       // TODO filter server-side when available: https://github.com/graphcool/feature-requests/issues/20
       .filter(u => u._tracksMeta.count > 0)
-      .map(u => <UserPreview key={u.id} user={UserPreview.fragments.user.filter(u)} />)}
+      .map(u => <UserPreview key={u.id} user={filter(UserPreview.fragments.user, u)} />)}
   </div>
 );
 
-Users.propTypes = {
-  data: PropTypes.shape({
-    allUsers: PropTypes.array,
-  }).isRequired,
-};
-
-const query = gql`{
-  allUsers {
-    id
-    ...UserPreview
-    _tracksMeta {
-      count
+const query = gql`
+  query {
+    allUsers {
+      id
+      ...UserPreview
+      _tracksMeta {
+        count
+      }
     }
   }
-}`;
+  ${UserPreview.fragments.user}
+`;
 
-const withData = apollo(query, {
-  options: {
-    fragments: UserPreview.fragments.user.fragments(),
-  },
-});
+Users.propTypes = {
+  data: propType(query).isRequired,
+};
 
-export default withData(Users);
+export default apollo(query)(Users);

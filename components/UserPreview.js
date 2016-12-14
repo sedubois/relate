@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import css from 'next/css';
 import gql from 'graphql-tag';
-import Fragment from 'graphql-fragments';
+import { propType } from 'graphql-anywhere';
 import NavLink from './NavLink';
 import UserBadge from './UserBadge';
 import defaultStyle from '../styles/PreviewCard';
@@ -26,14 +26,15 @@ function UserPreview({ style = defaultStyle, user, link = true }) {
 }
 
 UserPreview.fragments = {
-  user: new Fragment(gql`    
+  user: gql`    
     fragment UserPreview on User {
       slug
       givenName
       familyName
       ...UserBadge
     }
-  `, UserBadge.fragments.user),
+    ${UserBadge.fragments.user}
+  `,
 };
 
 UserPreview.propTypes = {
@@ -41,7 +42,7 @@ UserPreview.propTypes = {
     wrapper: PropTypes.object.isRequired,
     p: PropTypes.object.isRequired,
   }),
-  user: UserPreview.fragments.user.propType,
+  user: propType(UserPreview.fragments.user).isRequired,
   link: PropTypes.bool,
 };
 
