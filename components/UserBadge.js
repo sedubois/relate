@@ -1,4 +1,3 @@
-import React from 'react';
 import css from 'next/css';
 import gql from 'graphql-tag';
 import Fragment from 'graphql-fragments';

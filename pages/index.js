@@ -1,4 +1,3 @@
-import React from 'react';
 import css from 'next/css';
 import GitHubRibbon from '../components/GitHubRibbon';
 import page from '../hocs/page';

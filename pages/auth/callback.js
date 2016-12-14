@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component, PropTypes } from 'react';
 import gql from 'graphql-tag';
 import { compose } from 'react-apollo';
 import config from '../../config';
@@ -47,12 +47,12 @@ function createUserDataFromProfile(profile) {
   return user;
 }
 
-class LoginCallback extends React.Component {
+class LoginCallback extends Component {
   static propTypes = {
-    createUser: React.PropTypes.func.isRequired,
-    signInUser: React.PropTypes.func.isRequired,
-    url: React.PropTypes.shape({
-      replaceTo: React.PropTypes.func.isRequired,
+    createUser: PropTypes.func.isRequired,
+    signInUser: PropTypes.func.isRequired,
+    url: PropTypes.shape({
+      replaceTo: PropTypes.func.isRequired,
     }).isRequired,
   };
 

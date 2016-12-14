@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropTypes } from 'react';
 import css from 'next/css';
 import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
@@ -19,8 +19,8 @@ const Users = props => (
 );
 
 Users.propTypes = {
-  data: React.PropTypes.shape({
-    allUsers: React.PropTypes.array,
+  data: PropTypes.shape({
+    allUsers: PropTypes.array,
   }).isRequired,
 };
 

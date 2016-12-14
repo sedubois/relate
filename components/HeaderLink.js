@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropTypes } from 'react';
 import NavLink from './NavLink';
 
 const highlightStyle = {
@@ -32,9 +32,9 @@ const HeaderLink = ({ pathname, href, children }) => (
   </NavLink>
 );
 HeaderLink.propTypes = {
-  pathname: React.PropTypes.string.isRequired,
-  children: React.PropTypes.node.isRequired,
-  href: React.PropTypes.string.isRequired,
+  pathname: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  href: PropTypes.string.isRequired,
 };
 
 export default HeaderLink;

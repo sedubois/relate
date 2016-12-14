@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropTypes } from 'react';
 import css from 'next/css';
 import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
@@ -44,10 +44,10 @@ function Profile({ data: { User } }) {
 }
 
 Profile.propTypes = {
-  data: React.PropTypes.shape({
+  data: PropTypes.shape({
     // TODO get finer proptypes from fragments
     // https://github.com/apollostack/react-apollo/issues/302
-    User: React.PropTypes.object,
+    User: PropTypes.object,
   }).isRequired,
 };
 

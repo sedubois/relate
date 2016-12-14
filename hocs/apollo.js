@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component, PropTypes } from 'react';
 import { getDataFromTree } from 'react-apollo/server';
 import { graphql, ApolloProvider } from 'react-apollo';
 // polyfill fetch server-side to get Apollo working:
@@ -8,24 +8,24 @@ import { IS_SERVER } from '../util/website';
 import DataError from '../components/DataError';
 import DataLoading from '../components/DataLoading';
 
-function getRootComponent({ apolloClient, reduxStore }, Component, query) {
+function getRootComponent({ apolloClient, reduxStore }, ComposedComponent, query) {
   return (
     <ApolloProvider client={apolloClient} store={reduxStore}>
-      <Component {...query} />
+      <ComposedComponent {...query} />
     </ApolloProvider>
   );
 }
 getRootComponent.propTypes = {
-  apolloClient: React.PropTypes.object.isRequired,
-  reduxStore: React.PropTypes.object.isRequired,
+  apolloClient: PropTypes.object.isRequired,
+  reduxStore: PropTypes.object.isRequired,
 };
 
 function wrapWithApollo(ComposedComponent) {
-  class WrapWithApollo extends React.Component {
+  class WrapWithApollo extends Component {
     static propTypes = {
-      initialState: React.PropTypes.object,
-      headers: React.PropTypes.object,
-      query: React.PropTypes.object,
+      initialState: PropTypes.object,
+      headers: PropTypes.object,
+      query: PropTypes.object,
     };
 
     static async getInitialProps(ctx) {
@@ -43,7 +43,7 @@ function wrapWithApollo(ComposedComponent) {
   return WrapWithApollo;
 }
 
-function withErrorAndLoading(Component, Error, Loading) {
+function withErrorAndLoading(ComposedComponent, Error, Loading) {
   function WithErrorAndLoading(props) {
     const error = props.data && props.data.error;
     if (error) {
@@ -53,12 +53,12 @@ function withErrorAndLoading(Component, Error, Loading) {
     if (props.data && props.data.loading) {
       return <Loading />;
     }
-    return <Component {...props} />;
+    return <ComposedComponent {...props} />;
   }
   WithErrorAndLoading.propTypes = {
-    data: React.PropTypes.shape({
-      error: React.PropTypes.object,
-      loading: React.PropTypes.bool,
+    data: PropTypes.shape({
+      error: PropTypes.object,
+      loading: PropTypes.bool,
     }),
   };
   return WithErrorAndLoading;
@@ -69,8 +69,8 @@ export default function apollo(query, apolloOptions, {
   Loading = DataLoading,
   ssr = true,
 } = {}) {
-  return (Component) => {
-    const comp = withErrorAndLoading(Component, Error, Loading);
+  return (ComposedComponent) => {
+    const comp = withErrorAndLoading(ComposedComponent, Error, Loading);
     const graphqlComp = graphql(query, apolloOptions)(comp);
     return ssr ? wrapWithApollo(graphqlComp) : graphqlComp;
   };

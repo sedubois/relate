@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropTypes } from 'react';
 import css from 'next/css';
 import HeaderLink from './HeaderLink';
 import ViewerHeader from './ViewerHeader';
@@ -22,7 +22,7 @@ const Header = ({ pathname }) => (
 );
 
 Header.propTypes = {
-  pathname: React.PropTypes.string.isRequired,
+  pathname: PropTypes.string.isRequired,
 };
 
 export default Header;

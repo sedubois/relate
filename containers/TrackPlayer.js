@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropTypes } from 'react';
 import gql from 'graphql-tag';
 import ReactPlayer from 'react-player';
 import apollo from '../hocs/apollo';
@@ -20,10 +20,10 @@ function TrackPlayer({ data: { Track: { title, url } } }) {
 }
 
 TrackPlayer.propTypes = {
-  data: React.PropTypes.shape({
-    Track: React.PropTypes.shape({
-      title: React.PropTypes.string.isRequired,
-      url: React.PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    Track: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };

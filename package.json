@@ -14,7 +14,7 @@
     "auth0-lock": "^10.5.1",
     "graphql-fragments": "^0.1.0",
     "graphql-tag": "^0.1.15",
-    "next": "^1.0.0",
+    "next": "^1.2.3",
     "react-apollo": "^0.5.13",
     "react-player": "^0.12.0",
     "uuid": "^2.0.3"
@@ -44,6 +44,7 @@
       "react/forbid-prop-types": 0,
       "react/jsx-filename-extension": 0,
       "react/no-unused-prop-types": 0,
+      "react/react-in-jsx-scope": 0,
       "linebreak-style": 0,
       "no-underscore-dangle": 0
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component, PropTypes } from 'react';
 import css from 'next/css';
 import uuid from 'uuid';
 import config from '../../config';
@@ -33,10 +33,10 @@ function createAndShow(nextPathname) {
   lock.show();
 }
 
-export class Login extends React.Component {
+export class Login extends Component {
   static propTypes = {
-    url: React.PropTypes.shape({
-      replaceTo: React.PropTypes.func.isRequired,
+    url: PropTypes.shape({
+      replaceTo: PropTypes.func.isRequired,
     }).isRequired,
   };
 

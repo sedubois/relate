@@ -1,9 +1,9 @@
-import React from 'react';
+import { PropTypes } from 'react';
 
 const DataError = ({ message }) => <div>{`Error: ${message}`}</div>;
 
 DataError.propTypes = {
-  message: React.PropTypes.string,
+  message: PropTypes.string,
 };
 
 export default DataError;

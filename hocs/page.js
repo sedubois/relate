@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component, PropTypes } from 'react';
 import css from 'next/css';
 import { ApolloProvider } from 'react-apollo';
 import getClientAndStore from '../data/clientAndStore';
@@ -32,13 +32,13 @@ const style = css({
 });
 
 export default function page(WrappedComponent) {
-  class Page extends React.Component {
+  class Page extends Component {
     static propTypes = {
-      url: React.PropTypes.shape({
-        pathname: React.PropTypes.string.isRequired,
+      url: PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
       }).isRequired,
-      initialState: React.PropTypes.object.isRequired,
-      headers: React.PropTypes.object,
+      initialState: PropTypes.object.isRequired,
+      headers: PropTypes.object,
     };
 
     static async getInitialProps(ctx) {

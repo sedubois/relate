@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropTypes } from 'react';
 import css from 'next/css';
 import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
@@ -21,9 +21,9 @@ function ViewerHeader({ data: { user } }) {
 }
 
 ViewerHeader.propTypes = {
-  data: React.PropTypes.shape({
-    user: React.PropTypes.shape({
-      givenName: React.PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    user: PropTypes.shape({
+      givenName: PropTypes.string.isRequired,
     }),
   }).isRequired,
 };

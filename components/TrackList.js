@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropTypes } from 'react';
 import css from 'next/css';
 import gql from 'graphql-tag';
 import Fragment from 'graphql-fragments';
@@ -29,7 +29,7 @@ TrackList.fragments = {
 };
 
 TrackList.propTypes = {
-  tracks: React.PropTypes.arrayOf(
+  tracks: PropTypes.arrayOf(
     TrackList.fragments.track.propType,
   ).isRequired,
 };

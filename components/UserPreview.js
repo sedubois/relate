@@ -1,4 +1,4 @@
-import React from 'react';
+import { PropTypes } from 'react';
 import css from 'next/css';
 import gql from 'graphql-tag';
 import Fragment from 'graphql-fragments';
@@ -8,8 +8,8 @@ import defaultStyle from '../styles/PreviewCard';
 
 const Div = ({ className, children }) => <div className={css(className)}>{children}</div>;
 Div.propTypes = {
-  className: React.PropTypes.object.isRequired,
-  children: React.PropTypes.node.isRequired,
+  className: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 function UserPreview({ style = defaultStyle, user, link = true }) {
@@ -37,12 +37,12 @@ UserPreview.fragments = {
 };
 
 UserPreview.propTypes = {
-  style: React.PropTypes.shape({
-    wrapper: React.PropTypes.object.isRequired,
-    p: React.PropTypes.object.isRequired,
+  style: PropTypes.shape({
+    wrapper: PropTypes.object.isRequired,
+    p: PropTypes.object.isRequired,
   }),
   user: UserPreview.fragments.user.propType,
-  link: React.PropTypes.bool,
+  link: PropTypes.bool,
 };
 
 export default UserPreview;
