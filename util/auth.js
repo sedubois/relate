@@ -24,7 +24,7 @@ export function storeToken(token) {
 }
 
 export function getToken() {
-  return window.localStorage.getItem(USER_TOKEN);
+  return typeof window !== 'undefined' ? window.localStorage.getItem(USER_TOKEN) : null;
 }
 
 // TODO check in backend that token is still valid (e.g user may have been deleted)
