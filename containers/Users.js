@@ -4,14 +4,14 @@ import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
 import UserPreview from '../components/UserPreview';
 
-const Users = props => (
+const Users = ({ data: { allUsers } }) => (
   <div
     className={css({
       display: 'flex',
       justifyContent: 'center',
     })}
   >
-    {props.data.allUsers
+    {allUsers
       // TODO filter server-side when available: https://github.com/graphcool/feature-requests/issues/20
       .filter(u => u._tracksMeta.count > 0)
       .map(u => <UserPreview key={u.id} user={filter(UserPreview.fragments.user, u)} />)}
