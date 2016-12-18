@@ -2,24 +2,74 @@ import css from 'next/css';
 import GitHubRibbon from '../components/GitHubRibbon';
 import page from '../hocs/page';
 
+const sectionHeadStyle = css({
+  margin: '2em',
+  fontSize: '2em',
+});
+
+const emphasisStyle = css({
+  color: '#FFECBD',
+});
+
+const emphasisStyle2 = css({
+  color: '#FFBD1A',
+});
+
 export default page(() => <div>
   <GitHubRibbon />
   <div
     className={css({
-      maxWidth: '600px',
-      margin: 'auto',
+      margin: '30px 0',
+      textAlign: 'center',
     })}
   >
-    <br />
-    Welcome! This prototype aims to assemble the technology stack required to scale
-    a platform around the practice of mindfulness, with
-    a focus on community support and engagement. Current mindfulness apps offer
-    little for practicing mindfulness with the help of a community,
-    although it is an essential part of this life-changing practice.
-    <br />
-    <br />
-    An in-depth explanation of the project&#39;s vision will very soon be published on&nbsp;
-    <a href="https://medium.com/@sedubois">Medium</a>. If you wish to give any feedback,
-    join the discussion on <a href="https://relatemindfulness.slack.com/">Slack</a>.
-    </div>
+    <section>
+      <img
+        alt="practice together"
+        className={css({
+          float: 'left',
+          width: '480px',
+          height: '320px',
+        })}
+        src="/static/homepage/bg_TimMarshall.jpg"
+      />
+      <div
+        className={css({
+          color: 'white',
+          backgroundColor: '#96D1DC',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '320px',
+          justifyContent: 'center',
+        })}
+      >
+        <p
+          className={css({
+            fontSize: '3em',
+            padding: '50px',
+          })}
+        >
+          Transforming lives through<br />
+          <span className={emphasisStyle}>meditation</span> and<br />
+          <span className={emphasisStyle}>mutual support</span>
+        </p>
+      </div>
+    </section>
+    <section className={sectionHeadStyle}>
+      <span className={emphasisStyle2}>Relate</span> brings together meditation communities,
+      teachers and individuals
+    </section>
+    <section className={sectionHeadStyle}>
+      <a
+        href="https://medium.com/@sedubois/the-way-we-relate-the-world-we-create-2d8f79300b7f"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read the article on Medium
+      </a>
+    </section>
+    <section className={sectionHeadStyle}>
+      🚧 This is a technology demo - stay tuned 🚧
+    </section>
+  </div>
 </div>);

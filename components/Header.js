@@ -6,15 +6,11 @@ import ViewerHeader from './ViewerHeader';
 const Header = ({ pathname }) => (
   <div
     className={css({
-      margin: '1em 0',
+      margin: '0 0 2em',
       padding: '0.7em',
-      minHeight: '5.1em',
-      borderRadius: '5px',
-      backgroundImage: 'url(/static/banner.png)',
-      backgroundSize: 'cover',
     })}
   >
-    <HeaderLink pathname={pathname} href="/">Home</HeaderLink>
+    <HeaderLink pathname={pathname} href="/">Relate</HeaderLink>
     <HeaderLink pathname={pathname} href="/discover">Discover</HeaderLink>
     <HeaderLink pathname={pathname} href="/about">About</HeaderLink>
     {pathname !== '/auth/login' && <ViewerHeader />}

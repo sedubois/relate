@@ -3,7 +3,7 @@ import NavLink from './NavLink';
 
 const highlightStyle = {
   color: '#FFFBF5',
-  backgroundColor: '#FFC165',
+  backgroundColor: '#FF9933',
   paddingBottom: '1.2em',
 };
 export const baseStyle = {
@@ -14,7 +14,7 @@ export const baseStyle = {
   fontSize: '1.2em',
   letterSpacing: '1px',
   textDecoration: 'none',
-  color: '#FF5600',
+  color: '#FF9933',
   borderRadius: '5px 25px',
   backgroundColor: '#FFFBF5',
   transition: 'all 0.1s linear',

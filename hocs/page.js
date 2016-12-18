@@ -6,9 +6,11 @@ import HtmlHead from '../components/HtmlHead';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+// color palette: http://paletton.com/#uid=33m0y0ksMDf8jVahZJZEepkKleL
+
 css.insertRule(`
   a {
-    color: #A78100;
+    color: #02697C;
     text-decoration: none;
   }
   
@@ -22,8 +24,8 @@ css.insertRule(`
 `);
 
 const style = css({
-  fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-  maxWidth: 'calc(768px + 16px * 2)',
+  fontFamily: 'Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif',
+  maxWidth: '960px',
   margin: '0 auto',
   display: 'flex',
   minHeight: '100%',
