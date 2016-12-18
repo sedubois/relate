@@ -7,6 +7,7 @@ const Header = ({ pathname }) => (
   <div
     className={css({
       margin: '0 0 2em',
+      minHeight: '3.5em',
       padding: '0.7em',
     })}
   >
