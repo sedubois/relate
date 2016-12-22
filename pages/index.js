@@ -36,7 +36,7 @@ export default page(() => <div>
       <div
         className={css({
           color: 'white',
-          backgroundColor: '#96D1DC',
+          backgroundColor: '#FF9933',
           display: 'flex',
           flexDirection: 'column',
           height: '320px',
