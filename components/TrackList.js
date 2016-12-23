@@ -1,18 +1,18 @@
 import { PropTypes } from 'react';
-import css from 'next/css';
 import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
 import TrackPreview from './TrackPreview';
 
 function TrackList({ tracks }) {
   return (
-    <div
-      className={css({
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-      })}
-    >
+    <div className="trackList">
+      <style jsx>{`
+        .trackList {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      `}</style>
       {tracks.map(track =>
         <TrackPreview key={track.id} track={filter(TrackPreview.fragments.track, track)} />)}
     </div>

@@ -1,4 +1,3 @@
-import css from 'next/css';
 import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
@@ -27,12 +26,12 @@ function Profile({ data: { User } }) {
     return <NotFound />;
   }
   return (
-    <div
-      className={css({
-        margin: '0 1em',
-      })}
-    >
-      {/* TODO find cleaner way to pass the style */}
+    <div className="profile">
+      <style jsx>{`
+        .profile {
+          margin: 0 1em;
+        }
+      `}</style>
       <UserPreview
         style={userPreviewStyle}
         user={filter(UserPreview.fragments.user, User)}

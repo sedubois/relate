@@ -4,8 +4,6 @@ import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
 import { baseStyle } from './HeaderLink';
 
-const className = css.merge(baseStyle, { right: 0 });
-
 /**
  * @return null if no user or the view to render
  */
@@ -14,7 +12,7 @@ function ViewerHeader({ data: { user } }) {
     return null;
   }
   return (
-    <div className={className}>
+    <div style={{ right: 0 }} className={css(baseStyle)}>
       {user.givenName}
     </div>
   );
@@ -34,7 +32,7 @@ const query = gql`{
   }
 }`;
 
-const Loading = () => <div className={className}>...</div>;
+const Loading = () => <div className={css(baseStyle)}>...</div>;
 
 const withData = apollo(query, undefined, { Loading });
 
