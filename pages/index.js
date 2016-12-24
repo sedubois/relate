@@ -1,65 +1,23 @@
-import css from 'next/css';
 import GitHubRibbon from '../components/GitHubRibbon';
 import page from '../hocs/page';
 
-const sectionHeadStyle = css({
-  margin: '2em',
-  fontSize: '2em',
-});
-
-const emphasisStyle = css({
-  color: '#FFECBD',
-});
-
-const emphasisStyle2 = css({
-  color: '#FFBD1A',
-});
-
 export default page(() => <div>
   <GitHubRibbon />
-  <div
-    className={css({
-      margin: '30px 0',
-      textAlign: 'center',
-    })}
-  >
+  <div className="homePage">
     <section>
-      <img
-        alt="practice together"
-        className={css({
-          float: 'left',
-          width: '480px',
-          height: '320px',
-        })}
-        src="/static/homepage/bg_TimMarshall.jpg"
-      />
-      <div
-        className={css({
-          color: 'white',
-          backgroundColor: '#FF9933',
-          display: 'flex',
-          flexDirection: 'column',
-          height: '320px',
-          justifyContent: 'center',
-        })}
-      >
-        <p
-          className={css({
-            fontSize: '3em',
-            padding: '50px',
-          })}
-        >
+      <img alt="practice together" src="/static/homepage/bg_TimMarshall.jpg" />
+      <div className="heroText">
+        <p>
           Transforming lives through<br />
-          <span className={emphasisStyle}>meditation</span> and<br />
-          <span className={emphasisStyle}>mutual support</span>
+          <span>meditation</span> and<br />
+          <span>mutual support</span>
         </p>
       </div>
     </section>
-    <section className={sectionHeadStyle}>
-      <span className={emphasisStyle2}>Relate</span> brings together meditation communities,
-      teachers and individuals
+    <section className="sectionHead">
+      <span>Relate</span> brings together meditation communities, teachers and individuals
     </section>
-    <section className={sectionHeadStyle}>
+    <section className="sectionHead">
       <a
         href="https://medium.com/@sedubois/the-way-we-relate-the-world-we-create-2d8f79300b7f"
         target="_blank"
@@ -68,8 +26,47 @@ export default page(() => <div>
         Read the article on Medium
       </a>
     </section>
-    <section className={sectionHeadStyle}>
+    <section className="sectionHead">
       🚧 This is a technology demo - stay tuned 🚧
     </section>
+    <style jsx>{`
+      .homePage {
+        margin: 30px 0;
+        text-align: center;
+      }
+
+      img {
+        float: left;
+        width: 480px;
+        height: 320px;
+      }
+
+      .sectionHead {
+        margin: 2em;
+        font-size: 2em;
+      }
+
+      .sectionHead > span {
+        color: #FFBD1A;
+      }
+
+      .heroText {
+        color: white;
+        background-color: #FF9933;
+        display: flex;
+        flex-direction: column;
+        height: 320px;
+        justify-content: center;
+      }
+
+      .heroText p {
+        font-size: 3em;
+        padding: 50px;
+      }
+
+      .heroText p span {
+        color: #FFECBD;
+      }
+    `}</style>
   </div>
 </div>);
