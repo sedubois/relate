@@ -1,5 +1,4 @@
 import { Component, PropTypes } from 'react';
-import css from 'next/css';
 import uuid from 'uuid';
 import config from '../../config';
 import { BASE_URL } from '../../util/website';
@@ -53,7 +52,15 @@ export class Login extends Component {
   }
 
   render() {
-    return <div id={LOCK_CONTAINER_ID} className={css({ margin: '2em 0 0' })} />;
+    return (
+      <div id={LOCK_CONTAINER_ID}>
+        <style jsx>{`
+          #lock-container {
+            margin: 2em 0 0;
+          }
+        `}</style>
+      </div>
+    );
   }
 }
 
