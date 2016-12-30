@@ -6,8 +6,8 @@ const Header = ({ pathname }) => (
   <header>
     <style jsx>{`
       header {
+        display: inline-flex;
         margin: 0 0 2em;
-        minHeight: 3.5em;
         padding: 0.7em;
       }
     `}</style>

@@ -1,40 +1,37 @@
 import { PropTypes } from 'react';
-import NavLink from './NavLink';
-
-const highlightStyle = {
-  color: '#FFFBF5',
-  backgroundColor: '#FF9933',
-  paddingBottom: '1.2em',
-};
-export const baseStyle = {
-  margin: '0 0.4em',
-  padding: '0.4em 0.8em',
-  display: 'inline-flex',
-  textAlign: 'right',
-  fontSize: '1.2em',
-  letterSpacing: '1px',
-  textDecoration: 'none',
-  color: '#FF9933',
-  borderRadius: '5px 25px',
-  backgroundColor: '#FFFBF5',
-  transition: 'all 0.1s linear',
-  ':hover': highlightStyle,
-};
+import Link from 'next/link';
 
 const HeaderLink = ({ pathname, href, children }) => (
-  <NavLink
-    className={baseStyle}
-    activeClassName={highlightStyle}
-    pathname={pathname}
-    href={href}
-  >
-    {children}
-  </NavLink>
+  <Link href={href}>
+    <div className={`headerLink ${href && pathname === href && 'active'}`}>
+      <style jsx>{`
+      .headerLink {
+        background-color: #FFFBF5;
+        border-radius: 5px 25px;
+        color: #FF9933;
+        font-size: 1.2em;
+        letter-spacing: 1px;
+        margin: 0 0.4em;
+        padding: 0.4em 0.8em;
+        text-decoration: none;
+        transition: all 0.1s linear;
+      }
+
+      .headerLink.active,
+      .headerLink:hover {
+        color: #FFFBF5;
+        background-color: #FF9933;
+        padding-bottom: 1.2em;
+      }
+      `}</style>
+      {children}
+    </div>
+  </Link>
 );
 HeaderLink.propTypes = {
-  pathname: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  href: PropTypes.string.isRequired,
+  href: PropTypes.string,
+  pathname: PropTypes.string,
 };
 
 export default HeaderLink;

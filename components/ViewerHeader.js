@@ -1,8 +1,7 @@
 import { PropTypes } from 'react';
-import css from 'next/css';
 import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
-import { baseStyle } from './HeaderLink';
+import HeaderLink from './HeaderLink';
 
 /**
  * @return null if no user or the view to render
@@ -12,9 +11,7 @@ function ViewerHeader({ data: { user } }) {
     return null;
   }
   return (
-    <div style={{ right: 0 }} className={css(baseStyle)}>
-      {user.givenName}
-    </div>
+    <HeaderLink href={user.slug}>{user.givenName}</HeaderLink>
   );
 }
 
@@ -32,7 +29,7 @@ const query = gql`{
   }
 }`;
 
-const Loading = () => <div className={css(baseStyle)}>...</div>;
+const Loading = () => <HeaderLink>...</HeaderLink>;
 
 const withData = apollo(query, undefined, { Loading });
 

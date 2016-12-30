@@ -1,27 +1,36 @@
-import { PropTypes } from 'react';
-import css from 'next/css';
 import gql from 'graphql-tag';
 import { propType } from 'graphql-anywhere';
-import NavLink from './NavLink';
+import Link from 'next/link';
 import UserBadge from './UserBadge';
-import defaultStyle from '../styles/PreviewCard';
 
-const Div = ({ className, children }) => <div className={css(className)}>{children}</div>;
-Div.propTypes = {
-  className: PropTypes.object.isRequired,
-  children: PropTypes.node.isRequired,
-};
-
-function UserPreview({ style = defaultStyle, user, link = true }) {
-  const Wrapper = link ? NavLink : Div;
+function UserPreview({ user }) {
   return (
-    <Wrapper
-      className={style.wrapper}
-      href={`/profile?slug=${user.slug}`}
-    >
-      <UserBadge user={user} />
-      <p className={css(style.p)}>{`${user.givenName} ${user.familyName}`}</p>
-    </Wrapper>
+    <Link href={`/profile?slug=${user.slug}`}>
+      <div className="wrapper">
+        <style jsx>{`
+          .wrapper {
+            width: 13em;
+            margin: 0.5em;
+            padding-top: 1.5em;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px #A78100;
+            text-align: center;
+          }
+
+          .userName {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 90%;
+            display: inline-block;
+          }
+        `}</style>
+        <UserBadge user={user} />
+        <p className="userName">
+          {`${user.givenName} ${user.familyName}`}
+        </p>
+      </div>
+    </Link>
   );
 }
 
@@ -38,12 +47,7 @@ UserPreview.fragments = {
 };
 
 UserPreview.propTypes = {
-  style: PropTypes.shape({
-    wrapper: PropTypes.object.isRequired,
-    p: PropTypes.object.isRequired,
-  }),
   user: propType(UserPreview.fragments.user).isRequired,
-  link: PropTypes.bool,
 };
 
 export default UserPreview;

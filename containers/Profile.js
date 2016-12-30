@@ -3,23 +3,7 @@ import gql from 'graphql-tag';
 import apollo from '../hocs/apollo';
 import NotFound from '../components/NotFound';
 import TrackList from '../components/TrackList';
-import UserPreview from '../components/UserPreview';
-
-const userPreviewStyle = {
-  wrapper: {
-    display: 'inline-flex',
-    marginBottom: '1em',
-    fontFamily: "'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-  },
-  p: {
-    margin: 'auto 1em',
-    fontSize: 'larger',
-    fontWeight: 'bold',
-    textAlign: 'right',
-    borderBottom: '1px solid #FFC500',
-    width: 'inherit',
-  },
-};
+import UserHeader from '../components/UserHeader';
 
 function Profile({ data: { User } }) {
   if (!User) {
@@ -32,11 +16,7 @@ function Profile({ data: { User } }) {
           margin: 0 1em;
         }
       `}</style>
-      <UserPreview
-        style={userPreviewStyle}
-        user={filter(UserPreview.fragments.user, User)}
-        link={false}
-      />
+      <UserHeader user={filter(UserHeader.fragments.user, User)} />
       <TrackList tracks={User.tracks} />
     </div>
   );
@@ -45,13 +25,13 @@ function Profile({ data: { User } }) {
 const query = gql`
   query Profile($slug: String!) {
     User(slug: $slug) {
-      ...UserPreview
+      ...UserHeader
       tracks {
         ...TrackList
       }
     }
   }
-  ${UserPreview.fragments.user}
+  ${UserHeader.fragments.user}
   ${TrackList.fragments.track}
 `;
 
