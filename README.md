@@ -1,4 +1,4 @@
-<img src="https://github.com/RelateMind/art/blob/master/assets/hero.png" alt="hero" align="center" />
+<img src="https://github.com/RelateNow/art/blob/master/assets/hero.png" alt="hero" align="center" />
 
 <br />
 

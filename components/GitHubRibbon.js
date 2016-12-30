@@ -27,7 +27,7 @@ export default () => (
         }`}
     </style>
     <a
-      href="https://github.com/relatemind/relate"
+      href="https://github.com/relatenow/relate"
       target="_blank"
       rel="noopener noreferrer"
       className="github-corner"
