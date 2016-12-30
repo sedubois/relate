@@ -1,4 +1,3 @@
-import css from 'next/css';
 import { propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
 import NavLink from './NavLink';
@@ -10,14 +9,15 @@ function TrackPreview({ track }) {
       href={`/track?id=${track.id}`}
       className={previewCardStyle.wrapper}
     >
-      <p
-        className={css({
-          fontSize: '200%',
-          margin: 0,
-        })}
-      >
+      <p className="playButton">
         ▶
       </p>
+      <style jsx>{`
+        .playButton {
+          font-size: 200%;
+          margin: 0;
+        }
+      `}</style>
       <p>{track.title}</p>
     </NavLink>
   );
