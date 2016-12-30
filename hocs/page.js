@@ -23,16 +23,6 @@ css.insertRule(`
   }
 `);
 
-const style = css({
-  fontFamily: 'Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif',
-  maxWidth: '960px',
-  margin: '0 auto',
-  display: 'flex',
-  minHeight: '100%',
-  padding: '0 16px',
-  flexDirection: 'column',
-});
-
 export default function page(WrappedComponent) {
   class Page extends Component {
     static propTypes = {
@@ -70,7 +60,18 @@ export default function page(WrappedComponent) {
     render() {
       return (
         <ApolloProvider client={this.apolloClient} store={this.reduxStore}>
-          <div className={style}>
+          <div className="wrapper">
+            <style jsx>{`
+              .wrapper {
+                font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+                max-width: 960px;
+                margin: 0 auto;
+                display: flex;
+                min-height: 100%;
+                padding: 0 16px;
+                flex-direction: column;
+              }
+            `}</style>
             <HtmlHead />
             <Header pathname={this.props.url.pathname} />
             <WrappedComponent {...this.props} />
