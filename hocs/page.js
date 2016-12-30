@@ -1,5 +1,4 @@
 import { Component, PropTypes } from 'react';
-import css from 'next/css';
 import { ApolloProvider } from 'react-apollo';
 import getClientAndStore from '../data/clientAndStore';
 import HtmlHead from '../components/HtmlHead';
@@ -7,21 +6,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 // color palette: http://paletton.com/#uid=33m0y0ksMDf8jVahZJZEepkKleL
-
-css.insertRule(`
-  a {
-    color: #02697C;
-    text-decoration: none;
-  }
-  
-  body {
-    margin: 0;
-  }
-  
-  .auth0-lock-header {
-    display: none;
-  }
-`);
 
 export default function page(WrappedComponent) {
   class Page extends Component {
@@ -70,6 +54,20 @@ export default function page(WrappedComponent) {
                 min-height: 100%;
                 padding: 0 16px;
                 flex-direction: column;
+              }
+            `}</style>
+            <style jsx global>{`
+              a {
+                color: #02697C;
+                text-decoration: none;
+              }
+
+              body {
+                margin: 0;
+              }
+
+              .auth0-lock-header {
+                display: none;
               }
             `}</style>
             <HtmlHead />
