@@ -1,3 +1,3 @@
 import page from '../hocs/page';
 
-export default page(() => <div>About</div>);
+export default page(() => <div>Coming soon!</div>);
