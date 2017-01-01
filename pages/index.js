@@ -16,7 +16,7 @@ export default page(() => <div>
       </div>
     </section>
     <section className="sectionHead">
-      <span>Relate</span> brings together meditation communities, teachers and individuals
+      <span>Relate</span> brings together mindfulness communities, teachers and individuals
     </section>
     <section className="sectionHead">
       <a

@@ -4,7 +4,7 @@
 
 <div align="center">
   <h1>Relate</h1>
-  Relate brings together meditation communities, teachers and individuals.
+  Relate brings together mindfulness communities, teachers and individuals.
   <br />
   <strong>
     <a href="https://medium.com/@sedubois/the-way-we-relate-the-world-we-create-2d8f79300b7f">
