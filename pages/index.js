@@ -1,4 +1,5 @@
 import GitHubRibbon from '../components/GitHubRibbon';
+import SubscribeNewsletter from '../components/SubscribeNewsletter';
 import page from '../hocs/page';
 
 export default page(() => <div>
@@ -27,7 +28,8 @@ export default page(() => <div>
       </a>
     </section>
     <section className="sectionHead">
-      🚧 This is a technology demo - stay tuned 🚧
+      Subscribe to the newsletter
+      <SubscribeNewsletter />
     </section>
     <style jsx>{`
       .homePage {
