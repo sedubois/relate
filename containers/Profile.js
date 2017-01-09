@@ -1,6 +1,6 @@
 import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
-import apollo from '../hocs/apollo';
+import { graphql } from 'react-apollo';
 import NotFound from '../components/NotFound';
 import TrackList from '../components/TrackList';
 import UserHeader from '../components/UserHeader';
@@ -39,7 +39,7 @@ Profile.propTypes = {
   data: propType(query).isRequired,
 };
 
-const withData = apollo(query, {
+const withData = graphql(query, {
   options({ slug }) {
     return {
       variables: { slug },

@@ -1,6 +1,6 @@
 import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
-import apollo from '../hocs/apollo';
+import { graphql } from 'react-apollo';
 import UserPreview from '../components/UserPreview';
 
 const Users = ({ data: { allUsers } }) => (
@@ -35,4 +35,4 @@ Users.propTypes = {
   data: propType(query).isRequired,
 };
 
-export default apollo(query)(Users);
+export default graphql(query)(Users);

@@ -1,3 +1,5 @@
+// TODO delete this file
+
 import { Component, PropTypes } from 'react';
 import { getDataFromTree, graphql, ApolloProvider } from 'react-apollo';
 // polyfill fetch server-side to get Apollo working:

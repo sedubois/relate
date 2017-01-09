@@ -1,11 +1,10 @@
 import { Component, PropTypes } from 'react';
 import gql from 'graphql-tag';
-import { compose } from 'react-apollo';
+import { compose, graphql } from 'react-apollo';
 import config from '../../config';
 import { popSecret, storeToken } from '../../util/auth';
 import { resetStore } from '../../data/client';
-import apollo from '../../hocs/apollo';
-import page from '../../hocs/page';
+import pageWithData from '../../hocs/page';
 
 function onAuthenticated(lock) {
   return new Promise(resolve => lock.on('authenticated', resolve));
@@ -138,8 +137,8 @@ const signInUserMutation = gql`
 `;
 
 const WithMutations = compose(
-  apollo(signInUserMutation, { name: 'signInUser' }, { ssr: false }),
-  apollo(createUserMutation, { name: 'createUser' }, { ssr: false }),
+  graphql(signInUserMutation, { name: 'signInUser' }), // , { ssr: false }),
+  graphql(createUserMutation, { name: 'createUser' }), // , { ssr: false }),
 )(LoginCallback);
 
-export default page(WithMutations);
+export default pageWithData(WithMutations);
