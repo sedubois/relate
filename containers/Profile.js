@@ -1,6 +1,6 @@
 import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
+import graphql from '../util/graphql';
 import NotFound from '../components/NotFound';
 import TrackList from '../components/TrackList';
 import UserHeader from '../components/UserHeader';
