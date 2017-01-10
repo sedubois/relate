@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import gql from 'graphql-tag';
 import ReactPlayer from 'react-player';
-import apollo from '../hocs/apollo';
+import graphql from '../util/graphql';
 
 function TrackPlayer({ data: { Track: { title, url } } }) {
   return (
@@ -37,7 +37,7 @@ const query = gql`
   }
 `;
 
-const withData = apollo(query, {
+const withData = graphql(query, {
   options({ id }) {
     return {
       variables: { id },

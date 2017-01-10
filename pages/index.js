@@ -1,10 +1,10 @@
 import GitHubRibbon from '../components/GitHubRibbon';
 import SubscribeNewsletter from '../components/SubscribeNewsletter';
-import page from '../hocs/page';
+import pageWithData from '../hocs/page';
 
-export default page(() => <div>
-  <GitHubRibbon />
+export default pageWithData(() => (
   <div className="homePage">
+    <GitHubRibbon />
     <section>
       <img alt="practice together" src="/static/homepage/bg_TimMarshall.jpg" />
       <div className="heroText">
@@ -71,4 +71,4 @@ export default page(() => <div>
       }
     `}</style>
   </div>
-</div>);
+));

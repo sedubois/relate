@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
 import gql from 'graphql-tag';
-import apollo from '../hocs/apollo';
+import graphql from '../util/graphql';
 import HeaderLink from './HeaderLink';
 
 /**
@@ -31,6 +31,6 @@ const query = gql`{
 
 const Loading = () => <HeaderLink>...</HeaderLink>;
 
-const withData = apollo(query, undefined, { Loading });
+const withData = graphql(query, { Loading });
 
 export default withData(ViewerHeader);
