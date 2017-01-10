@@ -1,4 +1,4 @@
-import { ApolloProvider, getDataFromTree } from 'react-apollo/lib';
+import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import React from 'react';
 import 'isomorphic-fetch';
 import { initClient } from '../lib/initClient';
@@ -17,7 +17,9 @@ export default Component => (
         </ApolloProvider>
       );
 
-      await getDataFromTree(app);
+      if (isServer) {
+        await getDataFromTree(app);
+      }
 
       const data = client.store ? client.store.getState()[client.reduxRootKey].data : null;
       const initialState = {
