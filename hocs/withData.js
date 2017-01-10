@@ -1,49 +1,48 @@
+import { Component, PropTypes } from 'react';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
-import React from 'react';
 import 'isomorphic-fetch';
-import { initClient } from '../lib/initClient';
-import { initStore } from '../lib/initStore';
+import getClientAndStore from '../data/clientAndStore';
+import { IS_SERVER } from '../util/website';
 
-export default Component => (
-  class extends React.Component {
+export default ComposedComponent => (
+  class WithData extends Component {
+    static propTypes = {
+      url: PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+      }).isRequired,
+      initialState: PropTypes.object.isRequired,
+      headers: PropTypes.object,
+    };
+
     static async getInitialProps(ctx) {
-      const isServer = !!ctx.req;
-      const client = initClient(null, isServer);
-      const store = initStore(client, client.initialState, isServer);
+      const headers = ctx.req ? ctx.req.headers : {};
+      const { apolloClient, reduxStore } = getClientAndStore({}, headers);
 
-      const app = (
-        <ApolloProvider client={client} store={store}>
-          <Component url={{ query: ctx.query }} />
-        </ApolloProvider>
-      );
-
-      if (isServer) {
-        await getDataFromTree(app);
+      if (IS_SERVER) {
+        await getDataFromTree((
+          <ApolloProvider client={apolloClient} store={reduxStore}>
+            <ComposedComponent url={{ query: ctx.query, pathname: ctx.pathname }} />
+          </ApolloProvider>
+        ));
       }
 
-      const data = client.store ? client.store.getState()[client.reduxRootKey].data : null;
-      const initialState = {
-        [client.reduxRootKey]: {
-          data,
-        },
-      };
-
       return {
-        initialState,
-        isServer,
+        initialState: reduxStore.getState(),
+        headers,
       };
     }
 
     constructor(props) {
       super(props);
-      this.client = initClient(this.props.initialState, this.props.isServer);
-      this.store = initStore(this.client, this.props.initialState, this.props.isServer);
+      const clientAndStore = getClientAndStore(this.props.initialState, this.props.headers);
+      this.apolloClient = clientAndStore.apolloClient;
+      this.reduxStore = clientAndStore.reduxStore;
     }
 
     render() {
       return (
-        <ApolloProvider client={this.client} store={this.store}>
-          <Component url={this.props.url} />
+        <ApolloProvider client={this.apolloClient} store={this.reduxStore}>
+          <ComposedComponent url={this.props.url} />
         </ApolloProvider>
       );
     }
