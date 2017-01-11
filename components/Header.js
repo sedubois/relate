@@ -1,5 +1,5 @@
 import { PropTypes } from 'react';
-import HeaderLink from './HeaderLink';
+import HeaderElem from './HeaderElem';
 import ViewerHeader from './ViewerHeader';
 
 const Header = ({ url }) => (
@@ -11,9 +11,9 @@ const Header = ({ url }) => (
         padding: 0.7em;
       }
     `}</style>
-    <HeaderLink url={url} href="/">Relate</HeaderLink>
-    <HeaderLink url={url} href="/discover">Discover</HeaderLink>
-    <HeaderLink url={url} href="/about">About</HeaderLink>
+    <HeaderElem url={url} href="/">Relate</HeaderElem>
+    <HeaderElem url={url} href="/discover">Discover</HeaderElem>
+    <HeaderElem url={url} href="/about">About</HeaderElem>
     {url.pathname !== '/auth/login' && <ViewerHeader />}
   </header>
 );

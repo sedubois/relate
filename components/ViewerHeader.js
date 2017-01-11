@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import gql from 'graphql-tag';
 import graphql from '../util/graphql';
-import HeaderLink from './HeaderLink';
+import HeaderElem from './HeaderElem';
 
 /**
  * @return null if no user or the view to render
@@ -11,7 +11,7 @@ function ViewerHeader({ data: { user } }) {
     return null;
   }
   return (
-    <HeaderLink href={user.slug}>{user.givenName}</HeaderLink>
+    <HeaderElem href={user.slug}>{user.givenName}</HeaderElem>
   );
 }
 
@@ -29,7 +29,7 @@ const query = gql`{
   }
 }`;
 
-const Loading = () => <HeaderLink>...</HeaderLink>;
+const Loading = () => <HeaderElem>...</HeaderElem>;
 
 const withData = graphql(query, { Loading });
 
