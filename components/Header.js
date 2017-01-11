@@ -2,7 +2,7 @@ import { PropTypes } from 'react';
 import HeaderLink from './HeaderLink';
 import ViewerHeader from './ViewerHeader';
 
-const Header = ({ pathname }) => (
+const Header = ({ url }) => (
   <header>
     <style jsx>{`
       header {
@@ -11,15 +11,15 @@ const Header = ({ pathname }) => (
         padding: 0.7em;
       }
     `}</style>
-    <HeaderLink pathname={pathname} href="/">Relate</HeaderLink>
-    <HeaderLink pathname={pathname} href="/discover">Discover</HeaderLink>
-    <HeaderLink pathname={pathname} href="/about">About</HeaderLink>
-    {pathname !== '/auth/login' && <ViewerHeader />}
+    <HeaderLink url={url} href="/">Relate</HeaderLink>
+    <HeaderLink url={url} href="/discover">Discover</HeaderLink>
+    <HeaderLink url={url} href="/about">About</HeaderLink>
+    {url !== '/auth/login' && <ViewerHeader />}
   </header>
 );
 
 Header.propTypes = {
-  pathname: PropTypes.string.isRequired,
+  url: PropTypes.object.isRequired,
 };
 
 export default Header;

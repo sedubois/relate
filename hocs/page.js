@@ -71,7 +71,7 @@ export default function page(WrappedComponent) {
               }
             `}</style>
             <HtmlHead />
-            <Header pathname={this.props.url.pathname} />
+            <Header url={this.props.url} />
             <WrappedComponent {...this.props} />
             <Footer />
           </div>

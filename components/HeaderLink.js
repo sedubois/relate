@@ -1,9 +1,9 @@
 import { PropTypes } from 'react';
 import Link from 'next/link';
 
-const HeaderLink = ({ pathname, href, children }) => (
+const HeaderLink = ({ url, href, children }) => (
   <Link href={href}>
-    <div className={`headerLink ${href && pathname === href && 'active'}`}>
+    <div className={`headerLink ${href && url.pathname === href && 'active'}`}>
       <style jsx>{`
       .headerLink {
         background-color: #FFFBF5;
@@ -31,7 +31,7 @@ const HeaderLink = ({ pathname, href, children }) => (
 HeaderLink.propTypes = {
   children: PropTypes.node.isRequired,
   href: PropTypes.string,
-  pathname: PropTypes.string,
+  url: PropTypes.object,
 };
 
 export default HeaderLink;
