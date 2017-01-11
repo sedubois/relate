@@ -14,7 +14,7 @@ const Header = ({ url }) => (
     <HeaderLink url={url} href="/">Relate</HeaderLink>
     <HeaderLink url={url} href="/discover">Discover</HeaderLink>
     <HeaderLink url={url} href="/about">About</HeaderLink>
-    {url !== '/auth/login' && <ViewerHeader />}
+    {url.pathname !== '/auth/login' && <ViewerHeader />}
   </header>
 );
 

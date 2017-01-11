@@ -35,13 +35,13 @@ function createAndShow(nextPathname) {
 export class Login extends Component {
   static propTypes = {
     url: PropTypes.shape({
-      replaceTo: PropTypes.func.isRequired,
+      replace: PropTypes.func.isRequired,
     }).isRequired,
   };
 
   componentDidMount() {
     if (getToken()) {
-      this.props.url.replaceTo('/');
+      this.props.url.replace('/');
     } else {
       createAndShow('/');
     }
