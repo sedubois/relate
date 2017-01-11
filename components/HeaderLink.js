@@ -1,9 +1,10 @@
 import { PropTypes } from 'react';
 import Link from 'next/link';
+import isActive from '../util/link';
 
 const HeaderLink = ({ url, href, children }) => (
   <Link href={href}>
-    <div className={`headerLink ${href && url.pathname === href && 'active'}`}>
+    <div className={`headerLink ${isActive(url, href) && 'active'}`}>
       <style jsx>{`
       .headerLink {
         background-color: #FFFBF5;
