@@ -1,4 +1,4 @@
-import page from '../hocs/page';
+import pageWithData from '../hocs/page';
 import Profile from '../containers/Profile';
 
-export default page(Profile);
+export default pageWithData(Profile);

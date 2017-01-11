@@ -19,7 +19,12 @@ function createClient(headers) {
     },
   }]);
 
-  return new ApolloClient({ networkInterface, ssrMode: true, headers });
+  return new ApolloClient({
+    networkInterface,
+    ssrMode: IS_SERVER,
+    headers,
+    dataIdFromObject: result => result.id || null,
+  });
 }
 
 export default function getClient(headers) {

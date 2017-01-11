@@ -1,3 +1,3 @@
-import page from '../hocs/page';
+import pageWithData from '../hocs/page';
 
-export default page(() => <div>Coming soon!</div>);
+export default pageWithData(() => <div>Coming soon!</div>);

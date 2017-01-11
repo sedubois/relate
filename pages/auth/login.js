@@ -3,7 +3,7 @@ import uuid from 'uuid';
 import config from '../../config';
 import { BASE_URL } from '../../util/website';
 import { getToken, storeSecret, removeSecret } from '../../util/auth.js';
-import page from '../../hocs/page';
+import pageWithData from '../../hocs/page';
 
 const LOCK_CONTAINER_ID = 'lock-container';
 
@@ -64,4 +64,4 @@ export class Login extends Component {
   }
 }
 
-export default page(Login);
+export default pageWithData(Login);
