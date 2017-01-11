@@ -1,5 +1,5 @@
 import { PropTypes } from 'react';
-import Link from 'next/link';
+import Link from 'next/prefetch';
 import isActive from '../util/link';
 
 const HeaderElem = ({ url, href, children }) => (
