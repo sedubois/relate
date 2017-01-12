@@ -26,6 +26,24 @@
  <a href="https://zeit.co/now">Now</a>,
  <a href="https://auth0.com/">Auth0</a>.
 
+## Development
+
+- `git clone https://github.com/relatenow/relate && cd relate`
+- create `config.js` with:
+```
+export default {
+  AUTH0_CLIENT_ID: 'XXX',
+  AUTH0_DOMAIN: 'XXX',
+  GRAPHQL_ENDPOINT: 'XXX',
+  NEWSLETTER_FORM_ACTION: 'XXX',
+  NEWSLETTER_FORM_INPUT_NAME: 'XXX',
+};
+```
+- `yarn`
+- `yarn dev`
+- navigate to [http://localhost:3000](http://localhost:3000)
+- do something amazing :tada:
+
 ## Credit
 
 See the [LICENSE](LICENSE) file for license rights and limitations (GPLv3).
