@@ -29,15 +29,15 @@
 ## Development
 
 - `git clone https://github.com/relatenow/relate && cd relate`
-- create `config.js` with:
+- create `config.json` at the project root with:
 ```
-export default {
-  AUTH0_CLIENT_ID: 'XXX',
-  AUTH0_DOMAIN: 'XXX',
-  GRAPHQL_ENDPOINT: 'XXX',
-  NEWSLETTER_FORM_ACTION: 'XXX',
-  NEWSLETTER_FORM_INPUT_NAME: 'XXX',
-};
+{
+  "AUTH0_CLIENT_ID": 'XXX',
+  "AUTH0_DOMAIN": 'XXX',
+  "GRAPHQL_ENDPOINT": 'XXX',
+  "NEWSLETTER_FORM_ACTION": 'XXX',
+  "NEWSLETTER_FORM_INPUT_NAME": 'XXX'
+}
 ```
 - `yarn`
 - `yarn dev`
