@@ -11,13 +11,14 @@ const page = (WrappedComponent) => {
     <div className="wrapper">
       <style jsx>{`
       .wrapper {
-        font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
-        max-width: 960px;
-        margin: 0 auto;
         display: flex;
+        flex-direction: column;
+        font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 85%;
+        margin: 0 auto;
+        max-width: 960px;
         min-height: 100%;
         padding: 0 16px;
-        flex-direction: column;
       }
     `}</style>
       <style jsx global>{`

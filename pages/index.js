@@ -5,9 +5,9 @@ import pageWithData from '../hocs/page';
 export default pageWithData(() => (
   <div className="homePage">
     <GitHubRibbon />
-    <section>
-      <img alt="practice together" src="/static/homepage/bg_TimMarshall.jpg" />
-      <div className="heroText">
+    <section className="hero">
+      <div className="heroContent heroImage" />
+      <div className="heroContent heroText">
         <p>
           Transforming lives through<br />
           <span>meditation</span> and<br />
@@ -52,22 +52,48 @@ export default pageWithData(() => (
         color: #FFBD1A;
       }
 
+      .hero {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 50px;
+      }
+
+      .heroContent {
+        flex-grow: 1;
+        width: 330px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .heroImage {
+        background: url(/static/homepage/bg_TimMarshall.jpg) no-repeat center center;
+        background-size: cover;
+        min-height: 150px;
+      }
+
       .heroText {
         color: white;
         background-color: #FF9933;
-        display: flex;
-        flex-direction: column;
-        height: 320px;
         justify-content: center;
       }
 
       .heroText p {
-        font-size: 3em;
-        padding: 50px;
+        font-size: 2em;
+        padding: 0 40px;
       }
 
       .heroText p span {
         color: #FFECBD;
+      }
+
+      @media screen and (min-width: 790px) {
+        .heroImage {
+          min-height: 300px;
+        }
+
+        .heroText {
+          font-size: 120%;
+        }
       }
     `}</style>
   </div>
