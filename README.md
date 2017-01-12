@@ -32,11 +32,11 @@
 - create `config.json` at the project root with:
 ```
 {
-  "AUTH0_CLIENT_ID": 'XXX',
-  "AUTH0_DOMAIN": 'XXX',
-  "GRAPHQL_ENDPOINT": 'XXX',
-  "NEWSLETTER_FORM_ACTION": 'XXX',
-  "NEWSLETTER_FORM_INPUT_NAME": 'XXX'
+  "AUTH0_CLIENT_ID": "XXX",
+  "AUTH0_DOMAIN": "XXX",
+  "GRAPHQL_ENDPOINT": "XXX",
+  "NEWSLETTER_FORM_ACTION": "XXX",
+  "NEWSLETTER_FORM_INPUT_NAME": "XXX"
 }
 ```
 - `yarn`
