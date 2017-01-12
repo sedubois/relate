@@ -33,7 +33,7 @@ export default pageWithData(() => (
     </section>
     <style jsx>{`
       .homePage {
-        margin: 30px 0;
+        margin: 1em 0;
         text-align: center;
       }
 
@@ -44,18 +44,21 @@ export default pageWithData(() => (
       }
 
       .sectionHead {
-        margin: 2em;
         font-size: 2em;
+        padding: 2em 1em;
       }
 
       .sectionHead > span {
         color: #FFBD1A;
       }
 
+      .sectionHead:nth-child(even) {
+        background-color: #F9F9F9;
+      }
+
       .hero {
         display: flex;
         flex-wrap: wrap;
-        margin: 0 50px;
       }
 
       .heroContent {
