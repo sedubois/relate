@@ -6,7 +6,7 @@ import DataLoading from '../components/DataLoading';
 /*
  * An enhanced Apollo graphql client which first checks for data error and loading states
  */
-export default query => (ComposedComponent, {
+export default (query, config) => (ComposedComponent, {
   Error = DataError,
   Loading = DataLoading,
 } = {}) => {
@@ -28,5 +28,5 @@ export default query => (ComposedComponent, {
       loading: PropTypes.bool,
     }),
   };
-  return graphql(query)(WithErrorAndLoading);
+  return graphql(query, config)(WithErrorAndLoading);
 };

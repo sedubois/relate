@@ -38,7 +38,7 @@ const query = gql`
 `;
 
 const withData = graphql(query, {
-  options({ id }) {
+  options({ url: { query: { id } } }) {
     return {
       variables: { id },
     };

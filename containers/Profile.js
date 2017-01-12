@@ -40,7 +40,7 @@ Profile.propTypes = {
 };
 
 const withData = graphql(query, {
-  options({ slug }) {
+  options({ url: { query: { slug } } }) {
     return {
       variables: { slug },
     };
