@@ -2,10 +2,17 @@ import { PropTypes } from 'react';
 import Link from 'next/prefetch';
 import isActive from '../util/link';
 
-const HeaderElem = ({ url, href, children }) => (
-  <Link href={href}>
-    <div className={`headerElem ${isActive(url, href) && 'active'}`}>
-      <style jsx>{`
+const Div = ({ children }) => <div>{children}</div>;
+Div.propTypes = {
+  children: PropTypes.node,
+};
+
+const HeaderElem = ({ url, href, children }) => {
+  const Wrapper = href ? Link : Div;
+  return (
+    <Wrapper href={href}>
+      <div className={`headerElem ${isActive(url, href) && 'active'}`}>
+        <style jsx>{`
       .headerElem {
         background-color: #FFFBF5;
         border-radius: 5px 25px;
@@ -25,10 +32,12 @@ const HeaderElem = ({ url, href, children }) => (
         padding-bottom: 1.2em;
       }
       `}</style>
-      {children}
-    </div>
-  </Link>
-);
+        {children}
+      </div>
+    </Wrapper>
+  );
+};
+
 HeaderElem.propTypes = {
   children: PropTypes.node.isRequired,
   href: PropTypes.string,
