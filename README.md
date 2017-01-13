@@ -12,7 +12,7 @@
     </a>
   </strong>
   <br />
-  <sub>Made with ❤︎ by <a href="https://twitter.com/semdubois">Sébastien Dubois</a></sub>
+  <sub>Made with ❤︎ by <a href="https://sdubois.now.sh">Sébastien Dubois</a></sub>
 </div>
 
 ## Stack
