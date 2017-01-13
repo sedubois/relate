@@ -1,6 +1,6 @@
 {
   "name": "relate",
-  "author": "Sébastien Dubois",
+  "author": "Sebastien Dubois",
   "license": "GPL-3.0",
   "scripts": {
     "dev": "next",
