@@ -11,7 +11,7 @@ export default ComposedComponent => (
         pathname: PropTypes.string.isRequired,
       }).isRequired,
       initialState: PropTypes.object.isRequired,
-      headers: PropTypes.object,
+      headers: PropTypes.object.isRequired,
     };
 
     static async getInitialProps(ctx) {
