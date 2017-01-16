@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 function TrackPreview({ track }) {
   return (
-    <Link href={`/track?id=${track.id}`}>
+    <Link href={`/track?id=${track.id}`} as={`/track/${track.id}`}>
       <div className="wrapper">
         <style jsx>{`
           .wrapper {
