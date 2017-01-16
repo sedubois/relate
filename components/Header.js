@@ -9,6 +9,7 @@ const Header = ({ url }) => (
         display: inline-flex;
         margin: 0 0 2em;
         padding: 0.7em;
+        min-height: 3.3em;
       }
     `}</style>
     <HeaderElem url={url} href="/">Relate</HeaderElem>
