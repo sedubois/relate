@@ -35,6 +35,9 @@ const query = gql`
   ${TrackList.fragments.track}
 `;
 
+// This still yields Warning (can be ignored):
+// "Failed prop type: The inline argument "slug" is expected as a variable but was not provided."
+// https://github.com/apollostack/graphql-anywhere/issues/24
 Profile.propTypes = {
   data: propType(query).isRequired,
 };
