@@ -31,6 +31,4 @@ const query = gql`{
 
 const Loading = () => <HeaderElem>...</HeaderElem>;
 
-const withData = graphql(query, { Loading });
-
-export default withData(ViewerHeader);
+export default graphql(query, { Loading })(ViewerHeader);

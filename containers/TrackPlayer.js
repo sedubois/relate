@@ -37,12 +37,10 @@ const query = gql`
   }
 `;
 
-const withData = graphql(query, {
+export default graphql(query, {
   options({ url: { query: { id } } }) {
     return {
       variables: { id },
     };
   },
-});
-
-export default withData(TrackPlayer);
+})(TrackPlayer);

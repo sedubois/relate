@@ -39,12 +39,10 @@ Profile.propTypes = {
   data: propType(query).isRequired,
 };
 
-const withData = graphql(query, {
+export default graphql(query, {
   options({ url: { query: { slug } } }) {
     return {
       variables: { slug },
     };
   },
-});
-
-export default withData(Profile);
+})(Profile);
