@@ -5,7 +5,7 @@ import UserBadge from './UserBadge';
 
 function UserPreview({ user }) {
   return (
-    <Link href={`/profile?slug=${user.slug}`}>
+    <Link href={`/profile?slug=${user.slug}`} as={`/profile/${user.slug}`}>
       <div className="wrapper">
         <style jsx>{`
           .wrapper {

@@ -3,9 +3,9 @@
   "author": "Sebastien Dubois",
   "license": "GPL-3.0",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint-staged": "lint-staged",
     "deploy": "eslint . && now && now alias"
   },
@@ -15,6 +15,7 @@
     "graphql-anywhere": "^2.0.0",
     "graphql-tag": "^1.1.2",
     "next": "^2.0.0-beta",
+    "path-match": "^1.2.4",
     "react-apollo": "^0.8.1",
     "react-player": "^0.14.1",
     "uuid": "^3.0.1"

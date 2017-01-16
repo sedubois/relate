@@ -11,7 +11,7 @@ function ViewerHeader({ url, data: { user } }) {
     return null;
   }
   return (
-    <HeaderElem url={url} href={`/${user.slug}`}>{user.givenName}</HeaderElem>
+    <HeaderElem url={url} href={`/profile?slug=${user.slug}`} as={`/profile/${user.slug}`}>{user.givenName}</HeaderElem>
   );
 }
 
