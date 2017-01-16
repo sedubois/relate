@@ -11,7 +11,7 @@ export default (query, config) => (ComposedComponent, {
   Loading = DataLoading,
 } = {}) => {
   function WithErrorAndLoading(props) {
-    const error = props.data && props.data.error;
+    const error = props.data.error;
     if (error) {
       console.error(error.message); // eslint-disable-line no-console
       return <Error message={error.message} />;
@@ -26,7 +26,7 @@ export default (query, config) => (ComposedComponent, {
     data: PropTypes.shape({
       error: PropTypes.object,
       loading: PropTypes.bool,
-    }),
+    }).isRequired,
   };
   return graphql(query, config)(WithErrorAndLoading);
 };

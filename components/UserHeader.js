@@ -1,4 +1,3 @@
-import { PropTypes } from 'react';
 import gql from 'graphql-tag';
 import { propType } from 'graphql-anywhere';
 import UserBadge from './UserBadge';
@@ -35,7 +34,7 @@ function UserHeader({ user }) {
 
 // TODO deduplicate with UserPreview.js
 UserHeader.fragments = {
-  user: gql`    
+  user: gql`
     fragment UserHeader on User {
       slug
       givenName
@@ -47,12 +46,7 @@ UserHeader.fragments = {
 };
 
 UserHeader.propTypes = {
-  style: PropTypes.shape({
-    wrapper: PropTypes.object.isRequired,
-    p: PropTypes.object.isRequired,
-  }),
   user: propType(UserHeader.fragments.user).isRequired,
-  link: PropTypes.bool,
 };
 
 export default UserHeader;

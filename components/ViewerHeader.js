@@ -6,16 +6,17 @@ import HeaderElem from './HeaderElem';
 /**
  * @return null if no user or the view to render
  */
-function ViewerHeader({ data: { user } }) {
+function ViewerHeader({ url, data: { user } }) {
   if (!user) {
     return null;
   }
   return (
-    <HeaderElem href={user.slug}>{user.givenName}</HeaderElem>
+    <HeaderElem url={url} href={`/${user.slug}`}>{user.givenName}</HeaderElem>
   );
 }
 
 ViewerHeader.propTypes = {
+  url: PropTypes.object.isRequired,
   data: PropTypes.shape({
     user: PropTypes.shape({
       givenName: PropTypes.string.isRequired,
@@ -26,6 +27,7 @@ ViewerHeader.propTypes = {
 const query = gql`{
   user {
     givenName
+    slug
   }
 }`;
 
