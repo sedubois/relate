@@ -15,6 +15,7 @@
     "graphql-anywhere": "^2.0.0",
     "graphql-tag": "^1.1.2",
     "next": "^2.0.0-beta",
+    "nprogress": "^0.2.0",
     "path-match": "^1.2.4",
     "react-apollo": "^0.8.1",
     "react-player": "^0.14.1",

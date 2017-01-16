@@ -1,8 +1,11 @@
 import { PropTypes } from 'react';
+import configureProgressBar from '../util/routing';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HtmlHead from '../components/HtmlHead';
 import withData from './withData';
+
+configureProgressBar();
 
 // color palette: http://paletton.com/#uid=33m0y0ksMDf8jVahZJZEepkKleL
 
