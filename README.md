@@ -15,7 +15,7 @@
   <sub>Made with ❤︎ by <a href="https://sdubois.now.sh">Sébastien Dubois</a></sub>
 </div>
 
-[![Slack Channel](https://relate-slack.herokuapp.com/badge.svg)](https://relate-slack.herokuapp.com/)
+[![Slack Channel](https://relate-slack.now.sh/badge.svg)](https://relate-slack.now.sh)
 
 ## Stack
 

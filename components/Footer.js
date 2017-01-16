@@ -12,7 +12,7 @@ const Footer = () => (
     <section>
       <a href="https://medium.com/tag/relatenow" target="_blank" rel="noopener noreferrer">Medium</a> &nbsp;
       <a href="https://github.com/relatenow/relate" target="_blank" rel="noopener noreferrer">GitHub</a> &nbsp;
-      <a href="https://relate-slack.herokuapp.com/" target="_blank" rel="noopener noreferrer">Slack</a> &nbsp;
+      <a href="https://relate-slack.now.sh" target="_blank" rel="noopener noreferrer">Slack</a> &nbsp;
     </section>
     <section>
       Made with ღ by&nbsp;
