@@ -15,6 +15,8 @@
   <sub>Made with ❤︎ by <a href="https://sdubois.now.sh">Sébastien Dubois</a></sub>
 </div>
 
+[![Slack Channel](https://relate-slack.herokuapp.com/badge.svg)](https://relate-slack.herokuapp.com/)
+
 ## Stack
 
 <a href="https://facebook.github.io/react/">React</a>,
