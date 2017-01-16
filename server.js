@@ -7,14 +7,16 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const route = pathMatch();
-const match = route('/profile/:slug');
+const match = route('/:slug');
 
 app.prepare()
   .then(() => {
     createServer((req, res) => {
       const { pathname } = parse(req.url);
       const params = match(pathname);
-      if (params === false) {
+      // leave untouched routes like /__webpack_hmr or /_next/-/pages/
+      const hasUnderscore = pathname[1] && pathname[1] === '_';
+      if (params === false || hasUnderscore) {
         handle(req, res);
         return;
       }
