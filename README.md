@@ -31,16 +31,20 @@
 ## Development
 
 - `git clone https://github.com/relatenow/relate && cd relate`
-- create `config.json` at the project root with:
+- create a configuration file:
+
+```js
+cat > config.js << EOF
+export const AUTH0_CLIENT_ID = 'XXX';
+export const AUTH0_DOMAIN = 'XXX';
+export const ANALYTICS_TRACKING_ID = 'XXX';
+export const GRAPHQL_ENDPOINT = 'XXX';
+export const NEWSLETTER_FORM_ACTION = 'XXX';
+export const NEWSLETTER_FORM_INPUT_NAME = 'XXX';
+
+EOF
 ```
-{
-  "AUTH0_CLIENT_ID": "XXX",
-  "AUTH0_DOMAIN": "XXX",
-  "GRAPHQL_ENDPOINT": "XXX",
-  "NEWSLETTER_FORM_ACTION": "XXX",
-  "NEWSLETTER_FORM_INPUT_NAME": "XXX"
-}
-```
+
 - `yarn`
 - `yarn dev`
 - navigate to [http://localhost:3000](http://localhost:3000)

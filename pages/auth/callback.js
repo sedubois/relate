@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'react';
 import gql from 'graphql-tag';
 import { compose, graphql } from 'react-apollo';
-import config from '../../config';
+import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
 import { popSecret, storeToken } from '../../util/auth';
 import { resetStore } from '../../data/client';
 import pageWithData from '../../hocs/page';
@@ -24,7 +24,7 @@ function checkSecret(actual) {
 
 const loginCallback = async () => {
   const Auth0Lock = require('auth0-lock').default; // eslint-disable-line global-require
-  const lock = new Auth0Lock(config.AUTH0_CLIENT_ID, config.AUTH0_DOMAIN);
+  const lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
   const { idToken: authToken, state } = await onAuthenticated(lock);
   const { secret, nextPathname } = JSON.parse(state);
   checkSecret(secret);

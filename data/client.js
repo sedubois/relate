@@ -1,10 +1,10 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { IS_SERVER } from '../util/website';
-import config from '../config';
+import { GRAPHQL_ENDPOINT } from '../config';
 import { getToken } from '../util/auth';
 
 function createClient(headers) {
-  const networkInterface = createNetworkInterface({ uri: config.GRAPHQL_ENDPOINT });
+  const networkInterface = createNetworkInterface({ uri: GRAPHQL_ENDPOINT });
 
   networkInterface.use([{
     applyMiddleware(req, next) {
