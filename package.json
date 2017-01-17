@@ -4,7 +4,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "dev": "nodemon -w server.js server.js",
-    "build": "next build",
+    "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js",
     "lint-staged": "lint-staged",
     "deploy": "eslint . && now && now alias"
