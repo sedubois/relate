@@ -31,24 +31,12 @@
 ## Development
 
 - `git clone https://github.com/relatenow/relate && cd relate`
-- create a configuration file:
-
-```js
-cat > config.js << EOF
-export const ANALYTICS_TRACKING_ID = 'XXX';
-export const AUTH0_CLIENT_ID = 'XXX';
-export const AUTH0_DOMAIN = 'XXX';
-export const GRAPHQL_ENDPOINT = 'XXX';
-export const NEWSLETTER_FORM_ACTION = 'XXX';
-export const NEWSLETTER_FORM_INPUT_NAME = 'XXX';
-
-EOF
-```
-
 - `yarn`
 - `yarn dev`
 - navigate to [http://localhost:3000](http://localhost:3000)
 - do something amazing :tada:
+
+NB: `yarn` will create `config.js` for you (through the `postinstall` hook). Edit this file to configure integrations such as GraphQL and analytics.
 
 ## Credit
 

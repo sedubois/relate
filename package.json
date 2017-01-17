@@ -3,6 +3,7 @@
   "author": "Sebastien Dubois",
   "license": "GPL-3.0",
   "scripts": {
+    "postinstall": "sh scripts/createDefaultConfig.sh",
     "dev": "nodemon -w server.js server.js",
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js",
