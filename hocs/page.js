@@ -1,6 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { configureAnalytics, pageView } from '../util/analytics';
 import configureProgressBar from '../util/routing';
+import configureSmooch from '../util/smooch';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HtmlHead from '../components/HtmlHead';
@@ -8,6 +9,7 @@ import withData from './withData';
 
 configureAnalytics();
 configureProgressBar();
+configureSmooch();
 
 // color palette: http://paletton.com/#uid=33m0y0ksMDf8jVahZJZEepkKleL
 

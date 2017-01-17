@@ -21,6 +21,7 @@
     "path-match": "^1.2.4",
     "react-apollo": "^0.8.1",
     "react-player": "^0.14.1",
+    "smooch": "^3.9.3",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
