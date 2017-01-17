@@ -28,6 +28,7 @@
   <li><a href="https://zeit.co/blog/next">Next.js</a> universal webapp rendering</li>
   <li><a href="https://zeit.co/now">Now</a> deployment</li>
   <li><a href="https://auth0.com/">Auth0</a> user authentication</li>
+  <li><a href="https://www.google.com/analytics/">Google Analytics</a></li>
   <li><a href="https://smooch.io/">Smooch</a> customer support</li>
 </ul>
 
