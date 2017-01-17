@@ -6,7 +6,6 @@ export function configureAnalytics() {
     // eslint-disable-next-line
     window.ga = window.ga || function () {(ga.q = ga.q || []).push(arguments)};ga.l = +new Date;
     /* global ga: true */
-    // ga comes from google-analytics script injected below
     ga('create', ANALYTICS_TRACKING_ID, 'auto');
     ga('require', 'urlChangeTracker');
     /* eslint-disable global-require */
