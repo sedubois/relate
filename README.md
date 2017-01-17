@@ -35,9 +35,9 @@
 
 ```js
 cat > config.js << EOF
+export const ANALYTICS_TRACKING_ID = 'XXX';
 export const AUTH0_CLIENT_ID = 'XXX';
 export const AUTH0_DOMAIN = 'XXX';
-export const ANALYTICS_TRACKING_ID = 'XXX';
 export const GRAPHQL_ENDPOINT = 'XXX';
 export const NEWSLETTER_FORM_ACTION = 'XXX';
 export const NEWSLETTER_FORM_INPUT_NAME = 'XXX';
