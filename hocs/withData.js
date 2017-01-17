@@ -26,8 +26,14 @@ export default ComposedComponent => (
         ));
       }
 
+      const state = reduxStore.getState();
       return {
-        initialState: reduxStore.getState(),
+        initialState: {
+          ...state,
+          apollo: {
+            data: state.apollo.data,
+          },
+        },
         headers,
       };
     }
