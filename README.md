@@ -25,10 +25,10 @@
   <li><a href="http://graphql.org/">GraphQL</a> API query language</li>
   <li><a href="http://dev.apollodata.com/">Apollo</a> GraphQL client</li>
   <li><a href="https://www.graph.cool/">Graphcool</a> GraphQL/lambda backend-as-a-service</li>
-  <li><a href="https://zeit.co/blog/next">Next.js</a> universal webapp rendering</li>
+  <li><a href="https://zeit.co/blog/next">Next.js</a> universal webapp framework</li>
   <li><a href="https://zeit.co/now">Now</a> deployment</li>
   <li><a href="https://auth0.com/">Auth0</a> user authentication</li>
-  <li><a href="https://www.google.com/analytics/">Google Analytics</a></li>
+  <li><a href="https://github.com/react-ga/react-ga">React-ga</a> for <a href="https://www.google.com/analytics/">Google Analytics</a></li>
   <li><a href="https://smooch.io/">Smooch</a> customer support</li>
 </ul>
 
