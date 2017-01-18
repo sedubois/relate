@@ -1,5 +1,5 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { IS_SERVER } from '../util/website';
+import { IS_BROWSER, IS_SERVER } from '../util/website';
 import { GRAPHQL_ENDPOINT } from '../config';
 import { getToken } from '../util/auth';
 
@@ -40,5 +40,7 @@ export default function getClient(headers) {
 }
 
 export function resetStore() {
-  window.apolloClient.resetStore();
+  if (IS_BROWSER) {
+    window.apolloClient.resetStore();
+  }
 }
