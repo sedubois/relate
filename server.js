@@ -7,7 +7,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const route = pathMatch();
-const staticMatch = route('/(discover|about)');
+const staticMatch = route('/(discover|about|favicon.ico)');
 const profileMatch = route('/:slug');
 const trackMatch = route('/track/:id');
 
