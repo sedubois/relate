@@ -16,7 +16,7 @@ export default (query, config) => (ComposedComponent, {
       console.error(error.message); // eslint-disable-line no-console
       return <Error message={error.message} />;
     }
-    if (props.data && props.data.loading) {
+    if (props.data.loading) {
       return <Loading />;
     }
     return <ComposedComponent {...props} />;
