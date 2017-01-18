@@ -13,13 +13,13 @@
   "dependencies": {
     "apollo-client": "^0.7.2",
     "auth0-lock": "^10.7.2",
-    "autotrack": "^1.0.3",
     "graphql-anywhere": "^2.0.0",
     "graphql-tag": "^1.1.2",
     "next": "^2.0.0-beta",
     "nprogress": "^0.2.0",
     "path-match": "^1.2.4",
     "react-apollo": "^0.8.1",
+    "react-ga": "^2.1.2",
     "react-player": "^0.14.1",
     "smooch": "^3.9.3",
     "uuid": "^3.0.1"
