@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'react';
 import uuid from 'uuid';
-import config from '../../config';
+import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
 import { BASE_URL } from '../../util/website';
 import { getToken, storeSecret, removeSecret } from '../../util/auth.js';
 import pageWithData from '../../hocs/page';
@@ -11,7 +11,7 @@ function createLock(nextPathname) {
   const secret = uuid.v4();
   storeSecret(secret);
   const Auth0Lock = require('auth0-lock').default; // eslint-disable-line global-require
-  return new Auth0Lock(config.AUTH0_CLIENT_ID, config.AUTH0_DOMAIN, {
+  return new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
       redirectUrl: `${BASE_URL}/auth/callback`,
       responseType: 'token',
