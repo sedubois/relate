@@ -19,6 +19,8 @@
 
 ## Stack
 
+[Read this](https://github.com/relatenow/relate/issues/5) for the reasoning behind the technology choices.
+
 <ul>
   <li><a href="https://facebook.github.io/react/">React</a> rendering</li>
   <li><a href="http://redux.js.org/">Redux</a> state management</li>
