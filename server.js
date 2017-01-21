@@ -1,46 +1,33 @@
-const { createServer } = require('http');
-const { parse } = require('url');
+const express = require('express');
 const next = require('next');
-const pathMatch = require('path-match');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const route = pathMatch();
-const staticMatch = route('/(discover|about|favicon.ico)');
-const profileMatch = route('/:slug');
-const trackMatch = route('/track/:id');
 
-app.prepare()
-  .then(() => {
-    createServer((req, res) => {
-      const { pathname } = parse(req.url);
-      // leave untouched routes like /__webpack_hmr or /_next/-/pages/
-      const hasUnderscore = pathname[1] && pathname[1] === '_';
-      if (hasUnderscore || staticMatch(pathname)) {
-        // fall-through
-        handle(req, res);
-        return;
-      }
+function customRoute(pathname) {
+  return (req, res) => app.render(req, res, pathname, req.params, req.query);
+}
 
-      const trackParams = trackMatch(pathname);
-      if (trackParams !== false) {
-        app.render(req, res, '/track', trackParams);
-        return;
-      }
+app.prepare().then(() => {
+  const server = express();
 
-      const profileParams = profileMatch(pathname);
-      if (profileParams !== false) {
-        app.render(req, res, '/profile', profileParams);
-        return;
-      }
+  // Matcher for all pathnames that should be handled as-is by next (no need for dynamic routing).
+  // /_.* represents all pathnames starting with underscore, e.g /__webpack_hmr, etc.
+  // This fall-through can't be simply achieved with a wildcard (*) as the last route,
+  // because of the /:slug route which would catch them first.
+  server.get(/^\/(_.*|about|discover|favicon.ico)$/, handle);
 
-      handle(req, res);
-    })
-      .listen(3000, (err) => {
-        if (err) {
-          throw err;
-        }
-        console.log('> Ready on http://localhost:3000');
-      });
+  server.get('/track/:id', customRoute('/track'));
+
+  server.get('/:slug', customRoute('/profile'));
+
+  server.get('*', handle);
+
+  server.listen(3000, (err) => {
+    if (err) {
+      throw err;
+    }
+    console.log('> Ready on http://localhost:3000');
   });
+});
