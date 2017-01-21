@@ -3,9 +3,6 @@ import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import 'isomorphic-fetch';
 import getClientAndStore from '../data/clientAndStore';
 import { IS_SERVER } from '../util/website';
-import { resetStore } from '../data/client';
-
-let storeHasBeenReset = false;
 
 export default ComposedComponent => (
   class WithData extends Component {
@@ -46,18 +43,6 @@ export default ComposedComponent => (
       const clientAndStore = getClientAndStore(this.props.initialState, this.props.headers);
       this.apolloClient = clientAndStore.apolloClient;
       this.reduxStore = clientAndStore.reduxStore;
-    }
-
-    componentDidMount() {
-      if (!storeHasBeenReset) {
-        // This is a hack to force an Apollo re-fetch of data client-side,
-        // where the user token is known (stored in localStorage).
-        // TODO proper solution is to access user token server-side
-        // by customising the Next.js server with session management.
-        // see https://github.com/zeit/next.js/issues/153
-        storeHasBeenReset = true;
-        resetStore();
-      }
     }
 
     render() {
