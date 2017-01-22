@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'react';
 import uuid from 'uuid';
 import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
-import { BASE_URL } from '../../util/website';
+import BASE_URL from '../../util/baseUrl';
 import { getToken, storeSecret, removeSecret } from '../../util/auth.js';
 import pageWithData from '../../hocs/page';
 

@@ -2,7 +2,6 @@ import { Component, PropTypes } from 'react';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import 'isomorphic-fetch';
 import getClientAndStore from '../data/clientAndStore';
-import { IS_SERVER } from '../util/website';
 
 export default ComposedComponent => (
   class WithData extends Component {
@@ -18,7 +17,7 @@ export default ComposedComponent => (
       const headers = ctx.req ? ctx.req.headers : {};
       const { apolloClient, reduxStore } = getClientAndStore({}, headers);
 
-      if (IS_SERVER) {
+      if (!process.browser) {
         await getDataFromTree((
           <ApolloProvider client={apolloClient} store={reduxStore}>
             <ComposedComponent url={{ query: ctx.query, pathname: ctx.pathname }} />

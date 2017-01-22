@@ -1,5 +1,4 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { IS_BROWSER, IS_SERVER } from '../util/website';
 import { GRAPHQL_ENDPOINT } from '../config';
 import { getToken } from '../util/auth';
 
@@ -21,7 +20,7 @@ function createClient(headers) {
 
   return new ApolloClient({
     networkInterface,
-    ssrMode: IS_SERVER,
+    ssrMode: !process.browser,
     headers,
     dataIdFromObject: result => result.id || null,
   });
@@ -29,9 +28,9 @@ function createClient(headers) {
 
 export default function getClient(headers) {
   let client;
-  if (IS_SERVER || !window.apolloClient) {
+  if (!process.browser || !window.apolloClient) {
     client = createClient(headers);
-    if (IS_SERVER) {
+    if (!process.browser) {
       return client;
     }
     window.apolloClient = client;
@@ -40,7 +39,7 @@ export default function getClient(headers) {
 }
 
 export function resetStore() {
-  if (IS_BROWSER) {
+  if (process.browser) {
     window.apolloClient.resetStore();
   }
 }
