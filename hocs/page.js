@@ -2,6 +2,7 @@ import { Component, PropTypes } from 'react';
 import { configureAnalytics, pageView } from '../util/analytics';
 import configureProgressBar from '../util/routing';
 import configureSmooch from '../util/smooch';
+import getProps from '../util/initialProps';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HtmlHead from '../components/HtmlHead';
@@ -18,7 +19,16 @@ const page = WrappedComponent => class Page extends Component {
     url: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
     }).isRequired,
+    userToken: PropTypes.string,
   };
+
+  static defaultProps = {
+    userToken: null,
+  };
+
+  static async getInitialProps(ctx) {
+    return getProps(WrappedComponent, ctx);
+  }
 
   componentWillMount() {
     pageView();
@@ -48,13 +58,9 @@ const page = WrappedComponent => class Page extends Component {
         body {
           margin: 0;
         }
-
-        .auth0-lock-header {
-          display: none;
-        }
       `}</style>
         <HtmlHead />
-        <Header url={this.props.url} />
+        <Header url={this.props.url} loggedIn={Boolean(this.props.userToken)} />
         <WrappedComponent {...this.props} />
         <Footer />
       </div>

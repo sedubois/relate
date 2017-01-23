@@ -1,9 +1,15 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const csrf = require('lusca').csrf();
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const next = require('next');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+// TODO store more persistently
+const store = new FileStore({ path: '/tmp/sessions' });
 
 function customRoute(pathname) {
   return (req, res) => app.render(req, res, pathname, req.params, req.query);
@@ -11,6 +17,31 @@ function customRoute(pathname) {
 
 app.prepare().then(() => {
   const server = express();
+
+  server.use(bodyParser.json());
+  server.use(bodyParser.urlencoded({ extended: true }));
+  server.use(session({
+    // TODO configure secret
+    secret: 'Meow',
+    store,
+    resave: false,
+    rolling: true,
+    saveUninitialized: true,
+    httpOnly: true,
+  }));
+  server.use(csrf); // this ensures a CSRF token is required for all POST requests
+
+  server.get('/api/auth/login/:token', (req, res) => {
+    req.session.userToken = req.params.token; // eslint-disable-line no-param-reassign
+    res.json({});
+  });
+
+  server.get('/api/auth/logout', (req, res) => {
+    delete req.session.userToken; // eslint-disable-line no-param-reassign
+    return res.json({});
+  });
+
+  server.get('/api/auth', (req, res) => res.json({ userToken: req.session.userToken }));
 
   // Matcher for all pathnames that should be handled as-is by next (no need for dynamic routing).
   // /_.* represents all pathnames starting with underscore, e.g /__webpack_hmr, etc.

@@ -13,14 +13,18 @@
   "dependencies": {
     "apollo-client": "^0.7.2",
     "auth0-lock": "^10.7.2",
+    "body-parser": "^1.16.0",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "graphql-anywhere": "^2.0.0",
     "graphql-tag": "^1.1.2",
+    "lusca": "^1.4.1",
     "next": "^2.0.0-beta",
     "nprogress": "^0.2.0",
     "react-apollo": "^0.8.1",
     "react-ga": "^2.1.2",
     "react-player": "^0.14.1",
+    "session-file-store": "^1.0.0",
     "smooch": "^3.9.3",
     "uuid": "^3.0.1"
   },

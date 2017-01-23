@@ -1,8 +1,7 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { GRAPHQL_ENDPOINT } from '../config';
-import { getToken } from '../util/auth';
 
-function createClient(headers) {
+function createClient(headers, token) {
   const networkInterface = createNetworkInterface({ uri: GRAPHQL_ENDPOINT });
 
   networkInterface.use([{
@@ -11,7 +10,6 @@ function createClient(headers) {
       if (!req.options.headers) {
         req.options.headers = {};
       }
-      const token = getToken();
       req.options.headers.authorization = token ? `Bearer ${token}` : null;
       /* eslint-enable no-param-reassign */
       next();
@@ -26,10 +24,10 @@ function createClient(headers) {
   });
 }
 
-export default function getClient(headers) {
+export default function getClient(headers, userToken) {
   let client;
   if (!process.browser || !window.apolloClient) {
-    client = createClient(headers);
+    client = createClient(headers, userToken);
     if (!process.browser) {
       return client;
     }

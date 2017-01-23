@@ -51,7 +51,7 @@ class LoginCallback extends Component {
     createUser: PropTypes.func.isRequired,
     signInUser: PropTypes.func.isRequired,
     url: PropTypes.shape({
-      replaceTo: PropTypes.func.isRequired,
+      replace: PropTypes.func.isRequired,
     }).isRequired,
   };
 
@@ -59,9 +59,9 @@ class LoginCallback extends Component {
     const { lock, authToken, nextPathname } = await loginCallback();
     const profile = await getProfile(lock, authToken);
     const userToken = await this.createUserIfNeededAndSignIn(authToken, profile);
-    storeToken(userToken);
+    await storeToken(userToken);
     resetStore();
-    this.props.url.replaceTo(nextPathname);
+    this.props.url.replace(nextPathname);
   }
 
   async createUserIfNeeded(authToken, profile) {
@@ -92,7 +92,7 @@ class LoginCallback extends Component {
 
   async createUserIfNeededAndSignIn(authToken, profile) {
     await this.createUserIfNeeded(authToken, profile);
-    return await this.signInUser(authToken);
+    return this.signInUser(authToken);
   }
 
   render() {

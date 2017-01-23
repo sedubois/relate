@@ -2,7 +2,7 @@ import { Component, PropTypes } from 'react';
 import uuid from 'uuid';
 import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
 import BASE_URL from '../../util/baseUrl';
-import { getToken, storeSecret, removeSecret } from '../../util/auth.js';
+import { getToken, storeSecret, removeSecret } from '../../util/auth';
 import pageWithData from '../../hocs/page';
 
 const LOCK_CONTAINER_ID = 'lock-container';
@@ -32,15 +32,15 @@ function createAndShow(nextPathname) {
   lock.show();
 }
 
-export class Login extends Component {
+class Login extends Component {
   static propTypes = {
     url: PropTypes.shape({
       replace: PropTypes.func.isRequired,
     }).isRequired,
   };
 
-  componentDidMount() {
-    if (getToken()) {
+  async componentDidMount() {
+    if (await getToken()) {
       this.props.url.replace('/');
     } else {
       createAndShow('/');
@@ -57,6 +57,11 @@ export class Login extends Component {
         <style jsx>{`
           #lock-container {
             margin: 2em 0 0;
+          }
+        `}</style>
+        <style jsx global>{`
+          .auth0-lock-header {
+            display: none;
           }
         `}</style>
       </div>
