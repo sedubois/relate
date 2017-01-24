@@ -1,1 +1,6 @@
-!.config.js
+.DS_Store
+.idea/
+.next/
+node_modules/
+graphql.config.json
+!config.js
