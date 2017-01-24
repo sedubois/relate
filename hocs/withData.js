@@ -25,10 +25,17 @@ export default ComposedComponent => (
       const userToken = await getToken(ctx);
       const { apolloClient, reduxStore } = getClientAndStore({}, headers, userToken);
 
+      const props = {
+        loggedIn: Boolean(userToken),
+        url: { query: ctx.query, pathname: ctx.pathname },
+        userToken,
+        ...await getProps(ComposedComponent, ctx),
+      };
+
       if (!process.browser) {
         await getDataFromTree((
           <ApolloProvider client={apolloClient} store={reduxStore}>
-            <ComposedComponent url={{ query: ctx.query, pathname: ctx.pathname }} />
+            <ComposedComponent {...props} />
           </ApolloProvider>
         ));
       }
@@ -42,8 +49,7 @@ export default ComposedComponent => (
           },
         },
         headers,
-        userToken,
-        ...await getProps(ComposedComponent, ctx),
+        ...props,
       };
     }
 

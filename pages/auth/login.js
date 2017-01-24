@@ -2,7 +2,7 @@ import { Component, PropTypes } from 'react';
 import uuid from 'uuid';
 import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
 import BASE_URL from '../../util/baseUrl';
-import { getToken, storeSecret, removeSecret } from '../../util/auth';
+import { storeSecret, removeSecret } from '../../util/auth';
 import pageWithData from '../../hocs/page';
 
 const LOCK_CONTAINER_ID = 'lock-container';
@@ -37,10 +37,11 @@ class Login extends Component {
     url: PropTypes.shape({
       replace: PropTypes.func.isRequired,
     }).isRequired,
+    loggedIn: PropTypes.bool.isRequired,
   };
 
   async componentDidMount() {
-    if (await getToken()) {
+    if (!this.props.loggedIn) {
       this.props.url.replace('/');
     } else {
       createAndShow('/');

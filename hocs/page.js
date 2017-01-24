@@ -19,11 +19,7 @@ const page = WrappedComponent => class Page extends Component {
     url: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
     }).isRequired,
-    userToken: PropTypes.string,
-  };
-
-  static defaultProps = {
-    userToken: null,
+    loggedIn: PropTypes.bool.isRequired,
   };
 
   static async getInitialProps(ctx) {
@@ -60,7 +56,7 @@ const page = WrappedComponent => class Page extends Component {
         }
       `}</style>
         <HtmlHead />
-        <Header url={this.props.url} loggedIn={Boolean(this.props.userToken)} />
+        <Header url={this.props.url} loggedIn={this.props.loggedIn} />
         <WrappedComponent {...this.props} />
         <Footer />
       </div>
