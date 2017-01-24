@@ -2,6 +2,7 @@ import execXhr from './xhr';
 
 const AUTH_SECRET = 'auth-secret';
 const USER_TOKEN = 'user-token';
+const NO_TOKEN = 'NO_TOKEN';
 
 export function storeSecret(secret) {
   window.sessionStorage.setItem(AUTH_SECRET, secret);
@@ -34,18 +35,21 @@ export async function clearToken() {
   await execXhr({ url: '/api/auth/logout' });
 
   // clear token client-side
-  window.localStorage.removeItem(USER_TOKEN);
+  window.localStorage.setItem(USER_TOKEN, NO_TOKEN);
 }
 
 export async function getToken(ctx = {}) {
   // server-side: get token from HTTP session
-  if (ctx.req) {
+  if (!process.browser) {
     return ctx.req.session.userToken;
   }
 
   // client-side: get token from localStorage
   const localToken = window.localStorage.getItem(USER_TOKEN);
-  if (localToken) {
+  if (localToken !== null) {
+    if (localToken === NO_TOKEN) {
+      return undefined;
+    }
     return localToken;
   }
 
@@ -55,8 +59,10 @@ export async function getToken(ctx = {}) {
   // - localStorage is disabled.
   // --> ask token from server (if there's one), then try to store it again.
   const userToken = (await execXhr({ url: '/api/auth' })).userToken;
-  if (userToken) {
-    window.localStorage.setItem(USER_TOKEN, userToken);
+  if (typeof userToken === 'undefined') {
+    window.localStorage.setItem(USER_TOKEN, NO_TOKEN);
+    return undefined;
   }
+  window.localStorage.setItem(USER_TOKEN, userToken);
   return userToken;
 }
