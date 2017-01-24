@@ -34,9 +34,7 @@ function createAndShow(nextPathname) {
 
 class Login extends Component {
   static propTypes = {
-    url: PropTypes.shape({
-      replace: PropTypes.func.isRequired,
-    }).isRequired,
+    url: PropTypes.object.isRequired,
     loggedIn: PropTypes.bool.isRequired,
   };
 
