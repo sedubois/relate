@@ -50,9 +50,7 @@ class LoginCallback extends Component {
   static propTypes = {
     createUser: PropTypes.func.isRequired,
     signInUser: PropTypes.func.isRequired,
-    url: PropTypes.shape({
-      replace: PropTypes.func.isRequired,
-    }).isRequired,
+    url: PropTypes.object.isRequired,
   };
 
   async componentDidMount() {
