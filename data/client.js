@@ -35,9 +35,3 @@ export default function getClient(headers, userToken) {
   }
   return window.apolloClient;
 }
-
-export function resetStore() {
-  if (process.browser) {
-    window.apolloClient.resetStore();
-  }
-}

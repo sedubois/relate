@@ -2,7 +2,7 @@ import execXhr from './xhr';
 
 const AUTH_SECRET = 'auth-secret';
 const USER_TOKEN = 'user-token';
-const NO_TOKEN = 'NO_TOKEN';
+const NO_VALUE = 'NO_VALUE';
 
 export function storeSecret(secret) {
   window.sessionStorage.setItem(AUTH_SECRET, secret);
@@ -22,12 +22,28 @@ export function popSecret() {
   return secret;
 }
 
+function getLocalStorage(key) {
+  const value = window.localStorage.getItem(key);
+  if (value === NO_VALUE) {
+    return undefined;
+  }
+  return value;
+}
+
+function setLocalStorage(key, value) {
+  window.localStorage.setItem(key, value || NO_VALUE);
+}
+
+export function storeTokenLocally(userToken) {
+  setLocalStorage(USER_TOKEN, userToken);
+}
+
 export async function storeToken(userToken) {
   // store token server-side
   await execXhr({ url: `/api/auth/login/${userToken}` });
 
   // store token client-side
-  window.localStorage.setItem(USER_TOKEN, userToken);
+  storeTokenLocally(userToken);
 }
 
 export async function clearToken() {
@@ -35,7 +51,7 @@ export async function clearToken() {
   await execXhr({ url: '/api/auth/logout' });
 
   // clear token client-side
-  window.localStorage.setItem(USER_TOKEN, NO_TOKEN);
+  setLocalStorage(USER_TOKEN, NO_VALUE);
 }
 
 export async function getToken(ctx = {}) {
@@ -45,11 +61,8 @@ export async function getToken(ctx = {}) {
   }
 
   // client-side: get token from localStorage
-  const localToken = window.localStorage.getItem(USER_TOKEN);
+  const localToken = getLocalStorage(USER_TOKEN);
   if (localToken !== null) {
-    if (localToken === NO_TOKEN) {
-      return undefined;
-    }
     return localToken;
   }
 
@@ -59,10 +72,6 @@ export async function getToken(ctx = {}) {
   // - localStorage is disabled.
   // --> ask token from server (if there's one), then try to store it again.
   const userToken = (await execXhr({ url: '/api/auth' })).userToken;
-  if (typeof userToken === 'undefined') {
-    window.localStorage.setItem(USER_TOKEN, NO_TOKEN);
-    return undefined;
-  }
-  window.localStorage.setItem(USER_TOKEN, userToken);
+  setLocalStorage(USER_TOKEN, userToken);
   return userToken;
 }

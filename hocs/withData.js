@@ -2,7 +2,7 @@ import { Component, PropTypes } from 'react';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import 'isomorphic-fetch';
 import getClientAndStore from '../data/clientAndStore';
-import { getToken } from '../util/auth';
+import { getToken, storeTokenLocally } from '../util/auth';
 import getProps from '../util/initialProps';
 
 export default ComposedComponent => (
@@ -14,6 +14,7 @@ export default ComposedComponent => (
       initialState: PropTypes.object.isRequired,
       headers: PropTypes.object.isRequired,
       userToken: PropTypes.string,
+      serverRendered: PropTypes.bool.isRequired,
     };
 
     static defaultProps = {
@@ -27,6 +28,7 @@ export default ComposedComponent => (
 
       const props = {
         loggedIn: Boolean(userToken),
+        serverRendered: !process.browser,
         url: { query: ctx.query, pathname: ctx.pathname },
         userToken,
         ...await getProps(ComposedComponent, ctx),
@@ -59,6 +61,12 @@ export default ComposedComponent => (
         this.props.initialState, this.props.headers, this.props.userToken);
       this.apolloClient = clientAndStore.apolloClient;
       this.reduxStore = clientAndStore.reduxStore;
+    }
+
+    componentDidMount() {
+      if (this.props.serverRendered) {
+        storeTokenLocally(this.props.userToken);
+      }
     }
 
     render() {

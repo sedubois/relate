@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import { compose, graphql } from 'react-apollo';
 import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
 import { popSecret, storeToken } from '../../util/auth';
-import { resetStore } from '../../data/client';
 import pageWithData from '../../hocs/page';
 
 function onAuthenticated(lock) {
@@ -58,7 +57,6 @@ class LoginCallback extends Component {
     const profile = await getProfile(lock, authToken);
     const userToken = await this.createUserIfNeededAndSignIn(authToken, profile);
     await storeToken(userToken);
-    resetStore();
     this.props.url.replace(nextPathname);
   }
 
