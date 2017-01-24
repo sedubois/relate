@@ -41,7 +41,7 @@ class Login extends Component {
   };
 
   async componentDidMount() {
-    if (!this.props.loggedIn) {
+    if (this.props.loggedIn) {
       this.props.url.replace('/');
     } else {
       createAndShow('/');
