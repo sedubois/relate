@@ -20,7 +20,6 @@
     "express-session": "^1.15.0",
     "graphql-anywhere": "^2.0.0",
     "graphql-tag": "^1.2.3",
-    "lusca": "^1.4.1",
     "next": "^2.0.0-beta",
     "nprogress": "^0.2.0",
     "react-apollo": "^0.8.3",

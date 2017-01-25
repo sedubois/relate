@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const csrf = require('lusca').csrf();
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const next = require('next');
@@ -29,7 +28,6 @@ app.prepare().then(() => {
     saveUninitialized: true,
     httpOnly: true,
   }));
-  server.use(csrf); // this ensures a CSRF token is required for all POST requests
 
   server.get('/api/auth/login/:token', (req, res) => {
     req.session.userToken = req.params.token; // eslint-disable-line no-param-reassign
