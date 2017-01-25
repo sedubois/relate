@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const next = require('next');
+const { SESSION_SECRET } = require('./config');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -20,8 +21,7 @@ app.prepare().then(() => {
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: true }));
   server.use(session({
-    // TODO configure secret
-    secret: 'Meow',
+    secret: SESSION_SECRET,
     store,
     resave: false,
     rolling: true,
