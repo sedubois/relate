@@ -6,30 +6,32 @@ import UserBadge from './UserBadge';
 function UserPreview({ user }) {
   return (
     <Link href={`/profile?slug=${user.slug}`} as={`/${user.slug}`}>
-      <div className="wrapper">
-        <style jsx>{`
-          .wrapper {
-            width: 13em;
-            margin: 0.5em;
-            padding-top: 1.5em;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px #A78100;
-            text-align: center;
-          }
+      <a>
+        <div className="wrapper">
+          <style jsx>{`
+            .wrapper {
+              width: 13em;
+              margin: 0.5em;
+              padding-top: 1.5em;
+              border-radius: 5px;
+              box-shadow: 0 1px 3px #A78100;
+              text-align: center;
+            }
 
-          .userName {
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            width: 90%;
-            display: inline-block;
-          }
-        `}</style>
-        <UserBadge user={user} />
-        <p className="userName">
-          {`${user.givenName} ${user.familyName}`}
-        </p>
-      </div>
+            .userName {
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              width: 90%;
+              display: inline-block;
+            }
+          `}</style>
+          <UserBadge user={user} />
+          <p className="userName">
+            {`${user.givenName} ${user.familyName}`}
+          </p>
+        </div>
+      </a>
     </Link>
   );
 }
