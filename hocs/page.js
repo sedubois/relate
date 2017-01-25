@@ -14,7 +14,7 @@ configureSmooch();
 
 // color palette: http://paletton.com/#uid=33m0y0ksMDf8jVahZJZEepkKleL
 
-const page = WrappedComponent => class Page extends Component {
+const page = ComposedComponent => class Page extends Component {
   static propTypes = {
     url: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
@@ -23,7 +23,7 @@ const page = WrappedComponent => class Page extends Component {
   };
 
   static async getInitialProps(ctx) {
-    return getProps(WrappedComponent, ctx);
+    return getProps(ComposedComponent, ctx);
   }
 
   componentWillMount() {
@@ -57,11 +57,11 @@ const page = WrappedComponent => class Page extends Component {
       `}</style>
         <HtmlHead />
         <Header url={this.props.url} loggedIn={this.props.loggedIn} />
-        <WrappedComponent {...this.props} />
+        <ComposedComponent {...this.props} />
         <Footer />
       </div>
     );
   }
 };
 
-export default WrappedComponent => withData(page(WrappedComponent));
+export default ComposedComponent => withData(page(ComposedComponent));
