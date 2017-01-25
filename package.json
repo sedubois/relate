@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "author": "Sebastien Dubois",
   "license": "GPL-3.0",
+  "main": "./server.js",
   "scripts": {
     "postinstall": "sh scripts/createDefaultConfig.sh",
-    "dev": "nodemon -w server.js server.js",
+    "dev": "nodemon -w server.js",
     "build": "NODE_ENV=production next build && echo 'success'",
     "start": "NODE_ENV=production node server.js",
     "lint-staged": "lint-staged",
