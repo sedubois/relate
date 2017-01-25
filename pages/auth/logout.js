@@ -11,7 +11,6 @@ class Logout extends Component {
   async componentDidMount() {
     if (this.props.loggedIn) {
       await clearToken();
-      // TODO do client-side route transition instead, but must refresh Apollo state properly
       window.location.replace('/');
     } else {
       Router.push('/');
