@@ -1,5 +1,6 @@
 {
   "name": "relate",
+  "version": "0.0.1",
   "author": "Sebastien Dubois",
   "license": "GPL-3.0",
   "scripts": {
