@@ -1,25 +1,28 @@
 import { Component, PropTypes } from 'react';
+import Router from 'next/router';
 import pageWithData from '../../hocs/page';
 import { clearToken } from '../../util/auth';
 
 class Logout extends Component {
   static propTypes = {
-    url: PropTypes.object.isRequired,
     loggedIn: PropTypes.bool.isRequired,
   };
 
   async componentDidMount() {
-    if (!this.props.loggedIn) {
-      this.props.url.replace('/');
-    } else {
+    if (this.props.loggedIn) {
       await clearToken();
       // TODO do client-side route transition instead, but must refresh Apollo state properly
       window.location.replace('/');
+    } else {
+      Router.push('/');
     }
   }
 
   render() {
-    return <div>Logging out...</div>;
+    if (this.props.loggedIn) {
+      return <div>Logging out...</div>;
+    }
+    return <div>Already logged out, redirecting home...</div>;
   }
 }
 
