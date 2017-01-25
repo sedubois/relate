@@ -8,7 +8,7 @@ const { SESSION_SECRET } = require('./config');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-// TODO store more persistently
+// TODO store more persistently (this only survives while deployment is on same machine)
 const store = new FileStore({ path: '/tmp/sessions' });
 
 function customRoute(pathname) {
