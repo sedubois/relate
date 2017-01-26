@@ -1,11 +1,11 @@
-import { filter } from 'graphql-anywhere';
+import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
 import graphql from '../util/graphql';
 import NotFound from '../components/NotFound';
 import TrackList from '../components/TrackList';
 import UserHeader from '../components/UserHeader';
 
-function Profile({ data: { User } }) { // eslint-disable-line react/prop-types
+function Profile({ data: { User } }) {
   if (!User) {
     return <NotFound />;
   }
@@ -35,12 +35,9 @@ const query = gql`
   ${TrackList.fragments.track}
 `;
 
-// This still yields Warning (can be ignored but annoying, so commenting out for now):
-// "Failed prop type: The inline argument "slug" is expected as a variable but was not provided."
-// https://github.com/apollostack/graphql-anywhere/issues/24
-// Profile.propTypes = {
-//   data: propType(query).isRequired,
-// };
+Profile.propTypes = {
+  data: propType(query).isRequired,
+};
 
 export default graphql(query, {
   options({ url: { query: { slug } } }) {
