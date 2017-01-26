@@ -1,8 +1,8 @@
 import { Component, PropTypes } from 'react';
+import { loadGetInitialProps } from 'next/dist/lib/utils';
 import { configureAnalytics, pageView } from '../util/analytics';
 import configureProgressBar from '../util/routing';
 import configureSmooch from '../util/smooch';
-import getProps from '../util/initialProps';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HtmlHead from '../components/HtmlHead';
@@ -23,7 +23,7 @@ const page = ComposedComponent => class Page extends Component {
   };
 
   static async getInitialProps(ctx) {
-    return getProps(ComposedComponent, ctx);
+    return loadGetInitialProps(ComposedComponent, ctx);
   }
 
   componentWillMount() {

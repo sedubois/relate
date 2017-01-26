@@ -1,9 +1,9 @@
 import { Component, PropTypes } from 'react';
 import { ApolloProvider, getDataFromTree } from 'react-apollo';
+import { loadGetInitialProps } from 'next/dist/lib/utils';
 import 'isomorphic-fetch';
 import getClientAndStore from '../data/clientAndStore';
 import { getToken, storeTokenLocally } from '../util/auth';
-import getProps from '../util/initialProps';
 
 export default ComposedComponent => (
   class WithData extends Component {
@@ -31,7 +31,7 @@ export default ComposedComponent => (
         serverRendered: !process.browser,
         url: { query: ctx.query, pathname: ctx.pathname },
         userToken,
-        ...await getProps(ComposedComponent, ctx),
+        ...await loadGetInitialProps(ComposedComponent, ctx),
       };
 
       if (!process.browser) {
