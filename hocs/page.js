@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import HtmlHead from '../components/HtmlHead';
 import withData from './withData';
 import withIntl from './withIntl';
+import withToken from './withToken';
 
 configureAnalytics();
 configureProgressBar();
@@ -65,4 +66,4 @@ const page = ComposedComponent => class Page extends Component {
   }
 };
 
-export default ComposedComponent => withData(withIntl(page(ComposedComponent)));
+export default ComposedComponent => withData(withToken(withIntl(page(ComposedComponent))));

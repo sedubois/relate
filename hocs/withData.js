@@ -3,7 +3,6 @@ import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import 'isomorphic-fetch';
 import getClientAndStore from '../data/clientAndStore';
-import { getToken, storeTokenLocally } from '../util/auth';
 
 export default ComposedComponent => (
   class WithData extends Component {
@@ -14,7 +13,6 @@ export default ComposedComponent => (
       initialState: PropTypes.object.isRequired,
       headers: PropTypes.object.isRequired,
       userToken: PropTypes.string,
-      serverRendered: PropTypes.bool.isRequired,
     };
 
     static defaultProps = {
@@ -22,16 +20,13 @@ export default ComposedComponent => (
     };
 
     static async getInitialProps(ctx) {
+      const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const headers = ctx.req ? ctx.req.headers : {};
-      const userToken = await getToken(ctx);
-      const { apolloClient, reduxStore } = getClientAndStore({}, headers, userToken);
+      const { apolloClient, reduxStore } = getClientAndStore({}, headers, subProps.userToken);
 
       const props = {
-        loggedIn: Boolean(userToken),
-        serverRendered: !process.browser,
         url: { query: ctx.query, pathname: ctx.pathname },
-        userToken,
-        ...await loadGetInitialProps(ComposedComponent, ctx),
+        ...subProps,
       };
 
       if (!process.browser) {
@@ -61,12 +56,6 @@ export default ComposedComponent => (
         this.props.initialState, this.props.headers, this.props.userToken);
       this.apolloClient = clientAndStore.apolloClient;
       this.reduxStore = clientAndStore.reduxStore;
-    }
-
-    componentDidMount() {
-      if (this.props.serverRendered) {
-        storeTokenLocally(this.props.userToken);
-      }
     }
 
     render() {
