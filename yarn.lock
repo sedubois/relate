@@ -2167,11 +2167,7 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-graphql-anywhere@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-2.0.0.tgz#c20d6e6a901d40fa346d9f2b7845266fc59428bd"
-
-graphql-anywhere@^2.1.0:
+graphql-anywhere@^2.0.0, graphql-anywhere@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-2.1.0.tgz#888c0a1718db3ff866b313070747777380560f69"
 
@@ -2810,8 +2806,8 @@ load-script@^1.0.0:
   resolved "https://registry.yarnpkg.com/load-script/-/load-script-1.0.0.tgz#0491939e0bee5643ee494a7e3da3d2bac70c6ca4"
 
 loader-runner@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.2.0.tgz#824c1b699c4e7a2b6501b85902d5b862bf45b3fa"
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.3.0.tgz#f482aea82d543e07921700d5a46ef26fdac6b8a2"
 
 loader-utils@0.2.16, loader-utils@^0.2.11, loader-utils@^0.2.16:
   version "0.2.16"
@@ -3139,8 +3135,8 @@ nested-error-stacks@^1.0.0:
     inherits "~2.0.1"
 
 next@^2.0.0-beta:
-  version "2.0.0-beta.18"
-  resolved "https://registry.yarnpkg.com/next/-/next-2.0.0-beta.18.tgz#8ab5076f032b0ddbe13bddaa510d8332bec3ce7b"
+  version "2.0.0-beta.19"
+  resolved "https://registry.yarnpkg.com/next/-/next-2.0.0-beta.19.tgz#740ff5322f7bed8f57f1dba6c64d623296e9c350"
   dependencies:
     accepts "1.3.3"
     ansi-html "0.0.7"
@@ -3177,7 +3173,7 @@ next@^2.0.0-beta:
     send "0.14.1"
     source-map-support "0.4.10"
     strip-ansi "3.0.1"
-    styled-jsx "0.5.0"
+    styled-jsx "0.5.1"
     url "0.11.0"
     uuid "3.0.1"
     webpack "2.2.0-rc.6"
@@ -3638,11 +3634,11 @@ public-encrypt@^4.0.0:
     parse-asn1 "^5.0.0"
     randombytes "^2.0.1"
 
-punycode@1.3.2, punycode@^1.2.4:
+punycode@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
 
-punycode@^1.4.1:
+punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
@@ -4468,9 +4464,9 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-styled-jsx@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-0.5.0.tgz#e9d59c4dc38ae491335426ea4f6f656b27489575"
+styled-jsx@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-0.5.1.tgz#40bc6a77334d66c4483bcfc8b7de274e5e57bbce"
   dependencies:
     babel-plugin-syntax-jsx "^6.18.0"
     babel-traverse "^6.21.0"
