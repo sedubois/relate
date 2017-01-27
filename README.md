@@ -31,6 +31,7 @@
   <li><a href="https://zeit.co/now">Now</a> deployment</li>
   <li><a href="https://auth0.com/">Auth0</a> user authentication</li>
   <li><a href="https://github.com/react-ga/react-ga">React-ga</a> for <a href="https://www.google.com/analytics/">Google Analytics</a></li>
+  <li><a href="https://github.com/yahoo/react-intl">React-Intl</a> for internationalization</li>
   <li><a href="https://smooch.io/">Smooch</a> customer support</li>
 </ul>
 
