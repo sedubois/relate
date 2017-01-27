@@ -24,6 +24,7 @@
     "nprogress": "^0.2.0",
     "react-apollo": "^0.8.3",
     "react-ga": "^2.1.2",
+    "react-intl": "^2.2.3",
     "react-player": "^0.14.1",
     "session-file-store": "^1.0.0",
     "smooch": "^3.9.7",

@@ -16,13 +16,13 @@ const Header = ({ url, loggedIn }) => (
         min-height: 3.3em;
       }
     `}</style>
-    <HeaderElem url={url} href="/">Relate</HeaderElem>
-    <HeaderElem url={url} href="/discover">Discover</HeaderElem>
-    <HeaderElem url={url} href="/about">About</HeaderElem>
+    <HeaderElem url={url} href="/" intlKey="Header.appName" />
+    <HeaderElem url={url} href="/discover" intlKey="Header.about" />
+    <HeaderElem url={url} href="/about" intlKey="Header.discover" />
     {showAuth(url) && <ViewerHeader url={url} />}
     {showAuth(url) && (loggedIn
-        ? <HeaderElem url={url} href="/auth/logout">Logout</HeaderElem>
-        : <HeaderElem url={url} href="/auth/login">Login</HeaderElem>)}
+        ? <HeaderElem url={url} href="/auth/logout" intlKey="Header.logout" />
+        : <HeaderElem url={url} href="/auth/login" intlKey="Header.login" />)}
   </header>
 );
 
