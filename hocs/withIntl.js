@@ -1,15 +1,10 @@
 import { Component, PropTypes } from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
-import enLocaleData from 'react-intl/locale-data/en';
 import { connect } from 'react-redux';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
-import en from '../config/en';
+import locales from '../data/intl/locales';
 
-addLocaleData([...enLocaleData]);
-
-const intlMessages = {
-  en,
-};
+Object.keys(locales).map(locale => addLocaleData([...locales[locale].data]));
 
 function mapStateToProps({ intl: { locale } }) {
   return {
@@ -29,7 +24,7 @@ export default (ComposedComponent) => {
 
     render() {
       return (
-        <IntlProvider locale={this.props.locale} messages={intlMessages[this.props.locale]}>
+        <IntlProvider locale={this.props.locale} messages={locales[this.props.locale].messages}>
           <ComposedComponent {...this.props} />
         </IntlProvider>
       );

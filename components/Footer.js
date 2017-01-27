@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { setLocale as setLocaleAction } from '../data/intl/actions';
-import ALL_LOCALES from '../data/intl/constants';
+import locales from '../data/intl/locales';
 
 const Footer = ({ setLocale }) => (
   <footer>
@@ -21,7 +21,7 @@ const Footer = ({ setLocale }) => (
     </section>
     <section>
       <select onChange={event => setLocale(event.target.value)}>
-        {ALL_LOCALES.map(locale => <option value={locale}>{locale}</option>)}
+        {Object.keys(locales).map(locale => <option key={locale} value={locale}>{locale}</option>)}
       </select>
     </section>
     <section>
