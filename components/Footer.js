@@ -1,4 +1,9 @@
-const Footer = () => (
+import { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { setLocale as setLocaleAction } from '../data/intl/actions';
+import ALL_LOCALES from '../data/intl/constants';
+
+const Footer = ({ setLocale }) => (
   <footer>
     <style jsx>{`
       footer {
@@ -15,10 +20,25 @@ const Footer = () => (
       <a href="https://relate-slack.now.sh" target="_blank" rel="noopener noreferrer">Slack</a> &nbsp;
     </section>
     <section>
+      <select onChange={event => setLocale(event.target.value)}>
+        {ALL_LOCALES.map(locale => <option value={locale}>{locale}</option>)}
+      </select>
+    </section>
+    <section>
       Made with ღ by&nbsp;
       <a href="https://sdubois.now.sh" target="_blank" rel="noopener noreferrer">Sébastien Dubois</a>
     </section>
   </footer>
 );
 
-export default Footer;
+Footer.propTypes = {
+  setLocale: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  setLocale(locale) {
+    dispatch(setLocaleAction(locale));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(Footer);
