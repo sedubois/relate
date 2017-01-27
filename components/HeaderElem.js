@@ -8,12 +8,13 @@ Div.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const HeaderElem = ({ url, href, as, intlKey }) => {
+const HeaderElem = ({ url, href, as, intlKey, children }) => {
   const Wrapper = href ? Link : Div;
   return (
     <Wrapper href={href} as={as}>
       <a className={`headerElem ${isActive(url, href) && 'active'}`}>
-        <FormattedMessage id={intlKey} />
+        {intlKey && <FormattedMessage id={intlKey} />}
+        {children && children}
         <style jsx>{`
           .headerElem {
             background-color: #FFFBF5;
@@ -39,7 +40,8 @@ const HeaderElem = ({ url, href, as, intlKey }) => {
 };
 
 HeaderElem.propTypes = {
-  intlKey: PropTypes.string.isRequired,
+  children: PropTypes.node, // eslint-disable-line react/require-default-props
+  intlKey: PropTypes.string, // eslint-disable-line react/require-default-props
   href: PropTypes.string, // eslint-disable-line react/require-default-props
   as: PropTypes.string, // eslint-disable-line react/require-default-props
   url: PropTypes.object, // eslint-disable-line react/require-default-props
