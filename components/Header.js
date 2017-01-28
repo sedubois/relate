@@ -17,8 +17,8 @@ const Header = ({ url, loggedIn }) => (
       }
     `}</style>
     <HeaderElem url={url} href="/" intlKey="Header.appName" />
-    <HeaderElem url={url} href="/discover" intlKey="Header.about" />
-    <HeaderElem url={url} href="/about" intlKey="Header.discover" />
+    <HeaderElem url={url} href="/discover" intlKey="Header.discover" />
+    <HeaderElem url={url} href="/about" intlKey="Header.about" />
     {showAuth(url) && <ViewerHeader url={url} />}
     {showAuth(url) && (loggedIn
         ? <HeaderElem url={url} href="/auth/logout" intlKey="Header.logout" />
