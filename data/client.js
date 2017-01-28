@@ -1,6 +1,8 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { GRAPHQL_ENDPOINT } from '../config';
 
+let apolloClient = null;
+
 function createClient(headers, token) {
   const networkInterface = createNetworkInterface({ uri: GRAPHQL_ENDPOINT });
 
@@ -26,12 +28,12 @@ function createClient(headers, token) {
 
 export default function getClient(headers, userToken) {
   let client;
-  if (!process.browser || !window.apolloClient) {
+  if (!process.browser || !apolloClient) {
     client = createClient(headers, userToken);
     if (!process.browser) {
       return client;
     }
-    window.apolloClient = client;
+    apolloClient = client;
   }
-  return window.apolloClient;
+  return apolloClient;
 }
