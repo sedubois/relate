@@ -2,7 +2,7 @@ import { Component, PropTypes } from 'react';
 import gql from 'graphql-tag';
 import { compose, graphql } from 'react-apollo';
 import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
-import { popSecret, storeToken } from '../../util/auth';
+import { checkSecret } from '../../util/authSecret';
 import pageWithData from '../../hocs/page';
 
 function onAuthenticated(lock) {
@@ -13,12 +13,6 @@ function getProfile(lock, authToken) {
   return new Promise((resolve, reject) => {
     lock.getProfile(authToken, (error, profile) => (error ? reject(error) : resolve(profile)));
   });
-}
-
-function checkSecret(actual) {
-  if (actual !== popSecret()) {
-    throw new Error('Unexpected auth secret');
-  }
 }
 
 const loginCallback = async () => {
@@ -49,13 +43,14 @@ class LoginCallback extends Component {
   static propTypes = {
     createUser: PropTypes.func.isRequired,
     signInUser: PropTypes.func.isRequired,
+    updateSession: PropTypes.func.isRequired,
   };
 
   async componentDidMount() {
     const { lock, authToken, nextPathname } = await loginCallback();
     const profile = await getProfile(lock, authToken);
-    const userToken = await this.createUserIfNeededAndSignIn(authToken, profile);
-    await storeToken(userToken);
+    const token = await this.createUserIfNeededAndSignIn(authToken, profile);
+    await this.props.updateSession({ token });
     window.location.replace(nextPathname);
   }
 

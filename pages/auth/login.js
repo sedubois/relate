@@ -2,7 +2,7 @@ import { Component, PropTypes } from 'react';
 import uuid from 'uuid';
 import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
 import BASE_URL from '../../util/baseUrl';
-import { storeSecret, removeSecret } from '../../util/auth';
+import { storeSecret, removeSecret } from '../../util/authSecret';
 import pageWithData from '../../hocs/page';
 
 const LOCK_CONTAINER_ID = 'lock-container';
@@ -35,7 +35,9 @@ function createAndShow(nextPathname) {
 class Login extends Component {
   static propTypes = {
     url: PropTypes.object.isRequired,
-    loggedIn: PropTypes.bool.isRequired,
+    session: PropTypes.shape({
+      loggedIn: PropTypes.bool.isRequired,
+    }).isRequired,
   };
 
   async componentDidMount() {

@@ -30,16 +30,16 @@ app.prepare().then(() => {
   }));
 
   server.get('/api/auth/login/:token', (req, res) => {
-    req.session.userToken = req.params.token; // eslint-disable-line no-param-reassign
+    req.session.user = { token: req.params.token }; // eslint-disable-line no-param-reassign
     res.json({});
   });
 
   server.get('/api/auth/logout', (req, res) => {
-    delete req.session.userToken; // eslint-disable-line no-param-reassign
+    delete req.session.user; // eslint-disable-line no-param-reassign
     return res.json({});
   });
 
-  server.get('/api/auth', (req, res) => res.json({ userToken: req.session.userToken }));
+  server.get('/api/auth', (req, res) => res.json({ user: req.session.user }));
 
   // Matcher for all pathnames that should be handled as-is by next (no need for dynamic routing).
   // /_.* represents all pathnames starting with underscore, e.g /__webpack_hmr, etc.

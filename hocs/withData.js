@@ -12,17 +12,15 @@ export default ComposedComponent => (
       }).isRequired,
       initialState: PropTypes.object.isRequired,
       headers: PropTypes.object.isRequired,
-      userToken: PropTypes.string,
-    };
-
-    static defaultProps = {
-      userToken: null,
+      session: PropTypes.shape({
+        token: PropTypes.string,
+      }).isRequired,
     };
 
     static async getInitialProps(ctx) {
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const headers = ctx.req ? ctx.req.headers : {};
-      const { apolloClient, reduxStore } = getClientAndStore({}, headers, subProps.userToken);
+      const { apolloClient, reduxStore } = getClientAndStore({}, headers, subProps.session.token);
 
       const props = {
         url: { query: ctx.query, pathname: ctx.pathname },
@@ -53,7 +51,7 @@ export default ComposedComponent => (
     constructor(props) {
       super(props);
       const clientAndStore = getClientAndStore(
-        this.props.initialState, this.props.headers, this.props.userToken);
+        this.props.initialState, this.props.headers, this.props.session.token);
       this.apolloClient = clientAndStore.apolloClient;
       this.reduxStore = clientAndStore.reduxStore;
     }

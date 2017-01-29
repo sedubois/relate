@@ -1,16 +1,24 @@
 import { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Router from 'next/router';
 import pageWithData from '../../hocs/page';
-import { clearToken } from '../../util/auth';
+import { logout } from '../../data/session/actions';
+
+const mapDispatchToProps = dispatch => ({
+  logout: async () => dispatch(await logout()),
+});
 
 class Logout extends Component {
   static propTypes = {
-    loggedIn: PropTypes.bool.isRequired,
+    session: PropTypes.shape({
+      loggedIn: PropTypes.bool.isRequired,
+    }).isRequired,
+    logout: PropTypes.func.isRequired,
   };
 
   async componentDidMount() {
-    if (this.props.loggedIn) {
-      await clearToken();
+    if (this.props.session.loggedIn) {
+      await this.props.logout();
       window.location.replace('/');
     } else {
       Router.push('/');
@@ -18,11 +26,11 @@ class Logout extends Component {
   }
 
   render() {
-    if (this.props.loggedIn) {
+    if (this.props.session.loggedIn) {
       return <div>Logging out...</div>;
     }
     return <div>Already logged out, redirecting home...</div>;
   }
 }
 
-export default pageWithData(Logout);
+export default pageWithData(connect(null, mapDispatchToProps)(Logout));

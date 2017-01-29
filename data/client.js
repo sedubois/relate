@@ -29,6 +29,9 @@ function createClient(headers, token) {
 export default function getClient(headers, userToken) {
   let client;
   if (!process.browser || !apolloClient) {
+    // TODO create client only once per server request instead of twice as now
+    // (because of double-render, because of getDataFromTree call + normal render)
+    // TODO 2: remember Apollo client server-side by binding to client session?
     client = createClient(headers, userToken);
     if (!process.browser) {
       return client;

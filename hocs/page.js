@@ -5,14 +5,14 @@ import withAnalytics from './withAnalytics';
 import withData from './withData';
 import withIntl from './withIntl';
 import withLayout from './withLayout';
-import withToken from './withToken';
+import withSession from './withSession';
 
 configureProgressBar();
 configureSmooch();
 
 export default compose(
   withData,
-  withToken,
+  withSession,
   withIntl,
   withAnalytics,
   withLayout,
