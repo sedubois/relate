@@ -13,16 +13,16 @@
     "deploy": "eslint . && now && now alias"
   },
   "dependencies": {
-    "apollo-client": "^0.8.0",
+    "apollo-client": "^0.8.1",
     "auth0-lock": "^10.10.2",
     "body-parser": "^1.16.0",
-    "express": "^4.14.0",
+    "express": "^4.14.1",
     "express-session": "^1.15.0",
     "graphql-anywhere": "^2.1.0",
     "graphql-tag": "^1.2.3",
     "next": "^2.0.0-beta",
     "nprogress": "^0.2.0",
-    "react-apollo": "^0.8.3",
+    "react-apollo": "^0.9.0",
     "react-ga": "^2.1.2",
     "react-intl": "^2.2.3",
     "react-player": "^0.14.1",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
-    "eslint": "^3.14.0",
+    "eslint": "^3.14.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^3.0.2",

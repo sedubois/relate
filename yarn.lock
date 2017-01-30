@@ -99,11 +99,11 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
-apollo-client@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-0.8.0.tgz#1bc0164bca0caf22d940e88984b20a82802c7323"
+apollo-client@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-0.8.1.tgz#a7032e88f75170b35db2ac3c3acfd2b4adbf9a2a"
   dependencies:
-    graphql-anywhere "^2.0.0"
+    graphql-anywhere "^2.1.0"
     graphql-tag "^1.1.1"
     redux "^3.4.0"
     symbol-observable "^1.0.2"
@@ -1162,9 +1162,9 @@ contains-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
 
-content-disposition@0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/content-disposition/-/content-disposition-0.5.1.tgz#87476c6a67c8daa87e32e87616df883ba7fb071b"
+content-disposition@0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/content-disposition/-/content-disposition-0.5.2.tgz#0cf68bb9ddf5f2be7961c3a85178cb85dba78cb4"
 
 content-type@~1.0.2:
   version "1.0.2"
@@ -1636,9 +1636,9 @@ eslint-plugin-react@^6.4.1:
     doctrine "^1.2.2"
     jsx-ast-utils "^1.3.4"
 
-eslint@^3.14.0:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.14.0.tgz#2c617e5f782fda5cbee5bc8be7ef5053af8e63a3"
+eslint@^3.14.1:
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.14.1.tgz#8a62175f2255109494747a1b25128d97b8eb3d97"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -1784,13 +1784,13 @@ express-session@^1.15.0:
     uid-safe "~2.1.3"
     utils-merge "1.0.0"
 
-express@^4.14.0:
-  version "4.14.0"
-  resolved "https://registry.yarnpkg.com/express/-/express-4.14.0.tgz#c1ee3f42cdc891fb3dc650a8922d51ec847d0d66"
+express@^4.14.1:
+  version "4.14.1"
+  resolved "https://registry.yarnpkg.com/express/-/express-4.14.1.tgz#646c237f766f148c2120aff073817b9e4d7e0d33"
   dependencies:
     accepts "~1.3.3"
     array-flatten "1.1.1"
-    content-disposition "0.5.1"
+    content-disposition "0.5.2"
     content-type "~1.0.2"
     cookie "0.3.1"
     cookie-signature "1.0.6"
@@ -1799,19 +1799,19 @@ express@^4.14.0:
     encodeurl "~1.0.1"
     escape-html "~1.0.3"
     etag "~1.7.0"
-    finalhandler "0.5.0"
+    finalhandler "0.5.1"
     fresh "0.3.0"
     merge-descriptors "1.0.1"
     methods "~1.1.2"
     on-finished "~2.3.0"
     parseurl "~1.3.1"
     path-to-regexp "0.1.7"
-    proxy-addr "~1.1.2"
+    proxy-addr "~1.1.3"
     qs "6.2.0"
     range-parser "~1.2.0"
-    send "0.14.1"
-    serve-static "~1.11.1"
-    type-is "~1.6.13"
+    send "0.14.2"
+    serve-static "~1.11.2"
+    type-is "~1.6.14"
     utils-merge "1.0.0"
     vary "~1.1.0"
 
@@ -1910,14 +1910,14 @@ fill-range@^2.1.0:
     repeat-element "^1.1.2"
     repeat-string "^1.5.2"
 
-finalhandler@0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-0.5.0.tgz#e9508abece9b6dba871a6942a1d7911b91911ac7"
+finalhandler@0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-0.5.1.tgz#2c400d8d4530935bc232549c5fa385ec07de6fcd"
   dependencies:
     debug "~2.2.0"
     escape-html "~1.0.3"
     on-finished "~2.3.0"
-    statuses "~1.3.0"
+    statuses "~1.3.1"
     unpipe "~1.0.0"
 
 find-babel-config@^1.0.1:
@@ -3135,8 +3135,8 @@ nested-error-stacks@^1.0.0:
     inherits "~2.0.1"
 
 next@^2.0.0-beta:
-  version "2.0.0-beta.19"
-  resolved "https://registry.yarnpkg.com/next/-/next-2.0.0-beta.19.tgz#740ff5322f7bed8f57f1dba6c64d623296e9c350"
+  version "2.0.0-beta.20"
+  resolved "https://registry.yarnpkg.com/next/-/next-2.0.0-beta.20.tgz#1c3d85895c35f409d36a60c9958b6bd6def62563"
   dependencies:
     accepts "1.3.3"
     ansi-html "0.0.7"
@@ -3173,7 +3173,7 @@ next@^2.0.0-beta:
     send "0.14.1"
     source-map-support "0.4.10"
     strip-ansi "3.0.1"
-    styled-jsx "0.5.1"
+    styled-jsx "0.5.2"
     url "0.11.0"
     uuid "3.0.1"
     webpack "2.2.0-rc.6"
@@ -3603,7 +3603,7 @@ promise@^7.0.3, promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-proxy-addr@~1.1.2:
+proxy-addr@~1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-1.1.3.tgz#dc97502f5722e888467b3fa2297a7b1ff47df074"
   dependencies:
@@ -3634,11 +3634,11 @@ public-encrypt@^4.0.0:
     parse-asn1 "^5.0.0"
     randombytes "^2.0.1"
 
-punycode@1.3.2:
+punycode@1.3.2, punycode@^1.2.4:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
 
-punycode@^1.2.4, punycode@^1.4.1:
+punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
@@ -3716,9 +3716,9 @@ react-addons-css-transition-group@15.1.0:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react-apollo@^0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-0.8.3.tgz#e799bdc913948bb487dfa90921b2ea8d08464816"
+react-apollo@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-0.9.0.tgz#a95d05ccf2f92b16a21fd41795e2876c9ea28d6e"
   dependencies:
     graphql-anywhere "^2.0.0"
     hoist-non-react-statics "^1.2.0"
@@ -4170,7 +4170,7 @@ sequin@:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/sequin/-/sequin-0.1.0.tgz#17c5566d9d555413aa12fc8bc96ed309c80e0aad"
 
-serve-static@~1.11.1:
+serve-static@~1.11.2:
   version "1.11.2"
   resolved "https://registry.yarnpkg.com/serve-static/-/serve-static-1.11.2.tgz#2cf9889bd4435a320cc36895c9aa57bd662e6ac7"
   dependencies:
@@ -4464,9 +4464,9 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-styled-jsx@0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-0.5.1.tgz#40bc6a77334d66c4483bcfc8b7de274e5e57bbce"
+styled-jsx@0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-0.5.2.tgz#59740216c3db371636f9beec02149f9da5ea02e5"
   dependencies:
     babel-plugin-syntax-jsx "^6.18.0"
     babel-traverse "^6.21.0"
@@ -4621,7 +4621,7 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-type-is@~1.6.13, type-is@~1.6.14:
+type-is@~1.6.14:
   version "1.6.14"
   resolved "https://registry.yarnpkg.com/type-is/-/type-is-1.6.14.tgz#e219639c17ded1ca0789092dd54a03826b817cb2"
   dependencies:
