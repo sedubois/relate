@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setLocale as setLocaleAction } from '../data/intl/actions';
 import locales from '../data/intl/locales';
 
-const Footer = ({ setLocale }) => (
+const Footer = ({ locale, setLocale }) => (
   <footer>
     <style jsx>{`
       footer {
@@ -20,8 +20,11 @@ const Footer = ({ setLocale }) => (
       <a href="https://relate-slack.now.sh" target="_blank" rel="noopener noreferrer">Slack</a> &nbsp;
     </section>
     <section>
-      <select onChange={event => setLocale(event.target.value)}>
-        {Object.keys(locales).map(locale => <option key={locale} value={locale}>{locale}</option>)}
+      <select
+        defaultValue={locale}
+        onChange={event => setLocale(event.target.value)}
+      >
+        {Object.keys(locales).map(l => <option key={l} value={l}>{l}</option>)}
       </select>
     </section>
     <section>
@@ -32,8 +35,11 @@ const Footer = ({ setLocale }) => (
 );
 
 Footer.propTypes = {
+  locale: PropTypes.string.isRequired,
   setLocale: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = ({ intl: { locale } }) => ({ locale });
 
 const mapDispatchToProps = dispatch => ({
   setLocale(locale) {
@@ -41,4 +47,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(Footer);
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);

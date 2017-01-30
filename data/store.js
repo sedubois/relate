@@ -4,11 +4,11 @@ import getReducer from './reducer';
 
 let reduxStore = null;
 
-export default function getStore(client, initialState) {
+export default function getStore(client, initialState, props) {
   let store;
   if (!process.browser || !reduxStore) {
     const middleware = createMiddleware(client.middleware());
-    store = createStore(getReducer(client), initialState, middleware);
+    store = createStore(getReducer(client, props), initialState, middleware);
     if (!process.browser) {
       return store;
     }

@@ -11,16 +11,21 @@ export default ComposedComponent => (
         pathname: PropTypes.string.isRequired,
       }).isRequired,
       initialState: PropTypes.object.isRequired,
-      headers: PropTypes.object.isRequired,
-      session: PropTypes.shape({
-        token: PropTypes.string,
+      clientAndStoreProps: PropTypes.shape({
+        authToken: PropTypes.string,
+        browserLocale: PropTypes.string, // not needed client-side (available in Redux store)
+        headers: PropTypes.object.isRequired,
       }).isRequired,
     };
 
     static async getInitialProps(ctx) {
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
-      const headers = ctx.req ? ctx.req.headers : {};
-      const { apolloClient, reduxStore } = getClientAndStore({}, headers, subProps.session.token);
+      const clientAndStoreProps = {
+        authToken: subProps.session.token,
+        browserLocale: ctx.req && ctx.req.language,
+        headers: ctx.req ? ctx.req.headers : {},
+      };
+      const { apolloClient, reduxStore } = getClientAndStore({}, clientAndStoreProps);
 
       const props = {
         url: { query: ctx.query, pathname: ctx.pathname },
@@ -43,15 +48,15 @@ export default ComposedComponent => (
             data: state.apollo.data,
           },
         },
-        headers,
+        clientAndStoreProps,
         ...props,
       };
     }
 
     constructor(props) {
       super(props);
-      const clientAndStore = getClientAndStore(
-        this.props.initialState, this.props.headers, this.props.session.token);
+      const clientAndStore = getClientAndStore(this.props.initialState,
+        this.props.clientAndStoreProps);
       this.apolloClient = clientAndStore.apolloClient;
       this.reduxStore = clientAndStore.reduxStore;
     }

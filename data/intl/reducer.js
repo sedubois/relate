@@ -1,10 +1,6 @@
 import { SET_LOCALE } from './actions';
 
-const initialState = {
-  locale: 'en',
-};
-
-export default (state = initialState, action) => {
+export default browserLocale => (state = { locale: browserLocale }, action) => {
   switch (action.type) {
     case SET_LOCALE:
       return { locale: action.locale };

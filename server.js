@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const requestLanguage = require('express-request-language');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const next = require('next');
@@ -28,6 +29,7 @@ app.prepare().then(() => {
     saveUninitialized: true,
     httpOnly: true,
   }));
+  server.use(requestLanguage({ languages: ['en', 'fr'] }));
 
   server.get('/api/auth/login/:token', (req, res) => {
     req.session.user = { token: req.params.token }; // eslint-disable-line no-param-reassign

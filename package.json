@@ -17,6 +17,7 @@
     "auth0-lock": "^10.10.2",
     "body-parser": "^1.16.0",
     "express": "^4.14.1",
+    "express-request-language": "^1.1.9",
     "express-session": "^1.15.0",
     "graphql-anywhere": "^2.1.0",
     "graphql-tag": "^1.2.3",
