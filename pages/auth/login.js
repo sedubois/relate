@@ -35,13 +35,13 @@ function createAndShow(nextPathname) {
 class Login extends Component {
   static propTypes = {
     url: PropTypes.object.isRequired,
-    session: PropTypes.shape({
+    auth: PropTypes.shape({
       loggedIn: PropTypes.bool.isRequired,
     }).isRequired,
   };
 
   async componentDidMount() {
-    if (this.props.loggedIn) {
+    if (this.props.auth.loggedIn) {
       this.props.url.replace('/');
     } else {
       createAndShow('/');
