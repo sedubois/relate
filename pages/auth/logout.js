@@ -2,7 +2,7 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
 import page from '../../hocs/page';
-import { logout } from '../../data/session/actions';
+import { logout } from '../../data/auth/actions';
 
 const mapDispatchToProps = dispatch => ({
   logout: async () => dispatch(await logout()),
@@ -10,14 +10,14 @@ const mapDispatchToProps = dispatch => ({
 
 class Logout extends Component {
   static propTypes = {
-    session: PropTypes.shape({
+    auth: PropTypes.shape({
       loggedIn: PropTypes.bool.isRequired,
     }).isRequired,
     logout: PropTypes.func.isRequired,
   };
 
   async componentDidMount() {
-    if (this.props.session.loggedIn) {
+    if (this.props.auth.loggedIn) {
       await this.props.logout();
       window.location.replace('/');
     } else {
@@ -26,7 +26,7 @@ class Logout extends Component {
   }
 
   render() {
-    if (this.props.session.loggedIn) {
+    if (this.props.auth.loggedIn) {
       return <div>Logging out...</div>;
     }
     return <div>Already logged out, redirecting home...</div>;

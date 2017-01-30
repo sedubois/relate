@@ -21,9 +21,12 @@ export default ComposedComponent => (
     static async getInitialProps(ctx) {
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const clientAndStoreProps = {
-        authToken: subProps.session.token,
-        browserLocale: ctx.req && ctx.req.language,
+        authToken: subProps.auth.token,
         headers: ctx.req ? ctx.req.headers : {},
+        locale: ctx.req && (
+          (ctx.req.session.user && ctx.req.session.user.locale)
+          || ctx.req.language
+        ),
       };
       const { apolloClient, reduxStore } = getClientAndStore({}, clientAndStoreProps);
 

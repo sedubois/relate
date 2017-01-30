@@ -11,7 +11,7 @@ export default ComposedComponent => class WithLayout extends Component {
     url: PropTypes.shape({
       pathname: PropTypes.string.isRequired,
     }).isRequired,
-    session: PropTypes.shape({
+    auth: PropTypes.shape({
       loggedIn: PropTypes.bool.isRequired,
     }).isRequired,
   };
@@ -46,7 +46,7 @@ export default ComposedComponent => class WithLayout extends Component {
         }
       `}</style>
         <HtmlHead />
-        <Header url={this.props.url} loggedIn={this.props.session.loggedIn} />
+        <Header url={this.props.url} loggedIn={this.props.auth.loggedIn} />
         <ComposedComponent {...this.props} />
         <Footer />
       </div>

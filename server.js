@@ -41,6 +41,14 @@ app.prepare().then(() => {
     return res.json({});
   });
 
+  server.patch('/api/session', (req, res) => {
+    if (!req.session.user) {
+      req.session.user = {}; // eslint-disable-line no-param-reassign
+    }
+    Object.assign(req.session.user, req.body); // eslint-disable-line no-param-reassign
+    res.json({});
+  });
+
   server.get('/api/auth', (req, res) => res.json({ user: req.session.user }));
 
   // Matcher for all pathnames that should be handled as-is by next (no need for dynamic routing).

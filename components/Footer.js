@@ -42,9 +42,7 @@ Footer.propTypes = {
 const mapStateToProps = ({ intl: { locale } }) => ({ locale });
 
 const mapDispatchToProps = dispatch => ({
-  setLocale(locale) {
-    dispatch(setLocaleAction(locale));
-  },
+  setLocale: async locale => dispatch(await setLocaleAction(locale)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Footer);

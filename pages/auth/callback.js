@@ -43,14 +43,14 @@ class LoginCallback extends Component {
   static propTypes = {
     createUser: PropTypes.func.isRequired,
     signInUser: PropTypes.func.isRequired,
-    updateSession: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
   };
 
   async componentDidMount() {
     const { lock, authToken, nextPathname } = await loginCallback();
     const profile = await getProfile(lock, authToken);
     const token = await this.createUserIfNeededAndSignIn(authToken, profile);
-    await this.props.updateSession({ token });
+    await this.props.login(token);
     window.location.replace(nextPathname);
   }
 

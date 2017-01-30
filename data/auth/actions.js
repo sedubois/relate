@@ -1,16 +1,19 @@
 import execXhr from '../../util/xhr';
 
-export const UPDATE_SESSION = 'UPDATE_SESSION';
-export const LOGOUT = 'LOGOUT';
+export const LOGIN = 'SESSION/LOGIN';
+export const LOGOUT = 'SESSION/LOGOUT';
 
-export async function updateSession(sessionInfo) {
+export async function login(token) {
   // update server-side
-  await execXhr({ url: `/api/auth/login/${sessionInfo.token}` });
+  await execXhr({
+    url: '/api/session',
+    payload: { token },
+  });
 
   // update client-side
   return {
-    type: UPDATE_SESSION,
-    sessionInfo,
+    type: LOGIN,
+    token,
   };
 }
 

@@ -1,38 +1,36 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
-import { updateSession } from '../data/session/actions';
+import { login } from '../data/auth/actions';
 
-let session = { loggedIn: false };
+let auth = { loggedIn: false };
 
 const mapDispatchToProps = dispatch => ({
-  updateSession: async (patch) => {
-    dispatch(await updateSession(patch));
-  },
+  login: async token => dispatch(await login(token)),
 });
 
 export default (ComposedComponent) => {
-  class WithSession extends Component {
+  class WithAuth extends Component {
     static propTypes = {
       serverRendered: PropTypes.bool.isRequired,
-      session: PropTypes.object.isRequired,
+      auth: PropTypes.object.isRequired,
     };
 
     static async getInitialProps(ctx) {
       if (!process.browser) {
-        session = (ctx.req.session && ctx.req.session.user) || {};
-        session.loggedIn = Boolean(session.token);
+        auth = (ctx.req.session && ctx.req.session.user) || {};
+        auth.loggedIn = Boolean(auth.token);
       }
       return {
         serverRendered: !process.browser,
-        session,
+        auth,
         ...await loadGetInitialProps(ComposedComponent, ctx),
       };
     }
 
     componentDidMount() {
       if (this.props.serverRendered) {
-        session = this.props.session;
+        auth = this.props.auth;
       }
     }
 
@@ -41,5 +39,5 @@ export default (ComposedComponent) => {
     }
   }
 
-  return connect(null, mapDispatchToProps)(WithSession);
+  return connect(null, mapDispatchToProps)(WithAuth);
 };
