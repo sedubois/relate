@@ -5,10 +5,7 @@ export const LOGOUT = 'SESSION/LOGOUT';
 
 export async function login(token) {
   // update server-side
-  await execXhr({
-    url: '/api/session',
-    payload: { token },
-  });
+  await execXhr({ url: `/api/auth/login/${token}` });
 
   // update client-side
   return {
