@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import GitHubRibbon from '../components/GitHubRibbon';
 import SubscribeNewsletter from '../components/SubscribeNewsletter';
 import page from '../hocs/page';
@@ -9,14 +10,18 @@ export default page(() => (
       <div className="heroContent heroImage" />
       <div className="heroContent heroText">
         <p>
-          Transforming lives through<br />
-          <span>meditation</span> and<br />
-          <span>mutual support</span>
+          <FormattedMessage
+            id="Homepage.hero"
+            values={{
+              meditation: <span><FormattedMessage id="Homepage.hero.meditation" /></span>,
+              support: <span><FormattedMessage id="Homepage.hero.support" /></span>,
+            }}
+          />
         </p>
       </div>
     </section>
     <section className="sectionHead">
-      <span>Relate</span> brings together mindfulness communities, teachers and individuals
+      <span>Relate</span> <FormattedMessage id="Homepage.togetherTagline" />
     </section>
     <section className="sectionHead">
       <a
@@ -24,11 +29,11 @@ export default page(() => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        Read the article on Medium
+        <FormattedMessage id="Homepage.readMore" />
       </a>
     </section>
     <section className="sectionHead">
-      Subscribe to the newsletter
+      <FormattedMessage id="Homepage.subscribeNewsletter" />
       <SubscribeNewsletter />
     </section>
     <style jsx>{`

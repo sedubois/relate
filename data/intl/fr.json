@@ -1,7 +1,17 @@
 {
+  "About.text": "Prochainement !",
+  "AuthCallback.welcomeBack": "Bienvenue, un moment s'il vous plaît...",
+  "DataLoading.text": "Chargement...",
+  "Footer.madeBy": "Crée avec ღ par",
   "Header.about": "À propos",
   "Header.appName": "Relate",
   "Header.discover": "Découvrir",
   "Header.login": "Connection",
-  "Header.logout": "Déconnection"
+  "Header.logout": "Déconnection",
+  "Homepage.hero": "La {meditation} et le {support} transforment les vies",
+  "Homepage.hero.meditation": "méditation",
+  "Homepage.hero.support": "support mutuel",
+  "Homepage.togetherTagline": "rassemble les communautés de pleine-conscience",
+  "Homepage.readMore": "Lisez-en davantage sur Medium",
+  "Homepage.subscribeNewsletter": "Inscrivez-vous à la newsletter"
 }

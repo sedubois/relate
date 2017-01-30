@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react';
+import { FormattedMessage } from 'react-intl';
 import gql from 'graphql-tag';
 import { compose, graphql } from 'react-apollo';
 import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
@@ -86,7 +87,7 @@ class LoginCallback extends Component {
   }
 
   render() {
-    return <span>Welcome back, one moment please...</span>;
+    return <span><FormattedMessage id="AuthCallback.welcomeBack" /></span>;
   }
 }
 

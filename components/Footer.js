@@ -1,4 +1,5 @@
 import { PropTypes } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { setLocale as setLocaleAction } from '../data/intl/actions';
 import locales from '../data/intl/locales';
@@ -28,7 +29,7 @@ const Footer = ({ locale, setLocale }) => (
       </select>
     </section>
     <section>
-      Made with ღ by&nbsp;
+      <FormattedMessage id="Footer.madeBy" />&nbsp;
       <a href="https://sdubois.now.sh" target="_blank" rel="noopener noreferrer">Sébastien Dubois</a>
     </section>
   </footer>

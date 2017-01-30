@@ -1,7 +1,17 @@
 {
+  "About.text": "Coming soon!",
+  "AuthCallback.welcomeBack": "Welcome back, one moment please...",
+  "DataLoading.text": "Loading...",
+  "Footer.madeBy": "Made with ღ by",
   "Header.about": "About",
   "Header.appName": "Relate",
   "Header.discover": "Discover",
   "Header.login": "Login",
-  "Header.logout": "Logout"
+  "Header.logout": "Logout",
+  "Homepage.hero": "Transforming lives through {meditation} and {support}",
+  "Homepage.hero.meditation": "meditation",
+  "Homepage.hero.support": "mutual support",
+  "Homepage.togetherTagline": "brings mindfulness communities together",
+  "Homepage.readMore": "Read more on Medium",
+  "Homepage.subscribeNewsletter": "Subscribe to the newsletter"
 }
