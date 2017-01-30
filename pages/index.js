@@ -1,8 +1,8 @@
 import GitHubRibbon from '../components/GitHubRibbon';
 import SubscribeNewsletter from '../components/SubscribeNewsletter';
-import pageWithData from '../hocs/page';
+import page from '../hocs/page';
 
-export default pageWithData(() => (
+export default page(() => (
   <div className="homePage">
     <GitHubRibbon />
     <section className="hero">

@@ -1,4 +1,4 @@
-import pageWithData from '../hocs/page';
+import page from '../hocs/page';
 import TrackPlayer from '../containers/TrackPlayer';
 
-export default pageWithData(TrackPlayer);
+export default page(TrackPlayer);

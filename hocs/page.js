@@ -10,10 +10,14 @@ import withSession from './withSession';
 configureProgressBar();
 configureSmooch();
 
-export default compose(
+export const pageWithoutLayout = compose(
   withData,
   withSession,
   withIntl,
   withAnalytics,
+);
+
+export default compose(
+  pageWithoutLayout,
   withLayout,
 );

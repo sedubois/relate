@@ -1,4 +1,4 @@
-import pageWithData from '../hocs/page';
+import page from '../hocs/page';
 import Users from '../containers/Users';
 
-export default pageWithData(Users);
+export default page(Users);

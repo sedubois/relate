@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { compose, graphql } from 'react-apollo';
 import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
 import { checkSecret } from '../../util/authSecret';
-import pageWithData from '../../hocs/page';
+import { pageWithoutLayout } from '../../hocs/page';
 
 function onAuthenticated(lock) {
   return new Promise(resolve => lock.on('authenticated', resolve));
@@ -131,4 +131,4 @@ const WithMutations = compose(
   graphql(createUserMutation, { name: 'createUser' }), // , { ssr: false }),
 )(LoginCallback);
 
-export default pageWithData(WithMutations);
+export default pageWithoutLayout(WithMutations);

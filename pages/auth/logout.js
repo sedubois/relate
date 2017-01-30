@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Router from 'next/router';
-import pageWithData from '../../hocs/page';
+import page from '../../hocs/page';
 import { logout } from '../../data/session/actions';
 
 const mapDispatchToProps = dispatch => ({
@@ -33,4 +33,4 @@ class Logout extends Component {
   }
 }
 
-export default pageWithData(connect(null, mapDispatchToProps)(Logout));
+export default page(connect(null, mapDispatchToProps)(Logout));
