@@ -1,5 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
+import configureProgressBar from '../util/routing';
+import configureSmooch from '../util/smooch';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HtmlHead from '../components/HtmlHead';
@@ -18,6 +20,11 @@ export default ComposedComponent => class WithLayout extends Component {
 
   static async getInitialProps(ctx) {
     return loadGetInitialProps(ComposedComponent, ctx);
+  }
+
+  componentDidMount() {
+    configureProgressBar();
+    configureSmooch();
   }
 
   render() {
