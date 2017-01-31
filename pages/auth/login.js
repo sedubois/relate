@@ -54,7 +54,8 @@ class Login extends Component {
 
   render() {
     return (
-      <div id={LOCK_CONTAINER_ID}>
+      <span>
+        <div id={LOCK_CONTAINER_ID} />
         <style jsx>{`
           #lock-container {
             margin: 2em 0 0;
@@ -65,7 +66,7 @@ class Login extends Component {
             display: none;
           }
         `}</style>
-      </div>
+      </span>
     );
   }
 }
