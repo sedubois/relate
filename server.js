@@ -49,8 +49,6 @@ app.prepare().then(() => {
     res.json({});
   });
 
-  server.get('/api/auth', (req, res) => res.json({ user: req.session.user }));
-
   // Matcher for all pathnames that should be handled as-is by next (no need for dynamic routing).
   // /_.* represents all pathnames starting with underscore, e.g /__webpack_hmr, etc.
   // This fall-through can't be simply achieved with a wildcard (*) as the last route,
