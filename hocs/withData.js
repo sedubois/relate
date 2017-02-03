@@ -47,9 +47,7 @@ export default ComposedComponent => (
       return {
         initialState: {
           ...state,
-          apollo: {
-            data: state.apollo.data,
-          },
+          [apolloClient.reduxRootKey]: apolloClient.getInitialState(),
         },
         clientAndStoreProps,
         ...props,
