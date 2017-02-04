@@ -24,6 +24,7 @@
 <ul>
   <li><a href="https://facebook.github.io/react/">React</a> rendering</li>
   <li><a href="http://redux.js.org/">Redux</a> state management</li>
+  <li><a href="https://github.com/gaearon/redux-thunk">Redux-thunk</a> for async/conditional state changes</li>
   <li><a href="http://graphql.org/">GraphQL</a> API query language</li>
   <li><a href="http://dev.apollodata.com/">Apollo</a> GraphQL client</li>
   <li><a href="https://www.graph.cool/">Graphcool</a> GraphQL/lambda backend-as-a-service</li>
