@@ -3,6 +3,7 @@ import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import 'isomorphic-fetch';
 import getClientAndStore from '../data/clientAndStore';
+import getInitialLocale from '../util/intl';
 
 export default ComposedComponent => (
   class WithData extends Component {
@@ -23,10 +24,7 @@ export default ComposedComponent => (
       const clientAndStoreProps = {
         authToken: subProps.auth.token,
         headers: ctx.req ? ctx.req.headers : {},
-        locale: ctx.req && (
-          (ctx.req.session.user && ctx.req.session.user.locale)
-          || ctx.req.language
-        ),
+        locale: getInitialLocale(ctx),
       };
       const { apolloClient, reduxStore } = getClientAndStore({}, clientAndStoreProps);
 
