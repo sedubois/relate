@@ -53,13 +53,13 @@ app.prepare().then(() => {
   // /_.* represents all pathnames starting with underscore, e.g /__webpack_hmr, etc.
   // This fall-through can't be simply achieved with a wildcard (*) as the last route,
   // because of the /:slug route which would catch them first.
-  server.get(/^\/(_.*|about|discover|favicon.ico)$/, handle);
+  server.get(/^\/(_.*|about|discover|favicon.ico)$/, (req, res) => handle(req, res));
 
   server.get('/track/:id', customRoute('/track'));
 
   server.get('/:slug', customRoute('/profile'));
 
-  server.get('*', handle);
+  server.get('*', (req, res) => handle(req, res));
 
   server.listen(3000, (err) => {
     if (err) {
