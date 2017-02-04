@@ -1,10 +1,10 @@
-import ALL_LOCALES from './locales';
+import locales from './locales';
 import execXhr from '../../util/xhr';
 
 export const SET_LOCALE = 'SET_LOCALE';
 
 export async function setLocale(locale) {
-  if (!Object.keys(ALL_LOCALES).includes(locale)) {
+  if (!Object.keys(locales).includes(locale)) {
     throw new Error(`Unrecognized locale: '${locale}'`);
   }
 

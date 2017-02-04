@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { setLocale as setLocaleAction } from '../data/intl/actions';
+import { mapDispatchToSetLocale } from '../data/intl/lib';
 import locales from '../data/intl/locales';
 
 const Footer = ({ locale, setLocale }) => (
@@ -42,8 +42,4 @@ Footer.propTypes = {
 
 const mapStateToProps = ({ intl: { locale } }) => ({ locale });
 
-const mapDispatchToProps = dispatch => ({
-  setLocale: async locale => dispatch(await setLocaleAction(locale)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default connect(mapStateToProps, mapDispatchToSetLocale)(Footer);

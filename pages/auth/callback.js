@@ -128,8 +128,8 @@ const signInUserMutation = gql`
 `;
 
 const WithMutations = compose(
-  graphql(signInUserMutation, { name: 'signInUser' }), // , { ssr: false }),
-  graphql(createUserMutation, { name: 'createUser' }), // , { ssr: false }),
+  graphql(signInUserMutation, { name: 'signInUser' }),
+  graphql(createUserMutation, { name: 'createUser' }),
 )(LoginCallback);
 
 export default pageWithoutLayout(WithMutations);

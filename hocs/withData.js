@@ -3,7 +3,7 @@ import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import 'isomorphic-fetch';
 import getClientAndStore from '../data/clientAndStore';
-import getInitialLocale from '../util/intl';
+import { getInitialLocale } from '../data/intl/lib';
 
 export default ComposedComponent => (
   class WithData extends Component {
