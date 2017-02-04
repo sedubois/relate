@@ -1,5 +1,5 @@
 import locales from './locales';
-import { SET_LOCALE, setLocale } from './actions';
+import { setLocale } from './actions';
 import asyncAction from '../../util/redux';
 
 export function getInitialLocale(ctx) {
@@ -12,6 +12,7 @@ export function getInitialLocale(ctx) {
     if (Object.keys(locales).includes(locale)) {
       return locale;
     }
+    // eslint-disable-next-line no-console
     console.warn('intl/lib warning: Unable to detect locale from HTTP context:', locale);
     ctx.req.session.user.locale = 'en'; // eslint-disable-line no-param-reassign
     return 'en';
@@ -19,8 +20,4 @@ export function getInitialLocale(ctx) {
   return undefined;
 }
 
-export function mapDispatchToSetLocale(dispatch) {
-  return {
-    setLocale: asyncAction(dispatch, SET_LOCALE, setLocale),
-  };
-}
+export const mapDispatchToSetLocale = dispatch => ({ setLocale: asyncAction(dispatch, setLocale) });

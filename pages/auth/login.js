@@ -40,7 +40,7 @@ class Login extends Component {
     }).isRequired,
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     if (this.props.auth.loggedIn) {
       this.props.url.replace('/');
     } else {
