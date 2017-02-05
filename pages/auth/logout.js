@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import Router from 'next/router';
 import { pageWithoutLayout } from '../../hocs/page';
 import { logout } from '../../data/auth/actions';
-import asyncAction from '../../util/redux';
+import mapDispatch from '../../util/redux';
 
-const mapDispatchToLogout = dispatch => ({ logout: asyncAction(dispatch, logout) });
+const mapDispatchToLogout = mapDispatch(logout);
 
 class Logout extends Component {
   static propTypes = {

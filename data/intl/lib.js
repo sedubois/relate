@@ -1,6 +1,6 @@
 import locales from './locales';
 import { setLocale } from './actions';
-import asyncAction from '../../util/redux';
+import mapDispatch from '../../util/redux';
 
 export function getInitialLocale(ctx) {
   if (!process.browser) {
@@ -20,4 +20,4 @@ export function getInitialLocale(ctx) {
   return undefined;
 }
 
-export const mapDispatchToSetLocale = dispatch => ({ setLocale: asyncAction(dispatch, setLocale) });
+export const mapDispatchToSetLocale = mapDispatch(setLocale);

@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import gql from 'graphql-tag';
 import { compose, graphql } from 'react-apollo';
-import asyncAction from '../../util/redux';
+import mapDispatch from '../../util/redux';
 import { login } from '../../data/auth/actions';
 import { pageWithoutLayout } from '../../hocs/page';
 
@@ -59,7 +59,7 @@ const signInUserMutation = gql`
   }
 `;
 
-const mapDispatchToLogin = dispatch => ({ login: asyncAction(dispatch, login) });
+const mapDispatchToLogin = mapDispatch(login);
 
 const WithMutations = compose(
   graphql(signInUserMutation, { name: 'signInUser' }),
