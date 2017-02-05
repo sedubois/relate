@@ -68,7 +68,12 @@
     "*.js": "eslint"
   },
   "now": {
-    "alias": "relate"
+    "aliases": [
+      "relate"
+    ],
+    "files": [
+      "config.js"
+    ]
   },
   "pre-commit": "lint-staged"
 }
