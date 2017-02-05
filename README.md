@@ -21,27 +21,27 @@
 
 [Read this](https://github.com/relatenow/relate/issues/5) for the reasoning behind the technology choices.
 
-<ul>
-  <li><a href="https://facebook.github.io/react/">React</a> rendering</li>
-  <li><a href="http://redux.js.org/">Redux</a> state management</li>
-  <li><a href="https://github.com/gaearon/redux-thunk">Redux-thunk</a> for async/conditional state changes</li>
-  <li><a href="http://graphql.org/">GraphQL</a> API query language</li>
-  <li><a href="http://dev.apollodata.com/">Apollo</a> GraphQL client</li>
-  <li><a href="https://www.graph.cool/">Graphcool</a> GraphQL/lambda backend-as-a-service</li>
-  <li><a href="https://zeit.co/blog/next">Next.js</a> universal webapp framework</li>
-  <li><a href="https://zeit.co/now">Now</a> deployment</li>
-  <li><a href="https://auth0.com/">Auth0</a> user authentication</li>
-  <li><a href="https://github.com/react-ga/react-ga">React-ga</a> for <a href="https://www.google.com/analytics/">Google Analytics</a></li>
-  <li><a href="https://github.com/yahoo/react-intl">React-Intl</a> for internationalization</li>
-  <li><a href="https://smooch.io/">Smooch</a> customer support</li>
-</ul>
+- [React](https://facebook.github.io/react)rendering
+- [Redux](http://redux.js.org) state management
+- [Redux-thunk](https://github.com/gaearon/redux-thunk) for async/conditional state changes
+- [GraphQL](http://graphql.org) API query language
+- [Apollo](http://dev.apollodata.com) GraphQL client
+- [Graphcool](https://www.graph.cool) GraphQL/lambda backend-as-a-service
+- [Next.js](https://zeit.co/blog/next) universal webapp framework (server-side rendering, single-page experience)
+- [Now](https://zeit.co/now) deployment
+- [Auth0](https://auth0.com) user authentication
+- [React-ga](https://github.com/react-ga/react-ga) for [Google Analytics](https://www.google.com/analytics)</a>
+- [React-intl](https://github.com/yahoo/react-intl) for internationalization
+- [Express-request-language](https://github.com/tinganho/express-request-language) for detection of browser's language preference
+- [Smooch](https://smooch.io/) customer support
+- [MailChimp](https://mailchimp.com) newsletter registration
 
 ## Development
 
 - `git clone https://github.com/relatenow/relate && cd relate`
 - `yarn`
 - `yarn dev`
-- navigate to [http://localhost:3000](http://localhost:3000)
+- navigate to <http://localhost:3000>
 - do something amazing :tada:
 
 NB: `yarn` will create `config.js` for you (through the `postinstall` hook). Edit this file to configure integrations such as GraphQL and analytics.
