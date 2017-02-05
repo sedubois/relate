@@ -26,6 +26,7 @@
     "react-apollo": "^0.10.0",
     "react-ga": "^2.1.2",
     "react-intl": "^2.2.3",
+    "react-no-ssr": "^1.1.0",
     "react-player": "^0.14.1",
     "redux-thunk": "^2.2.0",
     "session-file-store": "^1.0.0",
