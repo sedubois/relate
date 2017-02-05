@@ -20,4 +20,4 @@ export function getInitialLocale(ctx) {
   return undefined;
 }
 
-export const mapDispatchToSetLocale = mapDispatch(setLocale);
+export const mapDispatchToSetLocale = mapDispatch('setLocale', setLocale);

@@ -59,7 +59,7 @@ const signInUserMutation = gql`
   }
 `;
 
-const mapDispatchToLogin = mapDispatch(login);
+const mapDispatchToLogin = mapDispatch('login', login);
 
 const WithMutations = compose(
   graphql(signInUserMutation, { name: 'signInUser' }),

@@ -6,7 +6,7 @@ import { pageWithoutLayout } from '../../hocs/page';
 import { logout } from '../../data/auth/actions';
 import mapDispatch from '../../util/redux';
 
-const mapDispatchToLogout = mapDispatch(logout);
+const mapDispatchToLogout = mapDispatch('logout', logout);
 
 class Logout extends Component {
   static propTypes = {
