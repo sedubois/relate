@@ -2,6 +2,4 @@
 .idea/
 .next/
 node_modules/
-graphql.config.json
 config.js
-
