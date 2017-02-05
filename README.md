@@ -21,7 +21,7 @@
 
 [Read this](https://github.com/relatenow/relate/issues/5) for the reasoning behind the technology choices.
 
-- [React](https://facebook.github.io/react)rendering
+- [React](https://facebook.github.io/react) rendering
 - [Redux](http://redux.js.org) state management
 - [Redux-thunk](https://github.com/gaearon/redux-thunk) for async/conditional state changes
 - [GraphQL](http://graphql.org) API query language
