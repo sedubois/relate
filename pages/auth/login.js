@@ -3,9 +3,9 @@ import NoSSR from 'react-no-ssr';
 import Lock from '../../components/Lock';
 import page from '../../hocs/page';
 
-const Login = ({ auth, url, locale }) => (
+const Login = ({ auth, url }) => (
   <NoSSR>
-    <Lock auth={auth} url={url} locale={locale} />
+    <Lock auth={auth} url={url} />
   </NoSSR>
 );
 
@@ -14,7 +14,6 @@ Login.propTypes = {
   auth: PropTypes.shape({
     loggedIn: PropTypes.bool.isRequired,
   }).isRequired,
-  locale: PropTypes.string.isRequired,
 };
 
 export default page(Login);

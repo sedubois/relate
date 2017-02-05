@@ -82,7 +82,11 @@ async function graphQlSignIn(signInMutation, authToken) {
 
 async function sessionLogin(token) {
   // update server-side
-  await execXhr({ url: `/api/auth/login/${token}` });
+  await execXhr({
+    method: 'PATCH',
+    url: '/api/session',
+    payload: { token },
+  });
 
   // update client-side
   return {

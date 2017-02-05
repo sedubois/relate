@@ -31,11 +31,6 @@ app.prepare().then(() => {
   }));
   server.use(requestLanguage({ languages: ['en', 'fr'] }));
 
-  server.post('/api/auth/login/:token', (req, res) => {
-    req.session.user = { token: req.params.token }; // eslint-disable-line no-param-reassign
-    res.json({});
-  });
-
   server.post('/api/auth/logout', (req, res) => {
     delete req.session.user; // eslint-disable-line no-param-reassign
     return res.json({});
