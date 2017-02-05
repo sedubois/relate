@@ -1,5 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import Router from 'next/router';
 import { pageWithoutLayout } from '../../hocs/page';
 import { logout } from '../../data/auth/actions';
@@ -26,9 +27,9 @@ class Logout extends Component {
 
   render() {
     if (this.props.auth.loggedIn) {
-      return <div>Logging out...</div>;
+      return <div><FormattedMessage id="AuthLogout.text" /></div>;
     }
-    return <div>Already logged out, redirecting home...</div>;
+    return null;
   }
 }
 
