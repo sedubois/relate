@@ -3,7 +3,7 @@
   "AuthCallback.welcomeBack": "Bienvenue, un moment s'il vous plaît...",
   "AuthLogout.text": "Déconnection...",
   "DataLoading.text": "Chargement...",
-  "Footer.madeBy": "Créé avec ღ par",
+  "Footer.madeBy": "Créé avec ღ par {author}",
   "Header.about": "À propos",
   "Header.appName": "Relate",
   "Header.discover": "Découvrir",

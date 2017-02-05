@@ -29,8 +29,12 @@ const Footer = ({ locale, setLocale }) => (
       </select>
     </section>
     <section>
-      <FormattedMessage id="Footer.madeBy" />&nbsp;
-      <a href="https://sdubois.now.sh" target="_blank" rel="noopener noreferrer">Sébastien Dubois</a>
+      <FormattedMessage
+        id="Footer.madeBy"
+        values={{
+          author: <a href="https://sdubois.now.sh" target="_blank" rel="noopener noreferrer">Sébastien Dubois</a>,
+        }}
+      />
     </section>
   </footer>
 );
