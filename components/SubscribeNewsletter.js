@@ -1,5 +1,3 @@
-import { NEWSLETTER_FORM_ACTION, NEWSLETTER_FORM_INPUT_NAME } from '../config';
-
 export default () => (
   <div>
     <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css" async />

@@ -1,5 +1,4 @@
 import execXhr from '../../util/xhr';
-import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../../config';
 import { checkSecret } from '../../util/authSecret';
 
 /* eslint-disable */

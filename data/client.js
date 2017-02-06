@@ -1,5 +1,4 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
-import { GRAPHQL_ENDPOINT } from '../config';
 
 let apolloClient = null;
 

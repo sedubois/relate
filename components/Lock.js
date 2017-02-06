@@ -1,7 +1,6 @@
 import { Component, PropTypes } from 'react';
 import uuid from 'uuid';
 import Auth0Lock from 'auth0-lock';
-import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from '../config';
 import BASE_URL from '../util/baseUrl';
 import { storeSecret, removeSecret } from '../util/authSecret';
 

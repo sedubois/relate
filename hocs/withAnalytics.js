@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
-import { ANALYTICS_TRACKING_ID } from '../config';
 
 // TODO expose file as React component and wrap in a <NoSSR> component
 let ReactGA;

@@ -5,6 +5,8 @@ SESSION_SECRET=$(node -e "require('crypto').randomBytes(${SESSION_SECRET_LENGTH}
 
 if [ ! -f config.js ]; then
   cat > config.js << EOF
+// read process.env.NODE_ENV to set values depending on environment
+
 module.exports = {
   ANALYTICS_TRACKING_ID: 'FIXME',
   AUTH0_CLIENT_ID: 'FIXME',
