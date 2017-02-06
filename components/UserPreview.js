@@ -38,7 +38,7 @@ function UserPreview({ user }) {
 
 UserPreview.fragments = {
   user: gql`    
-    fragment UserPreview on User {
+    fragment UserPreview on Member {
       slug
       givenName
       familyName

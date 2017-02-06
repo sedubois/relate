@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import graphql from '../util/graphql';
 import UserPreview from '../components/UserPreview';
 
-const Users = ({ data: { allUsers } }) => (
+const Users = ({ data: { allMembers } }) => (
   <div className="wrapper">
     <style jsx>{`
       .wrapper {
@@ -11,7 +11,7 @@ const Users = ({ data: { allUsers } }) => (
         justify-content: center;
       }
     `}</style>
-    {allUsers
+    {allMembers
       // TODO filter server-side when available: https://github.com/graphcool/feature-requests/issues/20
       .filter(u => u._tracksMeta.count > 0)
       .map(u => <UserPreview key={u.id} user={filter(UserPreview.fragments.user, u)} />)}
@@ -20,7 +20,7 @@ const Users = ({ data: { allUsers } }) => (
 
 const query = gql`
   query {
-    allUsers {
+    allMembers {
       id
       ...UserPreview
       _tracksMeta {

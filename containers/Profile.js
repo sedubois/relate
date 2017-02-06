@@ -5,8 +5,8 @@ import NotFound from '../components/NotFound';
 import TrackList from '../components/TrackList';
 import UserHeader from '../components/UserHeader';
 
-function Profile({ data: { User } }) {
-  if (!User) {
+function Profile({ data: { Member } }) {
+  if (!Member) {
     return <NotFound />;
   }
   return (
@@ -16,15 +16,15 @@ function Profile({ data: { User } }) {
           margin: 0 1em;
         }
       `}</style>
-      <UserHeader user={filter(UserHeader.fragments.user, User)} />
-      <TrackList tracks={User.tracks} />
+      <UserHeader user={filter(UserHeader.fragments.user, Member)} />
+      <TrackList tracks={Member.tracks} />
     </div>
   );
 }
 
 const query = gql`
   query Profile($slug: String!) {
-    User(slug: $slug) {
+    Member(slug: $slug) {
       ...UserHeader
       tracks {
         ...TrackList
