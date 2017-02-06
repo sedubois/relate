@@ -1,21 +1,22 @@
 import { PropTypes } from 'react';
-import { filter, propType } from 'graphql-anywhere';
+import { propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
-import TrackPreview from './TrackPreview';
+import { FormattedMessage } from 'react-intl';
+import ItemList from './ItemList';
+import ItemPreview from './ItemPreview';
 
 function TrackList({ tracks }) {
   return (
-    <div className="trackList">
-      <style jsx>{`
-        .trackList {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-      `}</style>
-      {tracks.map(track =>
-        <TrackPreview key={track.id} track={filter(TrackPreview.fragments.track, track)} />)}
-    </div>
+    <ItemList title={<FormattedMessage id="TrackList.title" />}>
+      {tracks.map(track => (
+        <ItemPreview key={track.id} href={`/track?id=${track.id}`} as={`/track/${track.id}`}>
+          <p className="playButton">
+            ▶
+          </p>
+          <p>{track.title}</p>
+        </ItemPreview>
+      ))}
+    </ItemList>
   );
 }
 
@@ -23,9 +24,8 @@ TrackList.fragments = {
   track: gql`
     fragment TrackList on Track {
       id
-      ...TrackPreview
+      title
     }
-    ${TrackPreview.fragments.track}
   `,
 };
 

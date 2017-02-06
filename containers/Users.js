@@ -13,7 +13,7 @@ const Users = ({ data: { allMembers } }) => (
     `}</style>
     {allMembers
       // TODO filter server-side when available: https://github.com/graphcool/feature-requests/issues/20
-      .filter(u => u._tracksMeta.count > 0)
+      .filter(u => u._tracksMeta.count > 0 || u._retreatsMeta.count > 0)
       .map(u => <UserPreview key={u.id} user={filter(UserPreview.fragments.user, u)} />)}
   </div>
 );
@@ -24,6 +24,9 @@ const query = gql`
       id
       ...UserPreview
       _tracksMeta {
+        count
+      }
+      _retreatsMeta {
         count
       }
     }

@@ -50,6 +50,8 @@ app.prepare().then(() => {
   // because of the /:slug route which would catch them first.
   server.get(/^\/(_.*|about|discover|favicon.ico)$/, (req, res) => handle(req, res));
 
+  server.get('/retreat/:id', customRoute('/retreat'));
+
   server.get('/track/:id', customRoute('/track'));
 
   server.get('/:slug', customRoute('/profile'));

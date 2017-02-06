@@ -2,6 +2,7 @@ import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
 import graphql from '../util/graphql';
 import NotFound from '../components/NotFound';
+import RetreatList from '../components/RetreatList';
 import TrackList from '../components/TrackList';
 import UserHeader from '../components/UserHeader';
 
@@ -17,7 +18,8 @@ function Profile({ data: { Member } }) {
         }
       `}</style>
       <UserHeader user={filter(UserHeader.fragments.user, Member)} />
-      <TrackList tracks={Member.tracks} />
+      {Member.retreats.length > 0 && <RetreatList retreats={Member.retreats} />}
+      {Member.tracks.length > 0 && <TrackList tracks={Member.tracks} />}
     </div>
   );
 }
@@ -26,12 +28,16 @@ const query = gql`
   query Profile($slug: String!) {
     Member(slug: $slug) {
       ...UserHeader
+      retreats {
+        ...RetreatList
+      }
       tracks {
         ...TrackList
       }
     }
   }
   ${UserHeader.fragments.user}
+  ${RetreatList.fragments.retreat}
   ${TrackList.fragments.track}
 `;
 
