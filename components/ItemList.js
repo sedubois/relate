@@ -29,7 +29,7 @@ function ItemList({ title, children }) {
 
 ItemList.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
 };
 
 export default ItemList;
