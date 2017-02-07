@@ -1,5 +1,4 @@
 import { PropTypes } from 'react';
-import { propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
 import { FormattedMessage } from 'react-intl';
 import ItemList from './ItemList';
@@ -18,18 +17,20 @@ function RetreatList({ retreats }) {
 }
 
 RetreatList.fragments = {
-  retreat: gql`
-    fragment RetreatList on Retreat {
-      id
-      title
+  retreats: gql`
+    fragment Retreats on Member {
+      retreats {
+        id
+        title
+      }
     }
   `,
 };
 
 RetreatList.propTypes = {
-  retreats: PropTypes.arrayOf(
-    propType(RetreatList.fragments.retreat).isRequired,
-  ).isRequired,
+  // TODO figure out why this yields an error
+  // retreats: propType(RetreatList.fragments.retreats).isRequired,
+  retreats: PropTypes.array.isRequired,
 };
 
 export default RetreatList;

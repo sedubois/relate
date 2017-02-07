@@ -28,17 +28,13 @@ const query = gql`
   query Profile($slug: String!) {
     Member(slug: $slug) {
       ...UserHeader
-      retreats {
-        ...RetreatList
-      }
-      tracks {
-        ...TrackList
-      }
+      ...Retreats
+      ...Tracks
     }
   }
   ${UserHeader.fragments.user}
-  ${RetreatList.fragments.retreat}
-  ${TrackList.fragments.track}
+  ${RetreatList.fragments.retreats}
+  ${TrackList.fragments.tracks}
 `;
 
 Profile.propTypes = {

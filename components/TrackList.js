@@ -1,5 +1,4 @@
 import { PropTypes } from 'react';
-import { propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
 import { FormattedMessage } from 'react-intl';
 import ItemList from './ItemList';
@@ -21,18 +20,20 @@ function TrackList({ tracks }) {
 }
 
 TrackList.fragments = {
-  track: gql`
-    fragment TrackList on Track {
-      id
-      title
+  tracks: gql`
+    fragment Tracks on Member {
+      tracks {
+        id
+        title
+      }
     }
   `,
 };
 
 TrackList.propTypes = {
-  tracks: PropTypes.arrayOf(
-    propType(TrackList.fragments.track).isRequired,
-  ).isRequired,
+  // TODO figure out why this yields an error
+  // tracks: propType(TrackList.fragments.tracks).isRequired,
+  tracks: PropTypes.array.isRequired,
 };
 
 export default TrackList;
