@@ -2,7 +2,7 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client';
 
 let apolloClient = null;
 
-function createClient({ headers, authToken }) {
+function createClient({ authToken }) {
   const networkInterface = createNetworkInterface({ uri: GRAPHQL_ENDPOINT });
 
   networkInterface.use([{
@@ -20,7 +20,6 @@ function createClient({ headers, authToken }) {
   return new ApolloClient({
     networkInterface,
     ssrMode: !process.browser,
-    headers,
     dataIdFromObject: result => result.id || null,
   });
 }

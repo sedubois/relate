@@ -5,6 +5,15 @@ import 'isomorphic-fetch';
 import getClientAndStore from '../data/clientAndStore';
 import { getInitialLocale } from '../data/intl/lib';
 
+function getInitialState(apolloClient, reduxStore) {
+  return {
+    ...reduxStore.getState(),
+    [apolloClient.reduxRootKey]: {
+      data: apolloClient.getInitialState().data,
+    },
+  };
+}
+
 export default ComposedComponent => (
   class WithData extends Component {
     static propTypes = {
@@ -15,7 +24,6 @@ export default ComposedComponent => (
       clientAndStoreProps: PropTypes.shape({
         authToken: PropTypes.string,
         browserLocale: PropTypes.string, // not needed client-side (available in Redux store)
-        headers: PropTypes.object.isRequired,
       }).isRequired,
     };
 
@@ -23,7 +31,6 @@ export default ComposedComponent => (
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const clientAndStoreProps = {
         authToken: subProps.auth.token,
-        headers: ctx.req ? ctx.req.headers : {},
         locale: getInitialLocale(ctx),
       };
       const { apolloClient, reduxStore } = getClientAndStore({}, clientAndStoreProps);
@@ -41,12 +48,8 @@ export default ComposedComponent => (
         ));
       }
 
-      const state = reduxStore.getState();
       return {
-        initialState: {
-          ...state,
-          [apolloClient.reduxRootKey]: apolloClient.getInitialState(),
-        },
+        initialState: getInitialState(apolloClient, reduxStore),
         clientAndStoreProps,
         ...props,
       };
