@@ -2,12 +2,11 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import { login } from '../data/auth/actions';
+import mapDispatch from '../util/redux';
 
 let auth = { loggedIn: false };
 
-const mapDispatchToProps = dispatch => ({
-  login: async token => dispatch(await login(token)),
-});
+const mapDispatchToLogin = mapDispatch('login', login);
 
 export default (ComposedComponent) => {
   class WithAuth extends Component {
@@ -39,5 +38,5 @@ export default (ComposedComponent) => {
     }
   }
 
-  return connect(null, mapDispatchToProps)(WithAuth);
+  return connect(null, mapDispatchToLogin)(WithAuth);
 };
