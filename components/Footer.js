@@ -44,6 +44,4 @@ Footer.propTypes = {
   setLocale: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ intl: { locale } }) => ({ locale });
-
-export default connect(mapStateToProps, mapDispatchToSetLocale)(Footer);
+export default connect(null, mapDispatchToSetLocale)(Footer);

@@ -1,8 +1,8 @@
 import locales from './locales';
-import { setLocale } from './actions';
 import mapDispatch from '../../util/redux';
+import execXhr from '../../util/xhr';
 
-export function getInitialLocale(ctx) {
+export function getLocale(ctx) {
   if (!process.browser) {
     if (!ctx.req.session.user) {
       ctx.req.session.user = {}; // eslint-disable-line no-param-reassign
@@ -18,6 +18,22 @@ export function getInitialLocale(ctx) {
     return 'en';
   }
   return undefined;
+}
+
+async function setLocale(dispatch, locale) {
+  if (!Object.keys(locales).includes(locale)) {
+    throw new Error(`Unrecognized locale: '${locale}'`);
+  }
+
+  // update server-side session
+  await execXhr({
+    method: 'PATCH',
+    url: '/api/session',
+    payload: { locale },
+  });
+
+  // force reload from server to get the proper locale data
+  window.location.reload(true);
 }
 
 export const mapDispatchToSetLocale = mapDispatch('setLocale', setLocale);

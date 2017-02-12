@@ -16,6 +16,7 @@ export default ComposedComponent => class WithLayout extends Component {
     auth: PropTypes.shape({
       loggedIn: PropTypes.bool.isRequired,
     }).isRequired,
+    locale: PropTypes.string.isRequired,
   };
 
   static async getInitialProps(ctx) {
@@ -55,7 +56,7 @@ export default ComposedComponent => class WithLayout extends Component {
         <HtmlHead />
         <Header url={this.props.url} loggedIn={this.props.auth.loggedIn} />
         <ComposedComponent {...this.props} />
-        <Footer />
+        <Footer locale={this.props.locale} />
       </div>
     );
   }

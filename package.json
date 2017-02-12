@@ -63,6 +63,7 @@
       "document": true,
       "window": true,
       "process": true,
+      "fetch": false,
       "ANALYTICS_TRACKING_ID": false,
       "AUTH0_CLIENT_ID": false,
       "AUTH0_DOMAIN": false,

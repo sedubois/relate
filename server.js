@@ -4,6 +4,7 @@ const requestLanguage = require('express-request-language');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const next = require('next');
+const { readFileSync } = require('fs');
 const { SESSION_SECRET } = require('./config');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -42,6 +43,14 @@ app.prepare().then(() => {
     }
     Object.assign(req.session.user, req.body); // eslint-disable-line no-param-reassign
     res.json({});
+  });
+
+  server.get('/api/intl/:locale', (req, res) => {
+    // doesn't work in withIntl.js: https://github.com/zeit/next.js/issues/1091#issuecomment-279241498
+    const locale = req.params.locale;
+    const messageFile = require.resolve(`./data/intl/${locale}.json`);
+    const messages = JSON.parse(readFileSync(messageFile, 'utf8'));
+    res.json(messages);
   });
 
   // Matcher for all pathnames that should be handled as-is by next (no need for dynamic routing).

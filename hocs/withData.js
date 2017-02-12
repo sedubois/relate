@@ -3,7 +3,6 @@ import { ApolloProvider, getDataFromTree } from 'react-apollo';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import 'isomorphic-fetch';
 import getClientAndStore from '../data/clientAndStore';
-import { getInitialLocale } from '../data/intl/lib';
 
 function getInitialState(apolloClient, reduxStore) {
   return {
@@ -23,7 +22,6 @@ export default ComposedComponent => (
       initialState: PropTypes.object.isRequired,
       clientAndStoreProps: PropTypes.shape({
         authToken: PropTypes.string,
-        browserLocale: PropTypes.string, // not needed client-side (available in Redux store)
       }).isRequired,
     };
 
@@ -31,7 +29,6 @@ export default ComposedComponent => (
       const subProps = await loadGetInitialProps(ComposedComponent, ctx);
       const clientAndStoreProps = {
         authToken: subProps.auth.token,
-        locale: getInitialLocale(ctx),
       };
       const { apolloClient, reduxStore } = getClientAndStore({}, clientAndStoreProps);
 
