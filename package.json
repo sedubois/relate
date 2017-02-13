@@ -23,7 +23,7 @@
     "graphql-anywhere": "^2.2.0",
     "graphql-tag": "^1.2.4",
     "next": "^2.0.0-beta",
-    "next-routes": "^1.0.13",
+    "next-routes": "^1.0.14",
     "nprogress": "^0.2.0",
     "react-apollo": "^0.10.0",
     "react-ga": "^2.1.2",

@@ -3208,9 +3208,9 @@ nested-error-stacks@^1.0.0:
   dependencies:
     inherits "~2.0.1"
 
-next-routes@^1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/next-routes/-/next-routes-1.0.13.tgz#b9bac23396b5399f45d7fb0f1a382c8d458bb15b"
+next-routes@^1.0.14:
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/next-routes/-/next-routes-1.0.14.tgz#9f1c7d0768e029f0ffe3a03c65e8bb10214e0988"
   dependencies:
     path-to-regexp "^1.7.0"
 

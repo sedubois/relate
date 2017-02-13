@@ -10,8 +10,7 @@ const routes = require('./routes');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-const nextHandler = app.getRequestHandler();
-const routesHandler = routes.getRequestHandler(app);
+const handler = routes.getRequestHandler(app);
 // TODO store more persistently (this only survives while deployment is on same machine)
 const store = new FileStore({ path: '/tmp/sessions' });
 
@@ -51,13 +50,7 @@ app.prepare().then(() => {
     res.json(messages);
   });
 
-  // Matcher for all pathnames that should be handled as-is by next (no need for dynamic routing).
-  // /_.* represents all pathnames starting with underscore, e.g /__webpack_hmr, etc.
-  // This fall-through can't be simply achieved with a wildcard (*) as the last route,
-  // because of the /:slug route which would catch them first.
-  server.get(/^\/_.*$/, (req, res) => nextHandler(req, res));
-
-  server.use(routesHandler).listen(3000, (err) => {
+  server.use(handler).listen(3000, (err) => {
     if (err) {
       throw err;
     }
