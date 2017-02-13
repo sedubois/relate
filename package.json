@@ -1,6 +1,6 @@
 {
   "name": "relate",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "Sebastien Dubois",
   "license": "GPL-3.0",
   "main": "./server.js",
