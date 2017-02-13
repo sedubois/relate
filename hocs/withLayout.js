@@ -4,7 +4,6 @@ import configureProgressBar from '../util/routing';
 import configureSmooch from '../util/smooch';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import HtmlHead from '../components/HtmlHead';
 
 // color palette: http://paletton.com/#uid=33m0y0ksMDf8jVahZJZEepkKleL
 
@@ -53,7 +52,6 @@ export default ComposedComponent => class WithLayout extends Component {
           margin: 0;
         }
       `}</style>
-        <HtmlHead />
         <Header url={this.props.url} loggedIn={this.props.auth.loggedIn} />
         <ComposedComponent {...this.props} />
         <Footer locale={this.props.locale} />
