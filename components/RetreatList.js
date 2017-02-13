@@ -8,7 +8,13 @@ function RetreatList({ retreats }) {
   return (
     <ItemList title={<FormattedMessage id="RetreatList.title" />}>
       {retreats.map(retreat => (
-        <ItemPreview key={retreat.id} href={`/retreat?id=${retreat.id}`} as={`/retreat/${retreat.id}`}>
+        <ItemPreview
+          key={retreat.id}
+          link={{
+            route: 'retreat',
+            params: { id: retreat.id },
+          }}
+        >
           <p>{retreat.title}</p>
         </ItemPreview>
       ))}

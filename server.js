@@ -6,16 +6,13 @@ const FileStore = require('session-file-store')(session);
 const next = require('next');
 const { readFileSync } = require('fs');
 const { SESSION_SECRET } = require('./config');
+const routes = require('./routes');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-const handle = app.getRequestHandler();
+const handler = routes.getRequestHandler(app);
 // TODO store more persistently (this only survives while deployment is on same machine)
 const store = new FileStore({ path: '/tmp/sessions' });
-
-function customRoute(pathname) {
-  return (req, res) => app.render(req, res, pathname, req.params, req.query);
-}
 
 app.prepare().then(() => {
   const server = express();
@@ -53,21 +50,7 @@ app.prepare().then(() => {
     res.json(messages);
   });
 
-  // Matcher for all pathnames that should be handled as-is by next (no need for dynamic routing).
-  // /_.* represents all pathnames starting with underscore, e.g /__webpack_hmr, etc.
-  // This fall-through can't be simply achieved with a wildcard (*) as the last route,
-  // because of the /:slug route which would catch them first.
-  server.get(/^\/(_.*|about|discover|favicon.ico)$/, (req, res) => handle(req, res));
-
-  server.get('/retreat/:id', customRoute('/retreat'));
-
-  server.get('/track/:id', customRoute('/track'));
-
-  server.get('/:slug', customRoute('/profile'));
-
-  server.get('*', (req, res) => handle(req, res));
-
-  server.listen(3000, (err) => {
+  server.use(handler).listen(3000, (err) => {
     if (err) {
       throw err;
     }

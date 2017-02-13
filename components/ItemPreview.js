@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-import Link from 'next/link';
+import { Link } from '../routes';
 
-function ItemPreview({ href, as, children }) {
+function ItemPreview({ link: { route, params }, children }) {
   return (
-    <Link href={href} as={as}>
+    <Link route={route} params={params}>
       <a className="wrapper">
         {children}
         <style jsx>{`
@@ -35,8 +35,10 @@ function ItemPreview({ href, as, children }) {
 }
 
 ItemPreview.propTypes = {
-  href: PropTypes.string.isRequired,
-  as: PropTypes.string.isRequired,
+  link: PropTypes.shape({
+    route: PropTypes.string.isRequired,
+    params: PropTypes.object.isRequired,
+  }).isRequired,
   children: PropTypes.node.isRequired,
 };
 

@@ -8,7 +8,13 @@ function TrackList({ tracks }) {
   return (
     <ItemList title={<FormattedMessage id="TrackList.title" />}>
       {tracks.map(track => (
-        <ItemPreview key={track.id} href={`/track?id=${track.id}`} as={`/track/${track.id}`}>
+        <ItemPreview
+          key={track.id}
+          link={{
+            route: 'track',
+            params: { id: track.id },
+          }}
+        >
           <p className="playButton">
             ▶
           </p>

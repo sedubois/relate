@@ -1,11 +1,11 @@
 import gql from 'graphql-tag';
 import { propType } from 'graphql-anywhere';
-import Link from 'next/link';
+import { Link } from '../routes';
 import UserBadge from './UserBadge';
 
 function UserPreview({ user }) {
   return (
-    <Link href={`/profile?slug=${user.slug}`} as={`/${user.slug}`}>
+    <Link route="profile" params={{ slug: user.slug }}>
       <a>
         <div className="wrapper">
           <style jsx>{`
