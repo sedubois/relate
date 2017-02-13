@@ -22,28 +22,6 @@ export default class Document extends NextDocument {
           <Main />
           <NextScript />
         </body>
-        <style jsx global>{`
-          a {
-            color: #02697C;
-            text-decoration: none;
-          }
-
-          body {
-            margin: 0;
-          }
-        `}</style>
-        <style jsx>{`
-          body {
-            display: flex;
-            flex-direction: column;
-            font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 85%;
-            margin: 0 auto;
-            max-width: 960px;
-            min-height: 100%;
-            padding: 0 16px;
-          }
-        `}</style>
       </html>
     );
   }
