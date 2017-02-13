@@ -12,10 +12,17 @@ class LoginCallback extends Component {
     createUser: PropTypes.func.isRequired,
     signInUser: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
+    auth: PropTypes.shape({
+      loggedIn: PropTypes.bool.isRequired,
+    }).isRequired,
   };
 
   componentDidMount() {
-    this.props.login(this.props.createUser, this.props.signInUser);
+    if (this.props.auth.loggedIn) {
+      window.location.replace('/');
+    } else {
+      this.props.login(this.props.createUser, this.props.signInUser);
+    }
   }
 
   render() {
