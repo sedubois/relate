@@ -6,8 +6,6 @@ import { getLocale } from '../data/intl/lib';
 import baseUrl from '../util/baseUrl';
 import locales from '../data/intl/locales';
 
-Object.keys(locales).map(locale => addLocaleData([...locales[locale].data]));
-
 // server-side: for performance, keep in memory messages for different locales
 const intlCache = new Map();
 //  client-side: remember the user's locale messages across page changes
@@ -18,6 +16,7 @@ export default ComposedComponent => class WithIntl extends Component {
   static propTypes = {
     locale: PropTypes.string.isRequired,
     messages: PropTypes.object.isRequired,
+    serverRendered: PropTypes.bool.isRequired,
   };
 
   static async getInitialProps(ctx) {
@@ -41,6 +40,9 @@ export default ComposedComponent => class WithIntl extends Component {
     super(props);
     locale = props.locale;
     messages = props.messages;
+    if (props.serverRendered) {
+      addLocaleData([...locales[locale].data]);
+    }
   }
 
   render() {
