@@ -29,29 +29,7 @@ export default ComposedComponent => class WithLayout extends Component {
 
   render() {
     return (
-      <div className="wrapper">
-        <style jsx>{`
-        .wrapper {
-          display: flex;
-          flex-direction: column;
-          font-family: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
-          font-size: 85%;
-          margin: 0 auto;
-          max-width: 960px;
-          min-height: 100%;
-          padding: 0 16px;
-        }
-      `}</style>
-        <style jsx global>{`
-        a {
-          color: #02697C;
-          text-decoration: none;
-        }
-
-        body {
-          margin: 0;
-        }
-      `}</style>
+      <div>
         <Header url={this.props.url} loggedIn={this.props.auth.loggedIn} />
         <ComposedComponent {...this.props} />
         <Footer locale={this.props.locale} />
