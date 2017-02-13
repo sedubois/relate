@@ -28,6 +28,7 @@
 - [Apollo](http://dev.apollodata.com) GraphQL client
 - [Graphcool](https://www.graph.cool) GraphQL/lambda backend-as-a-service
 - [Next.js](https://zeit.co/blog/next) universal webapp framework (server-side rendering, single-page experience)
+- [Next-Routes](https://github.com/fridays/next-routes) to manage dynamic routing configuration
 - [Now](https://zeit.co/now) deployment
 - [Auth0](https://auth0.com) user authentication
 - [React-ga](https://github.com/react-ga/react-ga) for [Google Analytics](https://www.google.com/analytics)</a>
