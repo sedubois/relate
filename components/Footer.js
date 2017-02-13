@@ -2,7 +2,7 @@ import { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { mapDispatchToSetLocale } from '../data/intl/lib';
-import locales from '../data/intl/locales';
+import locales from '../universal/locales';
 
 const Footer = ({ locale, setLocale }) => (
   <footer>
@@ -25,7 +25,7 @@ const Footer = ({ locale, setLocale }) => (
         defaultValue={locale}
         onChange={event => setLocale(event.target.value)}
       >
-        {Object.keys(locales).map(l => <option key={l} value={l}>{l}</option>)}
+        {locales.map(l => <option key={l} value={l}>{l}</option>)}
       </select>
     </section>
     <section>

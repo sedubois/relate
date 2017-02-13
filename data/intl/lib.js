@@ -1,4 +1,4 @@
-import locales from './locales';
+import locales from '../../universal/locales';
 import mapDispatch from '../../util/redux';
 import execXhr from '../../util/xhr';
 
@@ -9,7 +9,7 @@ export function getLocale(ctx) {
     }
     const locale = ctx.req.session.user.locale || ctx.req.language;
 
-    if (Object.keys(locales).includes(locale)) {
+    if (locales.includes(locale)) {
       return locale;
     }
     // eslint-disable-next-line no-console
@@ -21,7 +21,7 @@ export function getLocale(ctx) {
 }
 
 async function setLocale(dispatch, locale) {
-  if (!Object.keys(locales).includes(locale)) {
+  if (!locales.includes(locale)) {
     throw new Error(`Unrecognized locale: '${locale}'`);
   }
 

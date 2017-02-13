@@ -4,7 +4,7 @@ import 'isomorphic-fetch';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import { getLocale } from '../data/intl/lib';
 import baseUrl from '../util/baseUrl';
-import locales from '../data/intl/locales';
+import localeData from '../data/intl/localeData';
 
 // server-side: for performance, keep in memory messages for different locales
 const intlCache = new Map();
@@ -41,7 +41,7 @@ export default ComposedComponent => class WithIntl extends Component {
     locale = props.locale;
     messages = props.messages;
     if (props.serverRendered) {
-      addLocaleData([...locales[locale].data]);
+      addLocaleData([...localeData[locale]]);
     }
   }
 

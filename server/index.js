@@ -7,6 +7,7 @@ const next = require('next');
 const { readFileSync } = require('fs');
 const { SESSION_SECRET } = require('../universal/config');
 const routes = require('../universal/routes');
+const languages = require('../universal/locales');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -27,7 +28,7 @@ app.prepare().then(() => {
     saveUninitialized: true,
     httpOnly: true,
   }));
-  server.use(requestLanguage({ languages: ['en', 'fr'] }));
+  server.use(requestLanguage({ languages }));
 
   server.post('/api/auth/logout', (req, res) => {
     delete req.session.user; // eslint-disable-line no-param-reassign
