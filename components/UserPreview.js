@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import { propType } from 'graphql-anywhere';
-import { Link } from '../routes';
+import { Link } from '../universal/routes';
 import UserBadge from './UserBadge';
 
 function UserPreview({ user }) {

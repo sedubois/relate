@@ -5,8 +5,8 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const next = require('next');
 const { readFileSync } = require('fs');
-const { SESSION_SECRET } = require('./config');
-const routes = require('./routes');
+const { SESSION_SECRET } = require('../universal/config');
+const routes = require('../universal/routes');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -45,7 +45,7 @@ app.prepare().then(() => {
   server.get('/api/intl/:locale', (req, res) => {
     // doesn't work in withIntl.js: https://github.com/zeit/next.js/issues/1091#issuecomment-279241498
     const locale = req.params.locale;
-    const messageFile = require.resolve(`./data/intl/${locale}.json`);
+    const messageFile = require.resolve(`../data/intl/${locale}.json`);
     const messages = JSON.parse(readFileSync(messageFile, 'utf8'));
     res.json(messages);
   });

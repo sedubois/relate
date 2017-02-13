@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Link } from '../routes';
+import { Link } from '../universal/routes';
 
 function ItemPreview({ link: { route, params }, children }) {
   return (

@@ -3,8 +3,8 @@
 SESSION_SECRET_LENGTH=$(node -e "console.log(Math.floor(Math.random() * 10) + 30)")
 SESSION_SECRET=$(node -e "require('crypto').randomBytes(${SESSION_SECRET_LENGTH}, (ex, buf) => { console.log(buf.toString('hex')) });")
 
-if [ ! -f config.js ]; then
-  cat > config.js << EOF
+if [ ! -f universal/config.js ]; then
+  cat > universal/config.js << EOF
 // read process.env.NODE_ENV to set values depending on environment
 
 module.exports = {

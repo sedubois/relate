@@ -2,5 +2,5 @@
 .idea/
 .next/
 node_modules/
-!config.js
+!universal/config.js
 

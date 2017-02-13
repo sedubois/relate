@@ -3,10 +3,10 @@
   "version": "0.0.9",
   "author": "Sebastien Dubois",
   "license": "GPL-3.0",
-  "main": "./server.js",
+  "main": "./server",
   "scripts": {
     "postinstall": "sh scripts/createDefaultConfig.sh",
-    "dev": "nodemon -w server.js -w routes.js -w config.js",
+    "dev": "nodemon -w server -w universal",
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server.js",
     "lint-staged": "lint-staged",
@@ -53,7 +53,7 @@
     "plugins": [
       [
         "transform-define",
-        "./config.js"
+        "./universal/config.js"
       ]
     ]
   },
