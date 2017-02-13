@@ -27,7 +27,7 @@ class Logout extends Component {
 
   render() {
     if (this.props.auth.loggedIn) {
-      return <div><FormattedMessage id="AuthLogout.text" /></div>;
+      return <FormattedMessage id="AuthLogout.text" />;
     }
     return null;
   }

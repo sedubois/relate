@@ -29,14 +29,12 @@ function showLock(nextPathname) {
 export default class Lock extends Component {
   static propTypes = {
     url: PropTypes.object.isRequired,
-    auth: PropTypes.shape({
-      loggedIn: PropTypes.bool.isRequired,
-    }).isRequired,
+    loggedIn: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
     const nextPathname = '/';
-    if (this.props.auth.loggedIn) {
+    if (this.props.loggedIn) {
       this.props.url.replace(nextPathname);
     } else {
       showLock(nextPathname);

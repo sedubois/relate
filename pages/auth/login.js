@@ -3,9 +3,9 @@ import NoSSR from 'react-no-ssr';
 import Lock from '../../components/Lock';
 import page from '../../hocs/page';
 
-const Login = ({ auth, url }) => (
+const Login = ({ auth: { loggedIn }, url }) => (
   <NoSSR>
-    <Lock auth={auth} url={url} />
+    <Lock loggedIn={loggedIn} url={url} />
   </NoSSR>
 );
 

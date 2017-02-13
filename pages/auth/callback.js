@@ -19,7 +19,7 @@ class LoginCallback extends Component {
   }
 
   render() {
-    return <span><FormattedMessage id="AuthCallback.welcomeBack" /></span>;
+    return <FormattedMessage id="AuthCallback.welcomeBack" />;
   }
 }
 
