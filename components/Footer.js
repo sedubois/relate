@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { mapDispatchToSetLocale } from '../data/intl/lib';
 import locales from '../universal/locales';
+import pkg from '../package';
 
 const Footer = ({ locale, setLocale }) => (
   <footer>
@@ -35,6 +36,9 @@ const Footer = ({ locale, setLocale }) => (
           author: <a href="https://sdubois.now.sh" target="_blank" rel="noopener noreferrer">Sébastien Dubois</a>,
         }}
       />
+    </section>
+    <section>
+      v{pkg.version}
     </section>
   </footer>
 );
