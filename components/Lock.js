@@ -5,11 +5,12 @@ import BASE_URL from '../util/baseUrl';
 import { storeSecret, removeSecret } from '../util/authSecret';
 
 const LOCK_CONTAINER_ID = 'lock-container';
+let lock;
 
 function showLock(nextPathname) {
   const secret = uuid.v4();
   storeSecret(secret);
-  const lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
+  lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN, {
     auth: {
       redirectUrl: `${BASE_URL}/auth/callback`,
       responseType: 'token',
@@ -43,6 +44,7 @@ export default class Lock extends Component {
 
   componentWillUnmount() {
     removeSecret();
+    lock.hide();
   }
 
   render() {
