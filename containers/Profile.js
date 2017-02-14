@@ -1,14 +1,14 @@
 import { filter, propType } from 'graphql-anywhere';
 import gql from 'graphql-tag';
+import ErrorPage from 'next/error';
 import graphql from '../util/graphql';
-import NotFound from '../components/NotFound';
 import RetreatList from '../components/RetreatList';
 import TrackList from '../components/TrackList';
 import UserHeader from '../components/UserHeader';
 
 function Profile({ data: { Member } }) {
   if (!Member) {
-    return <NotFound />;
+    return <ErrorPage statusCode={404} />;
   }
   return (
     <div className="profile">
