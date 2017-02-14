@@ -37,6 +37,9 @@
 - [Smooch](https://smooch.io/) customer support
 - [MailChimp](https://mailchimp.com) newsletter registration
 
+Development:
+- [Webpack-bundle-analyzer](https://github.com/th0r/webpack-bundle-analyzer) to visualize the bundled code contents
+
 ## Development
 
 - `git clone https://github.com/relatenow/relate && cd relate`
