@@ -83,7 +83,7 @@ async function sessionLogin(token) {
   // update server-side
   await execXhr({
     method: 'PATCH',
-    url: '/api/session',
+    url: '/api/auth',
     payload: { token },
   });
 

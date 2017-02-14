@@ -23,7 +23,7 @@ app.prepare().then(() => {
     return res.json({});
   });
 
-  server.patch('/api/session', (req, res) => {
+  server.patch('/api/auth', (req, res) => {
     if (!req.session.user) {
       req.session.user = {}; // eslint-disable-line no-param-reassign
     }

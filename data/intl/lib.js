@@ -28,7 +28,7 @@ async function setLocale(dispatch, locale) {
   // update server-side session
   await execXhr({
     method: 'PATCH',
-    url: '/api/session',
+    url: '/api/auth',
     payload: { locale },
   });
 
