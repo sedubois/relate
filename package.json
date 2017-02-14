@@ -13,12 +13,12 @@
     "deploy": "eslint . && now && now alias"
   },
   "dependencies": {
+    "accept-language": "^3.0.15",
     "apollo-client": "^0.8.5",
     "auth0-lock": "^10.11.0",
     "babel-plugin-transform-define": "^1.2.0",
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
-    "express-request-language": "^1.1.9",
     "express-session": "^1.15.1",
     "graphql-anywhere": "^2.2.0",
     "graphql-tag": "^1.2.4",

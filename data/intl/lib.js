@@ -1,13 +1,19 @@
+import acceptLanguage from 'accept-language';
 import locales from '../../universal/locales';
 import mapDispatch from '../../util/redux';
 import execXhr from '../../util/xhr';
 
+acceptLanguage.languages(locales);
+
 export function getLocale(ctx) {
   if (!process.browser) {
-    if (!ctx.req.session.user) {
-      ctx.req.session.user = {}; // eslint-disable-line no-param-reassign
+    let locale;
+    if (ctx.req.session.user && ctx.req.session.user.locale) {
+      locale = ctx.req.session.user.locale;
+    } else {
+      const acceptLanguageHeader = ctx.req.headers['accept-language'];
+      locale = acceptLanguage.get(acceptLanguageHeader);
     }
-    const locale = ctx.req.session.user.locale || ctx.req.language;
 
     if (locales.includes(locale)) {
       return locale;

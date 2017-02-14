@@ -1,8 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const requestLanguage = require('express-request-language');
 const next = require('next');
-const languages = require('../universal/locales');
 const renderAndCache = require('./renderAndCache');
 const session = require('./session');
 
@@ -15,7 +13,6 @@ app.prepare().then(() => {
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: true }));
   server.use(session);
-  server.use(requestLanguage({ languages }));
 
   server.post('/api/auth/logout', (req, res) => {
     delete req.session.user; // eslint-disable-line no-param-reassign
