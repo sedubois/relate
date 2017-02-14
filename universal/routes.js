@@ -1,7 +1,7 @@
 const nextRoutes = require('next-routes');
 
 const routes = nextRoutes();
-routes.add('index', '/');
+routes.add('/', '/');
 routes.add('about', '/about');
 routes.add('discover', '/discover');
 routes.add('retreat', '/retreat/:id');
