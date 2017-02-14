@@ -22,12 +22,12 @@ export default ComposedComponent => class WithIntl extends Component {
   static async getInitialProps(ctx) {
     if (!process.browser) {
       locale = getLocale(ctx);
-    }
-    if (!process.browser && !intlCache.has(locale)) {
-      const url = `${baseUrl || `http://${ctx.req.headers.host}`}/api/intl/${locale}`;
-      const res = await fetch(url);
-      messages = await res.json();
-      intlCache.set(locale, messages);
+      if (!intlCache.has(locale)) {
+        const url = `${baseUrl || `http://${ctx.req.headers.host}`}/api/intl/${locale}`;
+        const res = await fetch(url);
+        intlCache.set(locale, await res.json());
+      }
+      messages = intlCache.get(locale);
     }
     return {
       locale,
