@@ -6,12 +6,18 @@ const ssrCache = new LRUCache({
   maxAge: 1000 * 60 * 60, // 1 hour
 });
 
+function getCacheKey(req) {
+  return `${req.url}-${JSON.stringify(req.session.user)}`;
+}
+
 function renderAndCache(app) {
   const handle = app.getRequestHandler();
 
   return (req, res) => {
-    if (ssrCache.has(req.url)) {
-      return res.send(ssrCache.get(req.url));
+    const key = getCacheKey(req);
+    if (ssrCache.has(key)) {
+      console.log(`CACHE HIT:  ${key}`);
+      return res.send(ssrCache.get(key));
     }
 
     if (req.url === '/favicon.ico'
@@ -27,7 +33,8 @@ function renderAndCache(app) {
 
     app.renderToHTML(req, res, route.page, params)
       .then((html) => {
-        ssrCache.set(req.url, html);
+        console.log(`CACHE MISS:  ${key}`);
+        ssrCache.set(key, html);
         res.send(html);
       })
       .catch(err => app.renderError(err, req, res, route.page, params));
