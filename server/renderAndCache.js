@@ -16,7 +16,6 @@ function renderAndCache(app) {
   return (req, res) => {
     const key = getCacheKey(req);
     if (ssrCache.has(key)) {
-      console.log(`CACHE HIT:  ${key}`);
       return res.send(ssrCache.get(key));
     }
 
@@ -33,7 +32,6 @@ function renderAndCache(app) {
 
     app.renderToHTML(req, res, route.page, params)
       .then((html) => {
-        console.log(`CACHE MISS:  ${key}`);
         ssrCache.set(key, html);
         res.send(html);
       })
