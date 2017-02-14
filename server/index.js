@@ -39,7 +39,7 @@ app.prepare().then(() => {
     res.json(messages);
   });
 
-  server.use(renderAndCache(app)).listen(3000, (err) => {
+  server.use(renderAndCache(app, dev)).listen(3000, (err) => {
     if (err) {
       throw err;
     }
