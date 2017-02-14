@@ -8,7 +8,7 @@
     "postinstall": "sh scripts/createDefaultConfig.sh",
     "dev": "nodemon -w server -w universal",
     "build": "NODE_ENV=production next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node server",
     "lint-staged": "lint-staged",
     "deploy": "eslint . && now && now alias"
   },
