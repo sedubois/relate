@@ -11,23 +11,22 @@ function renderAndCache(app) {
 
   return (req, res) => {
     if (ssrCache.has(req.url)) {
-      console.log(`CACHE HIT: ${req.url}`);
       return res.send(ssrCache.get(req.url));
     }
 
-    if (req.url === '/__webpack_hmr') {
+    if (req.url === '/favicon.ico'
+      || req.url.startsWith('/_')
+      || req.url.startsWith('/static')) {
       return handle(req, res);
     }
 
     const { route, params } = routes.match(req.url);
     if (!route) {
-      console.log('Route not matched:', req.url);
       return handle(req, res);
     }
 
     app.renderToHTML(req, res, route.page, params)
       .then((html) => {
-        console.log(`CACHE MISS: ${req.url}`);
         ssrCache.set(req.url, html);
         res.send(html);
       })
