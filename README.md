@@ -31,9 +31,10 @@
 - [Next-Routes](https://github.com/fridays/next-routes) to manage dynamic routing configuration
 - [Now](https://zeit.co/now) deployment
 - [Auth0](https://auth0.com) user authentication
+- [lru-cache](https://github.com/isaacs/node-lru-cache) for server-side caching of HTML pages
 - [React-ga](https://github.com/react-ga/react-ga) for [Google Analytics](https://www.google.com/analytics)</a>
 - [React-intl](https://github.com/yahoo/react-intl) for internationalization
-- [Express-request-language](https://github.com/tinganho/express-request-language) for detection of browser's language preference
+- [accept-language](https://github.com/tinganho/node-accept-language) for detection of browser's language preference
 - [Smooch](https://smooch.io/) customer support
 - [MailChimp](https://mailchimp.com) newsletter registration
 
