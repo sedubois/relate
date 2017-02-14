@@ -22,6 +22,7 @@
     "express-session": "^1.15.0",
     "graphql-anywhere": "^2.2.0",
     "graphql-tag": "^1.2.4",
+    "lru-cache": "^4.0.2",
     "next": "^2.0.0-beta",
     "next-routes": "^1.0.14",
     "nprogress": "^0.2.0",

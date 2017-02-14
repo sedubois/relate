@@ -6,12 +6,11 @@ const FileStore = require('session-file-store')(session);
 const next = require('next');
 const { readFileSync } = require('fs');
 const { SESSION_SECRET } = require('../universal/config');
-const routes = require('../universal/routes');
 const languages = require('../universal/locales');
+const renderAndCache = require('./renderAndCache');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-const handler = routes.getRequestHandler(app);
 // TODO store more persistently (this only survives while deployment is on same machine)
 const store = new FileStore({ path: '/tmp/sessions' });
 
@@ -51,7 +50,7 @@ app.prepare().then(() => {
     res.json(messages);
   });
 
-  server.use(handler).listen(3000, (err) => {
+  server.use(renderAndCache(app)).listen(3000, (err) => {
     if (err) {
       throw err;
     }
