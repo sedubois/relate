@@ -15,8 +15,13 @@ function renderAndCache(app) {
       return res.send(ssrCache.get(req.url));
     }
 
+    if (req.url === '/__webpack_hmr') {
+      return handle(req, res);
+    }
+
     const { route, params } = routes.match(req.url);
     if (!route) {
+      console.log('Route not matched:', req.url);
       return handle(req, res);
     }
 
