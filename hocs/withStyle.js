@@ -19,7 +19,7 @@ export default ComposedComponent => props => (
       }
 
       p {
-        font-size: 120%;
+        font-size: 100%;
         line-height: 1.2;
       }
     `}</style>
