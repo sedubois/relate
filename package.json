@@ -91,9 +91,7 @@
     "*.js": "eslint"
   },
   "now": {
-    "aliases": [
-      "relate"
-    ]
+    "alias": "relate"
   },
   "pre-commit": "lint-staged"
 }
