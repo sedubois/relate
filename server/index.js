@@ -16,7 +16,7 @@ app.prepare().then(() => {
   server.use(session);
   server.use('/api/auth', authApi);
 
-  server.use(renderAndCache(app, dev)).listen(3000, (err) => {
+  server.use(renderAndCache(app)).listen(3000, (err) => {
     if (err) {
       throw err;
     }

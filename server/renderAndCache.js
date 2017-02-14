@@ -10,12 +10,12 @@ function getCacheKey(req) {
   return `${req.url}-${JSON.stringify(req.session.user)}`;
 }
 
-function renderAndCache(app, dev) {
+function renderAndCache(app) {
   const handle = app.getRequestHandler();
 
   return (req, res) => {
     const key = getCacheKey(req);
-    if (!dev && ssrCache.has(key)) {
+    if (!app.dev && ssrCache.has(key)) {
       return res.send(ssrCache.get(key));
     }
 
