@@ -1,7 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
-import Router from 'next/router';
 import { pageWithoutLayout } from '../../hocs/page';
 import { logout } from '../../data/auth/actions';
 import mapDispatch from '../../util/redux';
@@ -21,7 +20,7 @@ class Logout extends Component {
       await this.props.logout();
       window.location.replace('/');
     } else {
-      Router.push('/');
+      window.location.replace('/');
     }
   }
 
