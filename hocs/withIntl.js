@@ -3,7 +3,6 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import 'isomorphic-fetch';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import { getLocale } from '../data/intl/lib';
-import baseUrl from '../util/baseUrl';
 import localeData from '../data/intl/localeData';
 
 // server-side: for performance, keep in memory messages for different locales
@@ -23,9 +22,10 @@ export default ComposedComponent => class WithIntl extends Component {
     if (!process.browser) {
       locale = getLocale(ctx);
       if (!intlCache.has(locale)) {
-        const url = `${baseUrl || `http://${ctx.req.headers.host}`}/api/intl/${locale}`;
-        const res = await fetch(url);
-        intlCache.set(locale, await res.json());
+        const messageFile = require.resolve(`../data/intl/${locale}.json`);
+        // eslint-disable-next-line global-require
+        messages = JSON.parse(require('fs').readFileSync(messageFile, 'utf8'));
+        intlCache.set(locale, messages);
       }
       messages = intlCache.get(locale);
     }

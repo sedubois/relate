@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const requestLanguage = require('express-request-language');
 const next = require('next');
-const { readFileSync } = require('fs');
 const languages = require('../universal/locales');
 const renderAndCache = require('./renderAndCache');
 const session = require('./session');
@@ -29,14 +28,6 @@ app.prepare().then(() => {
     }
     Object.assign(req.session.user, req.body); // eslint-disable-line no-param-reassign
     res.json({});
-  });
-
-  server.get('/api/intl/:locale', (req, res) => {
-    // doesn't work in withIntl.js: https://github.com/zeit/next.js/issues/1091#issuecomment-279241498
-    const locale = req.params.locale;
-    const messageFile = require.resolve(`../data/intl/${locale}.json`);
-    const messages = JSON.parse(readFileSync(messageFile, 'utf8'));
-    res.json(messages);
   });
 
   server.use(renderAndCache(app, dev)).listen(3000, (err) => {
