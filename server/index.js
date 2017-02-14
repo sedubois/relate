@@ -1,32 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const requestLanguage = require('express-request-language');
-const session = require('express-session');
-const FileStore = require('session-file-store')(session);
 const next = require('next');
 const { readFileSync } = require('fs');
-const { SESSION_SECRET } = require('../universal/config');
 const languages = require('../universal/locales');
 const renderAndCache = require('./renderAndCache');
+const session = require('./session');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
-// TODO store more persistently (this only survives while deployment is on same machine)
-const store = new FileStore({ path: '/tmp/sessions' });
 
 app.prepare().then(() => {
   const server = express();
 
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: true }));
-  server.use(session({
-    secret: SESSION_SECRET,
-    store,
-    resave: false,
-    rolling: true,
-    saveUninitialized: true,
-    httpOnly: true,
-  }));
+  server.use(session);
   server.use(requestLanguage({ languages }));
 
   server.post('/api/auth/logout', (req, res) => {
