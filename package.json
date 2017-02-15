@@ -6,7 +6,7 @@
   "main": "./server",
   "scripts": {
     "postinstall": "sh scripts/createDefaultConfig.sh",
-    "dev": "nodemon -w server -w universal",
+    "dev": "nodemon -w server -w universal -w yarn.lock -w next.config.js -w package.json",
     "build": "NODE_ENV=production next build",
     "start": "NODE_ENV=production node server",
     "lint-staged": "lint-staged",
