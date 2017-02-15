@@ -1,11 +1,9 @@
 const nextRoutes = require('next-routes');
 
-const routes = nextRoutes();
-routes.add('/', '/');
-routes.add('about', '/about');
-routes.add('discover', '/discover');
-routes.add('retreat', '/retreat/:id');
-routes.add('track', '/track/:id');
-routes.add('profile', '/:slug');
-
-module.exports = routes;
+module.exports = nextRoutes()
+  .add('/')
+  .add('about')
+  .add('discover')
+  .add('retreat', '/retreat/:id')
+  .add('track', '/track/:id')
+  .add('profile', '/:slug');

@@ -26,7 +26,7 @@
     "graphql-tag": "^1.2.4",
     "lru-cache": "^4.0.2",
     "next": "^2.0.0-beta",
-    "next-routes": "^1.0.14",
+    "next-routes": "^1.0.15",
     "nprogress": "^0.2.0",
     "react-apollo": "^0.10.1",
     "react-ga": "^2.1.2",
