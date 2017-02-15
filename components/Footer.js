@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { mapDispatchToSetLocale } from '../data/intl/lib';
 import locales from '../universal/locales';
-import pkg from '../package';
+import { version } from '../package';
 
 const Footer = ({ locale, setLocale }) => (
   <footer>
@@ -38,7 +38,7 @@ const Footer = ({ locale, setLocale }) => (
       />
     </section>
     <section>
-      v{pkg.version}
+      {`v${version}`}
     </section>
   </footer>
 );
