@@ -19,14 +19,10 @@ function renderAndCache(app) {
       return res.send(ssrCache.get(key));
     }
 
-    if (req.url === '/favicon.ico'
-      || req.url.startsWith('/_')
-      || req.url.startsWith('/static')) {
-      return handle(req, res);
-    }
-
     const { route, params } = routes.match(req.url);
-    if (!route) {
+    if (!route
+      || req.url === '/favicon.ico'
+      || req.url === '/__webpack_hmr') {
       return handle(req, res);
     }
 
