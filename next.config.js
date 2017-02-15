@@ -11,10 +11,10 @@ module.exports = {
       config.plugins.push(
         new BundleAnalyzerPlugin({
           // For all options see https://github.com/th0r/webpack-bundle-analyzer#as-plugin
-          analyzerMode: 'server',
-          analyzerHost: '127.0.0.1',
-          analyzerPort: 8888,
-          openAnalyzer: false,
+          analyzerMode: 'disabled',
+          generateStatsFile: true,
+          // then view stats with webpack-bundle-analyzer .next/stats.json
+          statsFilename: 'stats.json',
         }));
     }
 

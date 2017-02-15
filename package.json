@@ -11,7 +11,8 @@
     "start": "NODE_ENV=production node server",
     "lint-staged": "lint-staged",
     "deploy": "eslint . && now && now alias",
-    "analyze": "NODE_ENV=analyze yarn dev"
+    "bundle:analyze": "NODE_ENV=analyze yarn dev",
+    "bundle:view": "webpack-bundle-analyzer .next/stats.json"
   },
   "dependencies": {
     "accept-language": "^3.0.15",
