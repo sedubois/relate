@@ -2,12 +2,12 @@
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
-  webpack: (config, { dev }) => {
+  webpack: (config) => {
     config.externals = {
       fs: 'fs',
     };
 
-    if (dev) {
+    if (process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'analyze') {
       config.plugins.push(
         new BundleAnalyzerPlugin({
           // For all options see https://github.com/th0r/webpack-bundle-analyzer#as-plugin
