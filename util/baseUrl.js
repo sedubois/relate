@@ -1,3 +1,6 @@
-const { hostname, origin, port, protocol } = window.location;
-
-export default process.browser ? origin || `${protocol}//${hostname}${port ? `:${port}` : ''}` : undefined;
+export default process.browser
+  ? window.location.origin ||
+  `${window.location.protocol}//${window.location.hostname}${window.location.port
+    ? `:${window.location.port}`
+    : ''}`
+  : undefined;
