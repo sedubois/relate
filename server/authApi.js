@@ -7,9 +7,6 @@ module.exports = express.Router()
     return res.json({});
   })
   .patch('/', (req, res) => {
-    if (!req.session.user) {
-      req.session.user = {};
-    }
     Object.assign(req.session.user, req.body);
     res.json({});
   });

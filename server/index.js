@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const next = require('next');
 const renderAndCache = require('./renderAndCache');
-const session = require('./session');
+const { configSession, defaultSessionData } = require('./session');
 const authApi = require('./authApi');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -13,7 +13,8 @@ app.prepare().then(() => {
 
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: true }));
-  server.use(session);
+  server.use(configSession);
+  server.use(defaultSessionData);
   server.use('/api/auth', authApi);
 
   server.use(renderAndCache(app)).listen(3000, (err) => {

@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { mapDispatchToSetLocale } from '../data/intl/lib';
+import mapDispatchToSetLocale from '../data/intl/lib';
 import locales from '../universal/locales';
 import { version } from '../package';
 

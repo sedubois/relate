@@ -2,7 +2,6 @@ import { Component, PropTypes } from 'react';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import 'isomorphic-fetch';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
-import { getLocale } from '../data/intl/lib';
 import localeData from '../data/intl/localeData';
 
 // server-side: for performance, keep in memory messages for different locales
@@ -20,7 +19,7 @@ export default ComposedComponent => class WithIntl extends Component {
 
   static async getInitialProps(ctx) {
     if (!process.browser) {
-      locale = getLocale(ctx);
+      locale = ctx.req.session.user.locale;
       if (!intlCache.has(locale)) {
         const messageFile = require.resolve(`../data/intl/${locale}.json`);
         // eslint-disable-next-line global-require
