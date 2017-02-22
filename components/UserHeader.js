@@ -35,7 +35,7 @@ function UserHeader({ user }) {
 // TODO deduplicate with UserPreview.js
 UserHeader.fragments = {
   user: gql`
-    fragment UserHeader on Member {
+    fragment UserHeader on User {
       slug
       givenName
       familyName

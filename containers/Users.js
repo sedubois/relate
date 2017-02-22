@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import graphql from '../util/graphql';
 import UserPreview from '../components/UserPreview';
 
-const Users = ({ data: { allMembers } }) => (
+const Users = ({ data: { allUsers } }) => (
   <div className="wrapper">
     <style jsx>{`
       .wrapper {
@@ -11,21 +11,21 @@ const Users = ({ data: { allMembers } }) => (
         justify-content: center;
       }
     `}</style>
-    {allMembers
+    {allUsers
       .map(u => <UserPreview key={u.id} user={filter(UserPreview.fragments.user, u)} />)}
   </div>
 );
 
 const query = gql`
   query {
-    allMembers(
+    allUsers(
       filter: {
         OR: [{
           tracks_some: {
             id_not: "nonExistentId"
           }
         }, {
-          retreats_some: {
+          facilitatedRetreats_some: {
             id_not: "nonExistentId"
           }
         }]

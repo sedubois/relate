@@ -6,8 +6,8 @@ import RetreatList from '../components/RetreatList';
 import TrackList from '../components/TrackList';
 import UserHeader from '../components/UserHeader';
 
-function Profile({ data: { Member } }) {
-  if (!Member) {
+function Profile({ data: { User } }) {
+  if (!User) {
     return <ErrorPage statusCode={404} />;
   }
   return (
@@ -17,23 +17,24 @@ function Profile({ data: { Member } }) {
           margin: 0 1em;
         }
       `}</style>
-      <UserHeader user={filter(UserHeader.fragments.user, Member)} />
-      {Member.retreats.length > 0 && <RetreatList retreats={Member.retreats} />}
-      {Member.tracks.length > 0 && <TrackList tracks={Member.tracks} />}
+      <UserHeader user={filter(UserHeader.fragments.user, User)} />
+      {User.facilitatedRetreats.length > 0 &&
+        <RetreatList facilitatedRetreats={User.facilitatedRetreats} />}
+      {User.tracks.length > 0 && <TrackList tracks={User.tracks} />}
     </div>
   );
 }
 
 const query = gql`
   query Profile($slug: String!) {
-    Member(slug: $slug) {
+    User(slug: $slug) {
       ...UserHeader
       ...Retreats
       ...Tracks
     }
   }
   ${UserHeader.fragments.user}
-  ${RetreatList.fragments.retreats}
+  ${RetreatList.fragments.facilitatedRetreats}
   ${TrackList.fragments.tracks}
 `;
 

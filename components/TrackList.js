@@ -27,7 +27,7 @@ function TrackList({ tracks }) {
 
 TrackList.fragments = {
   tracks: gql`
-    fragment Tracks on Member {
+    fragment Tracks on User {
       tracks {
         id
         title
@@ -38,6 +38,7 @@ TrackList.fragments = {
 
 TrackList.propTypes = {
   // TODO figure out why this yields an error
+  // https://github.com/apollographql/graphql-anywhere/issues/37
   // tracks: propType(TrackList.fragments.tracks).isRequired,
   tracks: PropTypes.array.isRequired,
 };

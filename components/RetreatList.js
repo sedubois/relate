@@ -4,10 +4,10 @@ import { FormattedMessage } from 'react-intl';
 import ItemList from './ItemList';
 import ItemPreview from './ItemPreview';
 
-function RetreatList({ retreats }) {
+function RetreatList({ facilitatedRetreats }) {
   return (
     <ItemList title={<FormattedMessage id="RetreatList.title" />}>
-      {retreats.map(retreat => (
+      {facilitatedRetreats.map(retreat => (
         <ItemPreview
           key={retreat.id}
           link={{
@@ -23,9 +23,9 @@ function RetreatList({ retreats }) {
 }
 
 RetreatList.fragments = {
-  retreats: gql`
-    fragment Retreats on Member {
-      retreats {
+  facilitatedRetreats: gql`
+    fragment Retreats on User {
+      facilitatedRetreats {
         id
         title
       }
@@ -35,8 +35,9 @@ RetreatList.fragments = {
 
 RetreatList.propTypes = {
   // TODO figure out why this yields an error
-  // retreats: propType(RetreatList.fragments.retreats).isRequired,
-  retreats: PropTypes.array.isRequired,
+  // https://github.com/apollographql/graphql-anywhere/issues/37
+  // facilitatedRetreats: propType(RetreatList.fragments.facilitatedRetreats).isRequired,
+  facilitatedRetreats: PropTypes.array.isRequired,
 };
 
 export default RetreatList;
