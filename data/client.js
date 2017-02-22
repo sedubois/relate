@@ -21,6 +21,7 @@ function createClient({ authToken }) {
     networkInterface,
     ssrMode: !process.browser,
     dataIdFromObject: result => result.id || null,
+    connectToDevTools: process.browser,
   });
 }
 
