@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from './actions';
+import { SESSION_LOGIN, SESSION_LOGOUT } from './actions';
 
 const initialState = {
   loggedIn: false,
@@ -7,14 +7,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN:
+    case SESSION_LOGIN:
       return {
         ...state,
         token: action.token,
         loggedIn: Boolean(action.token),
       };
 
-    case LOGOUT:
+    case SESSION_LOGOUT:
       return {
         ...state,
         token: null,
