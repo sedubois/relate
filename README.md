@@ -16,6 +16,7 @@
 </div>
 
 [![Slack Channel](https://relate-slack.now.sh/badge.svg)](https://relate-slack.now.sh)
+[![Greenkeeper badge](https://badges.greenkeeper.io/relatenow/relate.svg)](https://greenkeeper.io/)
 
 ## Stack
 
