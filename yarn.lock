@@ -109,9 +109,9 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
-apollo-client@^0.8.5:
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-0.8.5.tgz#137ff4a51be5e99827c09a1abe0653d83927c774"
+apollo-client@^0.8.7:
+  version "0.8.7"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-0.8.7.tgz#73f52d1dd6dfe0f07e8bfe05a8e47c4bcd3bf7a3"
   dependencies:
     graphql-anywhere "^2.1.0"
     graphql-tag "^1.1.1"
@@ -1440,6 +1440,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+date-fns@^1.27.2:
+  version "1.27.2"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.27.2.tgz#ce82f420bc028356cc661fc55c0494a56a990c9c"
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -1792,17 +1796,19 @@ eslint-plugin-jsx-a11y@^4.0.0:
     jsx-ast-utils "^1.0.0"
     object-assign "^4.0.1"
 
-eslint-plugin-react@^6.4.1:
-  version "6.9.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-6.9.0.tgz#54c2e9906b76f9d10142030bdc34e9d6840a0bb2"
+eslint-plugin-react@^6.10.0:
+  version "6.10.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-6.10.0.tgz#9c48b48d101554b5355413e7c64238abde6ef1ef"
   dependencies:
     array.prototype.find "^2.0.1"
     doctrine "^1.2.2"
+    has "^1.0.1"
     jsx-ast-utils "^1.3.4"
+    object.assign "^4.0.4"
 
-eslint@^3.15.0:
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.15.0.tgz#bdcc6a6c5ffe08160e7b93c066695362a91e30f2"
+eslint@^3.16.1:
+  version "3.16.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.16.1.tgz#9bc31fc7341692cf772e80607508f67d711c5609"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -2925,14 +2931,14 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lint-staged@^3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-3.3.0.tgz#29eb789b852208201a41fa85c3ac036f60606cd6"
+lint-staged@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-3.3.1.tgz#b725d98a2be1f82cb228069fab682f503c95234d"
   dependencies:
     app-root-path "^2.0.0"
     cosmiconfig "^1.1.0"
     execa "^0.6.0"
-    listr "^0.10.0"
+    listr "^0.11.0"
     minimatch "^3.0.0"
     npm-which "^3.0.1"
     staged-git-files "0.0.4"
@@ -2955,17 +2961,18 @@ listr-update-renderer@^0.2.0:
     log-update "^1.0.2"
     strip-ansi "^3.0.1"
 
-listr-verbose-renderer@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/listr-verbose-renderer/-/listr-verbose-renderer-0.3.0.tgz#f4904400af29e938394a70f0647a08cdaa8dd840"
+listr-verbose-renderer@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/listr-verbose-renderer/-/listr-verbose-renderer-0.4.0.tgz#44dc01bb0c34a03c572154d4d08cde9b1dc5620f"
   dependencies:
     chalk "^1.1.3"
     cli-cursor "^1.0.2"
+    date-fns "^1.27.2"
     figures "^1.7.0"
 
-listr@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/listr/-/listr-0.10.0.tgz#342d7210966c0497a9193aaab5053e7bf619e3e2"
+listr@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/listr/-/listr-0.11.0.tgz#5e778bc23806ac3ab984ed75564458151f39b03e"
   dependencies:
     chalk "^1.1.3"
     cli-truncate "^0.2.1"
@@ -2975,7 +2982,7 @@ listr@^0.10.0:
     is-stream "^1.1.0"
     listr-silent-renderer "^1.1.1"
     listr-update-renderer "^0.2.0"
-    listr-verbose-renderer "^0.3.0"
+    listr-verbose-renderer "^0.4.0"
     log-symbols "^1.0.2"
     log-update "^1.0.2"
     ora "^0.2.3"
@@ -3342,9 +3349,9 @@ nested-error-stacks@^1.0.0:
   dependencies:
     inherits "~2.0.1"
 
-next-routes@^1.0.15:
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/next-routes/-/next-routes-1.0.15.tgz#df96904ddab1b29872df8c68f4c4d6f12869bb8c"
+next-routes@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/next-routes/-/next-routes-1.0.16.tgz#8541672f43bd503a50c1c612557bd997b28aed57"
   dependencies:
     path-to-regexp "^1.7.0"
 
@@ -3535,9 +3542,17 @@ object-assign@^4.0.1, object-assign@^4.1.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
-object-keys@^1.0.8:
+object-keys@^1.0.10, object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
+
+object.assign@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.0.4.tgz#b1c9cc044ef1b9fe63606fc141abbb32e14730cc"
+  dependencies:
+    define-properties "^1.1.2"
+    function-bind "^1.1.0"
+    object-keys "^1.0.10"
 
 object.entries@1.0.4:
   version "1.0.4"
@@ -3929,9 +3944,9 @@ react-addons-css-transition-group@15.1.0, "react-addons-css-transition-group@^15
   version "15.1.0"
   resolved "https://registry.yarnpkg.com/react-addons-css-transition-group/-/react-addons-css-transition-group-15.1.0.tgz#057024a699386a47a1ff7e48b2138a0ad0291f14"
 
-react-apollo@^0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-0.10.1.tgz#97fd50855f8575672aa68330b9c64a201cd13343"
+react-apollo@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-0.11.2.tgz#39c134b5a18854e73a15a40a7fa2aeda27212da7"
   dependencies:
     graphql-anywhere "^2.0.0"
     hoist-non-react-statics "^1.2.0"
@@ -3943,10 +3958,6 @@ react-apollo@^0.10.1:
     object-assign "^4.0.1"
   optionalDependencies:
     react-dom "0.14.x || 15.* || ^15.0.0"
-
-react-async-script@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/react-async-script/-/react-async-script-0.6.0.tgz#b37513d62f25a7fc71b5a4586c389c38f1904853"
 
 react-deep-force-update@^2.0.1:
   version "2.0.1"
@@ -3996,12 +4007,6 @@ react-intl@^2.2.3:
     intl-relativeformat "^1.3.0"
     invariant "^2.1.1"
 
-react-messenger-plugin@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-messenger-plugin/-/react-messenger-plugin-1.0.1.tgz#cd64d1aa65b20b95351d6cd078612a4596f79467"
-  dependencies:
-    react-async-script "0.6.0"
-
 react-no-ssr@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-no-ssr/-/react-no-ssr-1.1.0.tgz#313b48d2e26020f969ed98e472f10481604e3cc8"
@@ -4014,9 +4019,9 @@ react-onclickoutside@5.3.1:
   dependencies:
     object-assign "^4.0.1"
 
-react-player@^0.14.1:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/react-player/-/react-player-0.14.1.tgz#72c45ec13bb8445cda22d0482f26aa1a3af629f0"
+react-player@^0.14.3:
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/react-player/-/react-player-0.14.3.tgz#4b836092bdb527ac2926460905f4e953c6a127ce"
   dependencies:
     fetch-jsonp "^1.0.2"
     load-script "^1.0.0"
@@ -4497,9 +4502,9 @@ smooch-core@2.1.0:
     isomorphic-fetch "2.2.0"
     jsonwebtoken "5.4.1"
 
-smooch@^3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/smooch/-/smooch-3.11.0.tgz#cccb468accc2f14b1a7282d5ad4ffe4455a59991"
+smooch@^3.13.0:
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/smooch/-/smooch-3.13.0.tgz#1985c6f67a00868f03bfdb05628c017f6aa85d63"
   dependencies:
     deep-equal "1.0.1"
     faye "1.1.2"
@@ -4511,7 +4516,6 @@ smooch@^3.11.0:
     react-addons-css-transition-group "15.1.0"
     react-document-title "2.0.1"
     react-imageloader "2.1.0"
-    react-messenger-plugin "1.0.1"
     react-onclickoutside "5.3.1"
     react-redux "4.4.5"
     react-spinkit "1.1.4"
