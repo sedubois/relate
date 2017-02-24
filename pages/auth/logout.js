@@ -18,10 +18,8 @@ class Logout extends Component {
   async componentDidMount() {
     if (this.props.auth.loggedIn) {
       await this.props.logout();
-      window.location.replace('/');
-    } else {
-      window.location.replace('/');
     }
+    window.location.replace('/');
   }
 
   render() {
