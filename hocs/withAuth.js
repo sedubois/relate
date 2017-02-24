@@ -17,10 +17,7 @@ export default (ComposedComponent) => {
 
     static async getInitialProps(ctx) {
       if (!process.browser) {
-        const token = ctx.req.session && ctx.req.session.user && ctx.req.session.user.token;
-        if (token) {
-          auth.token = token;
-        }
+        auth.token = ctx.req.session && ctx.req.session.user && ctx.req.session.user.token;
         auth.loggedIn = Boolean(auth.token);
       }
       return {
