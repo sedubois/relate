@@ -16,10 +16,9 @@
 </div>
 
 [![Slack Channel](https://relate-slack.now.sh/badge.svg)](https://relate-slack.now.sh)
+[![Greenkeeper badge](https://badges.greenkeeper.io/relatenow/relate.svg)](https://greenkeeper.io/)
 
 ## Stack
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/relatenow/relate.svg)](https://greenkeeper.io/)
 
 [Read this](https://github.com/relatenow/relate/issues/5) for the reasoning behind the technology choices.
 
