@@ -1,17 +1,22 @@
 import { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
-import Link from 'next/prefetch';
+import Link from 'next/link';
 import isActive from '../util/link';
 
-const Div = ({ children }) => <div>{children}</div>;
-Div.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+function createWrapper(href, as) {
+  const Wrapper = ({ children }) => (href
+    ? <Link href={href} as={as}>{children}</Link>
+    : <div>{children}</div>);
+  Wrapper.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
+  return Wrapper;
+}
 
 const HeaderElem = ({ url, href, as, intlKey, children }) => {
-  const Wrapper = href ? Link : Div;
+  const Wrapper = createWrapper(href, as);
   return (
-    <Wrapper href={href} as={as}>
+    <Wrapper>
       <a className={`headerElem ${isActive(url, href) && 'active'}`}>
         {intlKey && <FormattedMessage id={intlKey} />}
         {children && children}
