@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import mapDispatchToSetLocale from '../data/intl/lib';
 import locales from '../universal/locales';
-import { version } from '../package';
+import { version } from '../package.json';
 
 const Footer = ({ locale, setLocale }) => (
   <footer>

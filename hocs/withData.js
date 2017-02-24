@@ -16,9 +16,6 @@ function getInitialState(apolloClient, reduxStore) {
 export default ComposedComponent => (
   class WithData extends Component {
     static propTypes = {
-      url: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-      }).isRequired,
       initialState: PropTypes.object.isRequired,
       clientAndStoreProps: PropTypes.shape({
         authToken: PropTypes.string,

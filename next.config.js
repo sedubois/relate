@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   webpack: (config) => {
@@ -8,6 +7,8 @@ module.exports = {
     };
 
     if (process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'analyze') {
+      // eslint-disable-next-line
+      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
       config.plugins.push(
         new BundleAnalyzerPlugin({
           // For all options see https://github.com/th0r/webpack-bundle-analyzer#as-plugin

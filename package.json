@@ -24,15 +24,20 @@
     "express-session": "^1.15.1",
     "graphql-anywhere": "^2.2.0",
     "graphql-tag": "^1.2.4",
+    "isomorphic-fetch": "^2.2.1",
     "lru-cache": "^4.0.2",
     "next": "^2.0.0-beta",
     "next-routes": "^1.0.15",
     "nprogress": "^0.2.0",
+    "react": "^15.4.2",
     "react-apollo": "^0.10.1",
+    "react-dom": "^15.4.2",
     "react-ga": "^2.1.2",
     "react-intl": "^2.2.3",
     "react-no-ssr": "^1.1.0",
     "react-player": "^0.14.1",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "session-file-store": "^1.0.0",
     "smooch": "^3.11.0",
@@ -79,15 +84,9 @@
       "SMOOCH_SECRET": false
     },
     "rules": {
-      "import/extensions": 0,
-      "import/no-extraneous-dependencies": 0,
-      "import/no-unresolved": 0,
       "react/forbid-prop-types": 0,
       "react/jsx-filename-extension": 0,
-      "react/no-unused-prop-types": 0,
-      "react/react-in-jsx-scope": 0,
-      "linebreak-style": 0,
-      "no-underscore-dangle": 0
+      "react/react-in-jsx-scope": 0
     }
   },
   "lint-staged": {
