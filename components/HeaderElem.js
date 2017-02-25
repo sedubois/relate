@@ -5,7 +5,7 @@ import isActive from '../util/link';
 
 function createWrapper(href, as) {
   const Wrapper = ({ children }) => (href
-    ? <Link href={href} as={as}>{children}</Link>
+    ? <Link prefetch href={href} as={as}>{children}</Link>
     : <div>{children}</div>);
   Wrapper.propTypes = {
     children: PropTypes.node.isRequired,
