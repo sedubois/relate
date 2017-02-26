@@ -4,6 +4,9 @@
   "author": "Sebastien Dubois",
   "license": "GPL-3.0",
   "main": "./server",
+  "engines" : {
+    "node" : ">=7.6.0"
+  },
   "scripts": {
     "postinstall": "sh scripts/createDefaultConfig.sh",
     "dev": "nodemon -w server -w universal -w yarn.lock -w next.config.js -w package.json",

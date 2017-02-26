@@ -1,5 +1,6 @@
 import execXhr from '../../util/xhr';
 import { checkSecret } from '../../util/authSecret';
+import promisify from '../../universal/promisify';
 
 /* eslint-disable */
 const Auth0Lock = process.browser && require('auth0-lock').default;
@@ -24,10 +25,9 @@ async function getTokenAndState() {
   };
 }
 
+const doGetProfile = promisify(lock, 'getProfile');
 async function getProfile(authToken) {
-  const profile = await new Promise((resolve, reject) => {
-    lock.getProfile(authToken, (err, res) => (err ? reject(err) : resolve(res)));
-  });
+  const profile = await doGetProfile(authToken);
   return {
     type: 'GET_PROFILE',
     profile,
