@@ -6,7 +6,7 @@ module.exports = {
       fs: 'fs',
     };
 
-    if (process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'analyze') {
+    if (process.env.ANALYZE_BUNDLE) {
       // eslint-disable-next-line
       const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
       config.plugins.push(
