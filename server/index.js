@@ -10,7 +10,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-return app.prepare().then(async () => {
+module.exports = app.prepare().then(async () => {
   const server = express();
 
   server.use(bodyParser.json());
