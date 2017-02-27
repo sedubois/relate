@@ -1,6 +1,6 @@
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
-const { SESSION_SECRET } = require('../universal/config');
+const { SESSION_SECRET } = require('./config');
 const acceptLanguage = require('./acceptLanguage');
 const routes = require('../universal/routes');
 

@@ -4,8 +4,8 @@
   "author": "Sebastien Dubois",
   "license": "GPL-3.0",
   "main": "./server",
-  "engines" : {
-    "node" : ">=7.6.0"
+  "engines": {
+    "node": ">=7.6.0"
   },
   "scripts": {
     "postinstall": "sh scripts/createDefaultConfig.sh",
@@ -65,7 +65,7 @@
     "plugins": [
       [
         "transform-define",
-        "./universal/config.js"
+        "./config.js"
       ]
     ]
   },
@@ -83,7 +83,6 @@
       "GRAPHQL_ENDPOINT": false,
       "NEWSLETTER_FORM_ACTION": false,
       "NEWSLETTER_FORM_INPUT_NAME": false,
-      "SESSION_SECRET": false,
       "SMOOCH_SECRET": false
     },
     "rules": {

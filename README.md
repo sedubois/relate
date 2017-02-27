@@ -50,7 +50,7 @@ Development:
 - navigate to <http://localhost:3000>
 - do something amazing :tada:
 
-NB: `yarn` will create `universal/config.js` for you (through the `postinstall` hook). Edit this file to configure integrations such as GraphQL and analytics.
+NB: `yarn` will create `config.js` and `server/config.js` for you (through the `postinstall` hook). Edit these files to configure integrations such as GraphQL and analytics.
 
 ## Credit
 

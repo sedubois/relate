@@ -23,5 +23,5 @@ module.exports = app.prepare().then(async () => {
   const port = 3000;
   await promisify(server, 'listen')(port);
   console.log(`> Ready on http://localhost:${port}`); // eslint-disable-line no-console
-  return server;
+  return { app, server };
 });
