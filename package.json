@@ -31,7 +31,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jest-cli": "^19.0.2",
     "lru-cache": "^4.0.2",
-    "next": "^2.0.0-beta",
+    "next": "beta",
     "next-routes": "^1.0.16",
     "nprogress": "^0.2.0",
     "react": "^15.4.2",
