@@ -11,7 +11,7 @@ module.exports = {
   ANALYTICS_TRACKING_ID: 'FIXME',
   AUTH0_CLIENT_ID: 'FIXME',
   AUTH0_DOMAIN: 'FIXME',
-  GRAPHQL_ENDPOINT: 'https://api.graph.cool/simple/v1/citr7kd6a2lo40168fh20r48g',
+  GRAPHQL_ENDPOINT: 'https://api.graph.cool/simple/v1/relate',
   NEWSLETTER_FORM_ACTION: 'FIXME',
   NEWSLETTER_FORM_INPUT_NAME: 'FIXME',
   SMOOCH_SECRET: 'FIXME',
