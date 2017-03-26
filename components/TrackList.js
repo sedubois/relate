@@ -1,5 +1,5 @@
 import { PropTypes } from 'react';
-import gql from 'graphql-tag';
+import { gql } from 'react-apollo';
 import { FormattedMessage } from 'react-intl';
 import ItemList from './ItemList';
 import ItemPreview from './ItemPreview';

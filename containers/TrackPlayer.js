@@ -1,5 +1,5 @@
 import { PropTypes } from 'react';
-import gql from 'graphql-tag';
+import { gql } from 'react-apollo';
 import ReactPlayer from 'react-player';
 import graphql from '../util/graphql';
 

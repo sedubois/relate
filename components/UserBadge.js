@@ -1,5 +1,5 @@
 import { propType } from 'graphql-anywhere';
-import gql from 'graphql-tag';
+import { gql } from 'react-apollo';
 
 function UserBadge({ user: { picture } }) {
   return (

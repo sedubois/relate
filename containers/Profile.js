@@ -1,5 +1,5 @@
 import { filter, propType } from 'graphql-anywhere';
-import gql from 'graphql-tag';
+import { gql } from 'react-apollo';
 import ErrorPage from 'next/error';
 import graphql from '../util/graphql';
 import RetreatList from '../components/RetreatList';

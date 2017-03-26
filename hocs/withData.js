@@ -7,7 +7,7 @@ import getClientAndStore from '../data/clientAndStore';
 function getInitialState(apolloClient, reduxStore) {
   return {
     ...reduxStore.getState(),
-    [apolloClient.reduxRootKey]: {
+    apollo: {
       data: apolloClient.getInitialState().data,
     },
   };

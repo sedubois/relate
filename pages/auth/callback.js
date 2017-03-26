@@ -1,8 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import gql from 'graphql-tag';
-import { compose, graphql } from 'react-apollo';
+import { compose, graphql, gql } from 'react-apollo';
 import mapDispatch from '../../util/redux';
 import { login } from '../../data/auth/actions';
 import { pageWithoutLayout } from '../../hocs/page';

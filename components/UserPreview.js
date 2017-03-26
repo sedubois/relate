@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from 'react-apollo';
 import { propType } from 'graphql-anywhere';
 import { Link } from '../universal/routes';
 import UserBadge from './UserBadge';
