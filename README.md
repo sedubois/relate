@@ -36,7 +36,6 @@
 - [React-ga](https://github.com/react-ga/react-ga) for [Google Analytics](https://www.google.com/analytics)</a>
 - [React-intl](https://github.com/yahoo/react-intl) for internationalization
 - [accept-language](https://github.com/tinganho/node-accept-language) for detection of browser's language preference
-- [Smooch](https://smooch.io/) customer support
 - [MailChimp](https://mailchimp.com) newsletter registration
 
 Development:

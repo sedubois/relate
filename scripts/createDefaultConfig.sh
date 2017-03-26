@@ -14,7 +14,6 @@ module.exports = {
   GRAPHQL_ENDPOINT: 'https://api.graph.cool/simple/v1/relate',
   NEWSLETTER_FORM_ACTION: 'FIXME',
   NEWSLETTER_FORM_INPUT_NAME: 'FIXME',
-  SMOOCH_SECRET: 'FIXME',
 };
 EOF
 fi;

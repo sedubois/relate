@@ -1,7 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { loadGetInitialProps } from 'next/dist/lib/utils';
 import configureProgressBar from '../util/routing';
-import configureSmooch from '../util/smooch';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
@@ -24,7 +23,6 @@ export default ComposedComponent => class WithLayout extends Component {
 
   componentDidMount() {
     configureProgressBar();
-    configureSmooch();
   }
 
   render() {
