@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "globals": {
+    "document": true,
+    "window": true,
+    "process": true,
+    "fetch": false,
+    "ANALYTICS_TRACKING_ID": false,
+    "AUTH0_CLIENT_ID": false,
+    "AUTH0_DOMAIN": false,
+    "GRAPHQL_ENDPOINT": false,
+    "NEWSLETTER_FORM_ACTION": false,
+    "NEWSLETTER_FORM_INPUT_NAME": false
+  },
+  "rules": {
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": 0,
+    "react/react-in-jsx-scope": 0
+  }
+}

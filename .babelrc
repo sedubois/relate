@@ -1,0 +1,26 @@
+{
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ],
+        "next/babel"
+      ]
+    }
+  },
+  "presets": [
+    "next/babel"
+  ],
+  "plugins": [
+    [
+      "transform-define",
+      "./config.js"
+    ]
+  ]
+}
