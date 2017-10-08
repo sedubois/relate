@@ -1,22 +1,10 @@
-<div align="center">
-  <h1>Relate</h1>
-  Relate brings together mindfulness communities, teachers and individuals.
-  <br />
-  <strong>
-    <a href="https://medium.com/@sedubois/the-way-we-relate-the-world-we-create-2d8f79300b7f">
-      Read the article on Medium
-    </a>
-  </strong>
-  <br />
-  <sub>Made with ❤︎ by <a href="https://sdubois.now.sh">Sébastien Dubois</a></sub>
-</div>
 
-[![Slack Channel](https://relate-slack.now.sh/badge.svg)](https://relate-slack.now.sh)
-[![Greenkeeper badge](https://badges.greenkeeper.io/relatenow/relate.svg)](https://greenkeeper.io/)
+| ⚠️  This project is archived. |
+|-------------------------------|
 
 ## Stack
 
-[Read this](https://github.com/relatenow/relate/issues/5) for the reasoning behind the technology choices.
+[Read this](https://github.com/sedubois/relate/issues/5) for the reasoning behind the technology choices.
 
 - [React](https://facebook.github.io/react) rendering
 - [Redux](http://redux.js.org) state management
@@ -39,7 +27,7 @@ Development:
 
 ## Development
 
-- `git clone https://github.com/relatenow/relate && cd relate`
+- `git clone https://github.com/sedubois/relate && cd relate`
 - `yarn`
 - `yarn dev`
 - navigate to <http://localhost:3000>
@@ -51,4 +39,4 @@ NB: `yarn` will create `config.js` and `server/config.js` for you (through the `
 
 See the [LICENSE](LICENSE) file for license rights and limitations (GPLv3).
 
-Copyright (c) 2016-2017 Sébastien Dubois <https://sdubois.now.sh>.
+Copyright (c) 2016-2017 Sébastien Dubois.
