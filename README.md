@@ -1,7 +1,3 @@
-<img src="https://github.com/RelateNow/art/blob/master/assets/hero.png" alt="hero" align="center" />
-
-<br />
-
 <div align="center">
   <h1>Relate</h1>
   Relate brings together mindfulness communities, teachers and individuals.
